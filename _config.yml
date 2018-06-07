@@ -1,5 +1,5 @@
-plugins:
-  - jekyll-redirect-from
+#plugins:
+#  - jekyll-redirect-from
 
 theme: jekyll-theme-slate
 
