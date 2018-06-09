@@ -1,0 +1,384 @@
+<h1 id="custom-assets"><a href="http://www.askowl.net/unity-customassets-package">Custom Assets</a></h1>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>Custom assets are C# classes that are Unity3D aware so it is a project asset. They hold data set in the Unity Inspector, changed in-game if allowed and written to persistent storage. It also an event system to alert components on change. The package includes listener MonoBehaviours, both generic and specific. There are granular custom assets around triggers, booleans, integers, floats and strings for decoupling data from game specific code. Sets provide a compelling alternative to enumerations while a dictionary allows access by key. For additional functionality, build your own using the supplied <code>AudioClips</code> as a sample. Every custom asset has a members dictionary to allow for multiple entries keyed on the name. A health asset, for example, may have references to the health for every member of the party. The custom assets package includes an in-memory pooling system for performance, helpers for working with assets and a basic play mode test framework.</p>
+<ul>
+<li>{:toc}</li>
+</ul>
+<blockquote>
+<p>Read the code in the Examples Folder and run the Example scene</p>
+</blockquote>
+<h2 id="introduction">Introduction</h2>
+<p>Unity provides a base class called <a href="https://docs.unity3d.com/ScriptReference/ScriptableObject.html">ScriptableObject</a>. Derive from it to create objects or assets not attached to game objects.</p>
+<p>A <code>ScriptableObject</code> is a class that contains serialisable data and functionality. Each instance of a class that derives from <code>ScriptableObject</code> has representation on disk as an asset. Each asset is a source for data and actions not coupled to a scene. The decoupling makes for functionality easy to test. It also provides modules shared across and between projects.</p>
+<p>Custom assets are scriptable objects with benefits.</p>
+<ul>
+<li>A description field to make Unity editor usage easier. The creator can provide more information than just a name on the why and wherefore of an asset.</li>
+<li>All custom assets can have listeners registered against them that get informed of changes in value. In may, new cases components can react to or create changes without additional code.</li>
+<li>Storage can be of anything serialisable - from primitives like float to complex objects, or even MonoBehaviours.</li>
+<li>Custom assets save on program exit and reloaded at startup, providing a clean and straightforward persistence mechanism.</li>
+<li>Basic types offered include Float, Integer, Boolean, Trigger, String and Set.</li>
+<li>Every custom asset has a dictionary of members accessed by name.</li>
+</ul>
+<h3 id="custom-assets---the-new-singleton">Custom Assets - the new Singleton</h3>
+<p>Static variables are not evil, just inflexible. Singleton MonoBehaviour instances are not corrupt either. However, both encourage tight coupling between interested parties.</p>
+<p>So now for mild blasphemy. Assets created from scriptable objects, and hence custom assets are Unity supported <em>singletons</em>. Create <code>[SerializeField]</code> fields and drag an asset of the correct type onto them in the editor. All reference to the same in-memory instance.</p>
+<p>Using custom assets over traditional singletons provide benefits:</p>
+<ul>
+<li>Code is less coupled - or is that more decoupled?</li>
+<li>Custom assets test in isolation.</li>
+<li>Inject custom assets into objects that are expecting them. An inventory may depend on location or whether the player is in training mode.</li>
+<li>It is less error prone to pass custom assets between scenes and projects.</li>
+<li>Functionality is more generalised for direct reuse from within the editor without writing as much scaffolding code. A <code>Float</code> custom asset, for example, can have listeners that hook into display objects. It can also update with sliders and scroll-bars without additional code by adding it to the <em>On Value Changed</em> field.</li>
+<li>A custom asset as a singleton to hold game data has one massive failing. There is one copy only. If you want to store player health for an unknown number of players, how do we save it? For this, custom assets have the concept of members. Each named entry holds a reference to the custom asset storage that keyed to member name.</li>
+</ul>
+<h3 id="custom-assets-as-game-managers">Custom Assets as Game Managers</h3>
+<p>Managers are a favourite Unity pattern. And a system-wide master manager, many games have them for player, enemies, sound and more. There are standard features:</p>
+<ul>
+<li>Access by a static <code>Instance</code> variable.</li>
+<li>A MonoBehaviour that sets <code>Instance</code> in <code>Awake()</code>.</li>
+<li>Call <code>DontDestroyOnLoad(gameObject)</code> if they are to be common across scenes.</li>
+<li>There is often one manager to rule them all.</li>
+</ul>
+<p>It is not uncommon to see code like:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" data-line-number="1">health = GameManager.<span class="fu">Instance</span>.<span class="fu">PlayerManager</span>.<span class="fu">MaxHealth</span>;</a></code></pre></div>
+<p>Try testing that component in isolation.</p>
+<p>A custom asset approach would be more like:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" data-line-number="1">[SerializeField] PlayerManager;</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">...</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">health = PlayerManager.<span class="fu">MaxHealth</span>;</a></code></pre></div>
+<p>To work with this version create a test scene and put in an individual PlayerManager custom asset. It might have different data, or it might include mock methods.</p>
+<h3 id="custom-assets-as-configuration">Custom Assets as Configuration</h3>
+<p>The most common use for scriptable objects is to ignore the scriptable part and use them as configuration containers. A Custom Asset is a file within the project. This file contains a reference to the script and serialised copies of all the data as added in the Unity editor.</p>
+<p>You can safeguard the serialisable data by making it a private <code>[SerializeField]</code> and using accessors to allow reading, and use them as seed data and change them during program execution.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">class</span> MyData : CustomAsset {</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">[SerializeField] <span class="kw">private</span> <span class="dt">int</span> maxHealth;</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">[SerializeField] <span class="kw">private</span> <span class="dt">float</span> timeOfDay;</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">// maxHealth is read-only outside this class</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="kw">public</span> <span class="dt">int</span> MaxHealth { <span class="kw">get</span> { <span class="kw">return</span> maxHealth; } };</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">// timeOfDay is read-write</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="kw">public</span> <span class="dt">float</span> TimeOfDay { <span class="kw">get</span> { <span class="kw">return</span> timeOfDay; } <span class="kw">set</span> { timeOfDay = value; } };</a></code></pre></div>
+<p>Later I will introduce better and more granular ways to handle data.</p>
+<h3 id="read-only-custom-assets">Read-only Custom Assets</h3>
+<p>The custom asset inspector allows a designer to mark the asset read-only For serialisable classes as values, protection of internal data is still code bases. Make the fields private and serialisable so that the editor can change them. Then use accessors without <code>set</code> to only allow for reading. If you can't trust the code accessing data in a complex object graph, either clone the custom asset or lock down access at all levels.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="dt">var</span> clone = Object.<span class="fu">Instantiate</span>(myCustomAsset).<span class="fu">Value</span>;</a></code></pre></div>
+<p>Cloning is much more expensive at runtime than baking in protection during the compile phase.</p>
+<h3 id="custom-assets-and-persistence">Custom Assets and Persistence</h3>
+<p>Custom Assets adds optional persistence to scriptable objects. Each persistent object serialises to JSON and written as a <code>PlayerPref</code> entity. The total storage for an app is about one megabyte. For more massive storage needs, use a database.</p>
+<p>The key comprises the name of the asset and the class name, making it unique to the application.</p>
+<p>Set persistence from the Unity inspector or code.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb5-1" data-line-number="1">myAsset.<span class="fu">Persistence</span> = <span class="kw">true</span>;</a></code></pre></div>
+<h2 id="accessing-custom-assets">Accessing Custom Assets</h2>
+<p>A custom asset is like any other Unity asset. Create a field for it in a MonoBehaviour or other CustomAsset class and drop in the reference.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">public</span> <span class="kw">sealed</span> <span class="kw">class</span> CustomAssetsExample: MonoBehaviour {</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">  [SerializeField] <span class="kw">private</span> Float             maxFloat;</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">  [SerializeField] <span class="kw">private</span> Float             currentFloat;</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">  <span class="co">// ...</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">}</a></code></pre></div>
+<img src="SampleCustomAsset.png" width="50%">
+
+<p>Custom assets aid decoupling. Many components can operate without knowing each other.</p>
+<p>Access custom asset values by either casting or using the <code>Value</code> getter. ToString() will aways call ToString() on the Value field.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb7-1" data-line-number="1">Debug.<span class="fu">LogFormat</span>(<span class="st">&quot;{0} == {1}&quot;</span>,maxFloat.<span class="fu">Value</span>, ((<span class="dt">float</span>) maxFloat);</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">Debug.<span class="fu">LogFormat</span>(<span class="st">&quot;{0} == {1}&quot;</span>,maxFloat.<span class="fu">Value</span>.<span class="fu">ToString</span>(), maxFloat.<span class="fu">ToString</span>());</a></code></pre></div>
+<h3 id="instance">Instance</h3>
+<p>There is a second way. Use <code>Instance</code> to retrieve a reference to any custom asset created or retrieved before.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb8-1" data-line-number="1">Float lifetime = Float.<span class="fu">Instance</span>(<span class="st">&quot;Lifetime&quot;</span>);</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">UniqueAsset = UniqueAsset.<span class="fu">Instance</span>(); <span class="co">// &quot;UniqueAsset&quot; name optional</span></a></code></pre></div>
+<p>The static Instance method is also useful for in-memory custom &quot;assets&quot;. The first call creates a copy while other calls retrieve a reference. You can even keep the value between invocations of the game by setting persistence.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb9-1" data-line-number="1">lifetime.<span class="fu">Persistence</span> = <span class="kw">true</span>;</a></code></pre></div>
+<h2 id="creating-custom-assets">Creating Custom Assets</h2>
+<p>Custom Assets are ScriptableObjects serialised and written to disk as an asset in the project.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode YAML"><code class="sourceCode yaml"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="ot">%YAML 1.1</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="ot">%TAG !u! tag:unity3d.com,2011:</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="ot">--- !u!114 &amp;11400000</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="fu">MonoBehaviour:</span></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">  <span class="fu">m_ObjectHideFlags:</span><span class="at"> 32</span></a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">  <span class="fu">m_PrefabParentObject:</span><span class="at"> </span><span class="kw">{</span><span class="fu">fileID:</span><span class="at"> 0</span><span class="kw">}</span></a>
+<a class="sourceLine" id="cb10-7" data-line-number="7">  <span class="fu">m_PrefabInternal:</span><span class="at"> </span><span class="kw">{</span><span class="fu">fileID:</span><span class="at"> 0</span><span class="kw">}</span></a>
+<a class="sourceLine" id="cb10-8" data-line-number="8">  <span class="fu">m_GameObject:</span><span class="at"> </span><span class="kw">{</span><span class="fu">fileID:</span><span class="at"> 0</span><span class="kw">}</span></a>
+<a class="sourceLine" id="cb10-9" data-line-number="9">  <span class="fu">m_Enabled:</span><span class="at"> 1</span></a>
+<a class="sourceLine" id="cb10-10" data-line-number="10">  <span class="fu">m_EditorHideFlags:</span><span class="at"> 0</span></a>
+<a class="sourceLine" id="cb10-11" data-line-number="11">  <span class="fu">m_Script:</span><span class="at"> </span><span class="kw">{</span><span class="fu">fileID:</span><span class="at"> 11500000</span><span class="kw">,</span> <span class="fu">guid:</span><span class="at"> 22f206729bb7e417e9b12649707e941e</span><span class="kw">,</span> <span class="fu">type:</span><span class="at"> 3</span><span class="kw">}</span></a>
+<a class="sourceLine" id="cb10-12" data-line-number="12">  <span class="fu">m_Name:</span><span class="at"> SampleFloatVariable</span></a>
+<a class="sourceLine" id="cb10-13" data-line-number="13">  <span class="fu">m_EditorClassIdentifier:</span><span class="at"> </span></a>
+<a class="sourceLine" id="cb10-14" data-line-number="14">  <span class="fu">Description:</span><span class="at"> </span></a>
+<a class="sourceLine" id="cb10-15" data-line-number="15">  <span class="fu">value:</span><span class="at"> 0</span></a>
+<a class="sourceLine" id="cb10-16" data-line-number="16">  <span class="fu">readWrite:</span><span class="at"> 1</span></a>
+<a class="sourceLine" id="cb10-17" data-line-number="17">  <span class="fu">persistent:</span><span class="at"> 0</span></a></code></pre></div>
+<p>Each custom asset type has an entry on the <em><strong>Create / CustomAssets / asset name</strong></em>. Use it, select the resulting file and fill in the fields. If you want to load it from disk using <code>Resources.Load(pathFromResources)</code> you will need to place it in a <em><strong>Resources</strong></em> folder.</p>
+<h3 id="oftypet">OfType&lt;T&gt;</h3>
+<p><code>CustomAsset.OfType&lt;T&gt;</code> is the base type for all custom assets except <code>Trigger</code>. Functionality includes being able to register events on change, persistence and some read-only protection.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb11-1" data-line-number="1">[<span class="fu">CreateAssetMenu</span>(menuName = <span class="st">&quot;Examples/LargerAssetSample&quot;</span>)]</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw">public</span> <span class="kw">class</span> LargerAssetSample : CustomAsset.<span class="fu">OfType</span>&lt;LargerAssetContents&gt; { }</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">[Serializable]</a>
+<a class="sourceLine" id="cb11-5" data-line-number="5">  <span class="kw">public</span> <span class="kw">class</span> LargerAssetContents {</a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">    <span class="kw">public</span> <span class="dt">int</span>    Order;</a>
+<a class="sourceLine" id="cb11-7" data-line-number="7">    <span class="kw">public</span> <span class="dt">float</span>  Limit;</a>
+<a class="sourceLine" id="cb11-8" data-line-number="8">    <span class="kw">public</span> <span class="dt">string</span> Name;</a>
+<a class="sourceLine" id="cb11-9" data-line-number="9">  }</a></code></pre></div>
+<p>All CustomAsset instances include a description field. Since you can use generic assets, it is useful to give others comments on what specific assets represent.</p>
+<h3 id="primitive-custom-assets">Primitive Custom Assets</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb12-1" data-line-number="1">  [SerializeField] <span class="kw">private</span> Float             currentFloat;</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">  [SerializeField] <span class="kw">private</span> Integer           integer;</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">  [SerializeField] <span class="kw">private</span> String            str;</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">  [SerializeField] <span class="kw">private</span> Boolean           boolean;</a></code></pre></div>
+<p>Each if these custom assets can in a project with or without supporting code. It is possible, for example, to have a <code>Float</code> value set in the <em><strong>On Value Changed</strong></em> field of a Slider or Scrollbar, then displayed using listener like <code>CustomAsset.UIImageFillListener()</code> to set the fill amount on a health bar,</p>
+<h3 id="trigger">Trigger</h3>
+<p>A trigger is unusual because it has no data apart from event requirements. Triggers do not have persistence, so a subclass containing data will not save.</p>
+<h3 id="members">Members</h3>
+<p>A custom asset with any content data also can store and retrieve separate copies by name. For persistent custom assets, the member names and values saved to storage along with the main value.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb13-1" data-line-number="1">[SerializeField] CustomAsset.<span class="fu">Integer</span> myInt;</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co">// ...</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">myInt.<span class="fu">Value</span> = <span class="dv">22</span>;</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4">myInt[<span class="st">&quot;One&quot;</span>] = <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb13-5" data-line-number="5">myInt[<span class="st">&quot;Two&quot;</span>] = <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb13-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="dt">string</span>[] names = myInt.<span class="fu">MemberNames</span>;</a>
+<a class="sourceLine" id="cb13-8" data-line-number="8">Assert.<span class="fu">AreEqual</span>(names.<span class="fu">Length</span>, <span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb13-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb13-10" data-line-number="10">Assert.<span class="fu">AreEqual</span>(myInt[<span class="st">&quot;One&quot;</span>], <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb13-11" data-line-number="11">Assert.<span class="fu">AreEqual</span>(myInt.<span class="fu">ToStringForMember</span>(<span class="st">&quot;One&quot;</span>), <span class="st">&quot;1&quot;</span>);</a>
+<a class="sourceLine" id="cb13-12" data-line-number="12">Assert.<span class="fu">True</span>(myInt.<span class="fu">Contains</span>(<span class="st">&quot;One&quot;</span>));</a>
+<a class="sourceLine" id="cb13-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb13-14" data-line-number="14">myInt.<span class="fu">Remove</span>(<span class="st">&quot;One&quot;</span>);</a>
+<a class="sourceLine" id="cb13-15" data-line-number="15">Assert.<span class="fu">False</span>(myInt.<span class="fu">Contains</span>(<span class="st">&quot;One&quot;</span>));</a>
+<a class="sourceLine" id="cb13-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb13-17" data-line-number="17">Assert.<span class="fu">True</span>(myInt.<span class="fu">Contains</span>(<span class="st">&quot;Two&quot;</span>));</a>
+<a class="sourceLine" id="cb13-18" data-line-number="18">myInt.<span class="fu">Clear</span>();</a>
+<a class="sourceLine" id="cb13-19" data-line-number="19">Assert.<span class="fu">False</span>(myInt.<span class="fu">Contains</span>(<span class="st">&quot;Two&quot;</span>));</a></code></pre></div>
+<p><code>ToStringForMember</code> requires special mention as it can be use in Inspector event receivers to set values.</p>
+<h3 id="custom-asset-sets">Custom Asset Sets</h3>
+<p><code>Set</code>, like <code>OfType</code> is a generic class. To instantiate it requires the set entries.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb14-1" data-line-number="1">[<span class="fu">CreateAssetMenu</span>(menuName = <span class="st">&quot;Examples/SetPicker&quot;</span>, fileName = <span class="st">&quot;SetPickerSample&quot;</span>)]</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="kw">public</span> <span class="kw">sealed</span> <span class="kw">class</span> SetPickerSample : Set&lt;AudioClip&gt; {</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3">  <span class="kw">public</span> <span class="dt">void</span> <span class="fu">Play</span>() { AudioSource.<span class="fu">PlayClipAtPoint</span>(clip: <span class="fu">Pick</span>(), position: Vector3.<span class="fu">zero</span>); }</a>
+<a class="sourceLine" id="cb14-4" data-line-number="4">}</a></code></pre></div>
+<p>This example can play a sound from the list. This is a great way to make a game sound less tedious.</p>
+<h4 id="pick">Pick()</h4>
+<p>All classes inheriting from <code>Set</code> have a <code>Pick()</code> method with two controlling field entries:</p>
+<ul>
+<li><em><strong>cycle</strong></em>: True to return entries in order, false to get a random selection.</li>
+<li><em><strong>exhaustiveBelow</strong></em>: If the number of entries in the set is below this value, then while <code>Pick()</code> returns a random entrywith no repeats. From a list of three, nothing appears random.</li>
+</ul>
+<p>These options are available in the editor when you create a custom asset from a <code>Set</code>.</p>
+<h4 id="addentry">Add(entry)</h4>
+<p>While in most cases we use the Inspector to fill the <code>Set</code>, sometimes we need dynamic changes.</p>
+<h4 id="removeentry">Remove(entry)</h4>
+<p>On occasions, a <code>Set</code> entry will expire, and it will be necessary to remove them.</p>
+<h4 id="containsentry">Contains(entry)</h4>
+<p>See if a <code>Set</code> contains a specific entry.</p>
+<h4 id="count">Count</h4>
+<p>Retrieve the number of entries in a set.</p>
+<h4 id="foreach">ForEach</h4>
+<p>Call an action for every entry in a set. If the action returns false, all is complete.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb15-1" data-line-number="1">mySet.<span class="fu">ForEach</span>((s) =&gt; {<span class="kw">return</span> s!=<span class="st">&quot;Exit&quot;</span>;});</a></code></pre></div>
+<h4 id="stringset">StringSet</h4>
+<p>Strings as a set have many usages. <code>Quotes</code> implementats <code>StringSet</code>.</p>
+<h3 id="audioclips">AudioClips</h3>
+<p>Playing one audio clip from a list has been a well-used proof of concept for <code>ScriptableObject</code>. Because custom assets, sets and some other toys from this package simplify everything, I am displaying the source here.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb16-1" data-line-number="1">  [<span class="fu">CreateAssetMenu</span>(menuName = <span class="st">&quot;Custom Assets/Sound Clips&quot;</span>, fileName = <span class="st">&quot;Clips&quot;</span>)]</a>
+<a class="sourceLine" id="cb16-2" data-line-number="2">  <span class="kw">public</span> <span class="kw">sealed</span> <span class="kw">class</span> AudioClips : Set&lt;AudioClip&gt; {</a>
+<a class="sourceLine" id="cb16-3" data-line-number="3">    [SerializeField, <span class="fu">Header</span>(<span class="st">&quot;Audio&quot;</span>)]     <span class="kw">private</span> Range volume   = <span class="kw">new</span> <span class="fu">Range</span>(<span class="dv">1</span>, <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb16-4" data-line-number="4">    [SerializeField, <span class="fu">RangeBounds</span>(<span class="dv">0</span>, <span class="dv">2</span>)]   <span class="kw">private</span> Range pitch    = <span class="kw">new</span> <span class="fu">Range</span>(<span class="dv">1</span>, <span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb16-5" data-line-number="5">    [SerializeField, <span class="fu">RangeBounds</span>(<span class="dv">0</span>, <span class="dv">999</span>)] <span class="kw">private</span> Range distance = <span class="kw">new</span> <span class="fu">Range</span>(<span class="dv">1</span>, <span class="dv">999</span>);</a>
+<a class="sourceLine" id="cb16-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb16-7" data-line-number="7">    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">Play</span>(AudioSource source) {</a>
+<a class="sourceLine" id="cb16-8" data-line-number="8">      source.<span class="fu">clip</span>        = <span class="fu">Pick</span>();</a>
+<a class="sourceLine" id="cb16-9" data-line-number="9">      source.<span class="fu">pitch</span>       = pitch.<span class="fu">Pick</span>();</a>
+<a class="sourceLine" id="cb16-10" data-line-number="10">      source.<span class="fu">volume</span>      = volume.<span class="fu">Pick</span>();</a>
+<a class="sourceLine" id="cb16-11" data-line-number="11">      source.<span class="fu">minDistance</span> = distance.<span class="fu">Min</span>;</a>
+<a class="sourceLine" id="cb16-12" data-line-number="12">      source.<span class="fu">maxDistance</span> = distance.<span class="fu">Max</span>;</a>
+<a class="sourceLine" id="cb16-13" data-line-number="13">      source.<span class="fu">Play</span>();</a>
+<a class="sourceLine" id="cb16-14" data-line-number="14">    }</a>
+<a class="sourceLine" id="cb16-15" data-line-number="15">  }</a></code></pre></div>
+<p><code>Range</code> class and <code>RangeBound</code> attribute are available in the custom assets package. <code>AudioClips</code> will work without them, but sliders are easier to use.</p>
+<p>The actor, <code>Play</code>, requires an <code>AudioSource</code> attached to the game object. It cannot be part of a custom asset. The Unity framework solves this problem with <code>UnityEvent</code>.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb17-1" data-line-number="1">  [SerializeField] <span class="kw">private</span> AudioClips audioClips;</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2">  [SerializeField] <span class="kw">private</span> UnityEvent audioClipsEvent;</a></code></pre></div>
+<p>will display in the inspector as follows.</p>
+<img src="AudioClips1.png" width="50%">
+
+<img src="AudioClips2.png" width="50%">
+
+<p>The reference to <code>AudioClips</code> is optional. It is only there so we can change the fields in the editor without going to the asset.</p>
+<p>If you are calling <code>Play</code> from code, then you can supply an <code>AudioSource</code> or a game object that has an audio source component.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb18-1" data-line-number="1">  [SerializeField] <span class="kw">private</span> AudioClips audioClips;</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">  <span class="dt">void</span> <span class="fu">Play</span>() { audioClips.<span class="fu">Play</span>(gameObject); }</a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">  <span class="dt">void</span> <span class="fu">Play1</span>() { audioClips.<span class="fu">Play</span>(GetComponent&lt;AudioSource&gt;(); }</a></code></pre></div>
+<p>Using <code>AudioClips</code> wherever you have sound effects makes your game sound a lot more lively. You could also consider making similar assets for visual effects or animations.</p>
+<h2 id="editing-custom-assets">Editing Custom Assets</h2>
+<p>Edit Serialised fields in the Unity Inspector just as you would a MonoBehaviour attached to a game object. Unlike a scriptable object, custom assets unload when play mode completes. In this way, they behave more like MonoBehaviours. There is a reason for this madness. In the Unity editor, scriptable objects remain loaded and only reload if the backing code or asset changes on disk. If we don't reset on leaving play mode, changed data from one run lives to the next.</p>
+<h2 id="custom-assets-as-resources">Custom Assets as Resources</h2>
+<p>If you can accept the tighter coupling, you can load custom assets my name. It is an alternative to dropping them into referring fields in the Unity inspector. The custom asset must live in a directory under a <em><strong>Resources</strong></em> path - anywhere in the project.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="co">// expects /anywhere-in-assets/Resources/Audio/cow-sounds.asset</span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="dt">var</span> moos = Resources.<span class="fu">Load</span>&lt;AudioClips&gt;(<span class="st">&quot;Audio/cow-sounds&quot;</span>);</a></code></pre></div>
+<h2 id="custom-assets-as-event-sources">Custom Assets as Event Sources</h2>
+<p>The first significant departure from ScriptableObject that CustomAsset provides is the ability to act as an event source.</p>
+<p>Primitive custom assets (trigger, boolean, integer, float and string) are easy to use. Drag a reference using the Unity editor into any MonoBehaviour or CustomEvent that needs to access or update them.</p>
+<p>Listeners (described below) also need a reference. They register for changing events. The event fires when and only when the custom asset changes.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb20-1" data-line-number="1">  [SerializeField] <span class="kw">private</span> Float             currentFloat;</a>
+<a class="sourceLine" id="cb20-2" data-line-number="2">  <span class="co">//Called by button press</span></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3">  <span class="kw">public</span> <span class="dt">void</span> <span class="fu">UpdateCustomFloat</span>() { currentFloat.<span class="fu">Value</span> = currentFloat + <span class="dv">1</span>; }</a>
+<a class="sourceLine" id="cb20-4" data-line-number="4"><span class="co">//...</span></a>
+<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="kw">public</span> <span class="kw">sealed</span> <span class="kw">class</span> DirectEventListenerSample : CustomAsset.<span class="fu">Listener</span> {</a>
+<a class="sourceLine" id="cb20-6" data-line-number="6">  [SerializeField] <span class="kw">private</span> Text textComponent;</a>
+<a class="sourceLine" id="cb20-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb20-8" data-line-number="8">  <span class="kw">public</span> <span class="kw">override</span> <span class="dt">void</span> <span class="fu">OnTriggered</span>() {</a>
+<a class="sourceLine" id="cb20-9" data-line-number="9">    textComponent.<span class="fu">text</span> = <span class="st">&quot;Direct Event heard at &quot;</span> + DateTime.<span class="fu">Now</span>;</a>
+<a class="sourceLine" id="cb20-10" data-line-number="10">  }</a>
+<a class="sourceLine" id="cb20-11" data-line-number="11">}</a></code></pre></div>
+<img src="ButtonToUpdateFloat.png" width="50%">
+<img src="ListenerToDisplayFloat.png" width="50%">
+
+<h2 id="custom-assets-as-event-listeners">Custom Assets as Event Listeners</h2>
+<p>Life begins now. Writing no code, you can use the prepackaged custom assets and listeners to connect components without them knowing about each other.</p>
+<p>Don't believe me? Create a game object inside a canvas and add a slider component.</p>
+<p><em><strong>Step 1</strong></em>: Create a Float custom asset from the Unity editor main or context menu.</p>
+<img src="Slider-6-Create-Custom-Asset.png" width="50%">
+
+<p><em><strong>Step 2</strong></em>: Select the custom asset and add any initial data. Make sure it set read/write.</p>
+<img src="Slider-1-Hierarchy.png" width="25%">
+
+<p><em><strong>Step 3</strong></em>: Create a new GameObject in the Unity Hierarchy window. Make sure it is inside a Canvas GameObject.</p>
+<img src="ListenerToDisplayFloat.png" width="50%">
+
+<p><em><strong>Step 4</strong></em>: Go to the inspector for the game object <em>Slider</em> and add a slider component.</p>
+<img src="Slider-3-Component1.png" width="50%">
+
+<p><em><strong>Step 5</strong></em>: Add an <em>On Value Change</em> field and drag the Float custom asset into the associated field. Use the function drop-down to select <em><strong>Float: Value</strong></em>.</p>
+<img src="Slider-4-Component2.png" width="50%">
+
+<p><em><strong>Step 6</strong></em>: Lock the inspector on the Float custom asset and run the scene. Drag the slider and watch the value change in the inspector.</p>
+<img src="Slider-2-Screen.png" width="25%">
+
+<p>For extra points, we can create a codeless listener.</p>
+<p><em><strong>Step 7</strong></em>: Create a UI Button GameObject in a Canvas and change the image type to <em>Filled</em>. Note that moving the <em>Fill Amount</em> slider causes the button to change background.</p>
+<img src="Slider-7-Image-to-Fill.png" width="50%">
+
+<p><em><strong>Step 8</strong></em>: Press the <em>Add Component</em> Button then search for and add the <em>UI Image Fill Listener</em> component. Set the custom asset to the one created above.</p>
+<img src="Slider-8-Listener.png" width="50%">
+
+<p><em><strong>Step 9</strong></em>: Run the application and move the slider created above. The button fills and empties.</p>
+<img src="Slider-9-Image-Filling.png" width="25%">
+
+<p>All concrete listeners must implement <code>void OnChange(string memberName)</code>.</p>
+<p>A listener has a <code>ForMember</code> entry visible in the inspector. If this entry is not empty, then only events sent from matching members pass through. It allows an image fill listener for a health bar to react with a related member.</p>
+<h3 id="generic-component-listeners">Generic Component Listeners</h3>
+<p>The other end of the Custom Asset event pipeline can be a listener MonoBehaviour. The generic implementations below support functionality for the attached GameObject. Concrete listeners must implement <code>Change(value)</code> where <em>value</em> is the primitive encapsulated by a base custom asset.</p>
+<p><code>Change</code> is member aware. If the event triggers with a member name, it provides the related value for processing.</p>
+<p>In the example below, we see a component for changing the text in a UI Text component. It finds one element on the current GameObject of the generic type. <code>Change()</code> can then use it to manipulate said item given the new value.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb21-1" data-line-number="1">  <span class="kw">public</span> <span class="kw">sealed</span> <span class="kw">class</span> UITextListener : StringListener&lt;Text&gt; {</a>
+<a class="sourceLine" id="cb21-2" data-line-number="2">    <span class="kw">protected</span> <span class="kw">override</span> <span class="dt">void</span> <span class="fu">Change</span>(<span class="dt">string</span> value) { Component.<span class="fu">text</span> = value; }</a>
+<a class="sourceLine" id="cb21-3" data-line-number="3">  }</a></code></pre></div>
+<img src="TextListenerInspector.png" width="50%">
+
+<p>All component listeners have access to the <code>Component</code> and the <code>CustomAsset</code> that triggers the action.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb22-1" data-line-number="1">    <span class="kw">protected</span> <span class="kw">override</span> <span class="dt">void</span> <span class="fu">Change</span>(<span class="dt">float</span> value) { Component.<span class="fu">alpha</span> = value; }</a>
+<a class="sourceLine" id="cb22-2" data-line-number="2">      <span class="fu">Change</span>((memberName == <span class="kw">null</span>) ? (TD) CustomAsset : CustomAsset[memberName]);</a></code></pre></div>
+<h4 id="booleanlistener">BooleanListener</h4>
+<div class="sourceCode" id="cb23"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb23-1" data-line-number="1">  <span class="kw">public</span> <span class="kw">sealed</span> <span class="kw">class</span> AnimatorBooleanListener: BooleanListener&lt;Animator&gt; {</a>
+<a class="sourceLine" id="cb23-2" data-line-number="2">    [SerializeField] <span class="kw">private</span> <span class="dt">string</span>   parameterName;</a>
+<a class="sourceLine" id="cb23-3" data-line-number="3">    [SerializeField] <span class="kw">private</span> Animator animator;</a>
+<a class="sourceLine" id="cb23-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb23-5" data-line-number="5">    <span class="kw">protected</span> <span class="kw">override</span> <span class="dt">void</span> <span class="fu">Change</span>(<span class="dt">bool</span> value) { animator.<span class="fu">SetBool</span>(parameterName, value); }</a>
+<a class="sourceLine" id="cb23-6" data-line-number="6">  }</a></code></pre></div>
+<h4 id="stringlistener">StringListener</h4>
+<p>Not that unlike other generic listeners, a string listener will work with any custom asset that implements <code>ToString()</code></p>
+<h4 id="floatlistener">FloatListener</h4>
+<div class="sourceCode" id="cb24"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb24-1" data-line-number="1">  <span class="kw">public</span> <span class="kw">sealed</span> <span class="kw">class</span> UIImageFillListener : FloatListener&lt;Image&gt; {</a>
+<a class="sourceLine" id="cb24-2" data-line-number="2">    <span class="kw">protected</span> <span class="kw">override</span> <span class="dt">void</span> <span class="fu">Change</span>(<span class="dt">float</span> value) { Component.<span class="fu">fillAmount</span> = value; }</a>
+<a class="sourceLine" id="cb24-3" data-line-number="3">  }</a></code></pre></div>
+<h4 id="integerlistener">IntegerListener</h4>
+<p>public sealed class AnimatorIntegerListener : IntegerListener<Animator> { [SerializeField] private string parameterName; [SerializeField] private Animator animator;</p>
+<pre><code>protected override void Change(int value) { animator.SetInteger(parameterName, value); }
+</code></pre>
+<p>}</p>
+<h3 id="concrete-component-listeners">Concrete Component Listeners</h3>
+<p>The components listed here are part of a growing list of listeners that can used to minimise coupling and reduce project specific code.</p>
+<h4 id="ui-listeners">UI Listeners</h4>
+<h5 id="uicanvasgroupalphalistener">UICanvasGroupAlphaListener</h5>
+<p>By adding a canvas group to any GameObject inside a canvas, we can change the transparency (alpha) for all GameObjects inside the hierarchy.</p>
+<p>This listener, when added to the same GameObject, monitors a Float custom asset and change the canvas group transparency. I find it useful to fade panels in and out.</p>
+<h5 id="uiimagefilllistener">UIImageFillListener</h5>
+<p>Images in fill mode make good health and stamina bars. Rather than code them for each requirement in each project, create a Float custom asset. Use this listener to change the fill amount on the upper image. You can even consider making the Float persistent so it does not change if the game restarts.</p>
+<h5 id="uitextlistener">UITextListener</h5>
+<p>Because it is a <code>StringListener</code>, <code>UITextListener</code> can accept any custom asset and display the <code>ToString()</code> conversion. Just drop it on to any game object that has a Text component, and you can change the value from anywhere.</p>
+<h4 id="animation-listeners">Animation Listeners</h4>
+<p>Unity has an animation system that includes a state machine and associated animation timelines, packaged with the project as an Animator Controller and Animation assets.</p>
+<p>By Referencing an Animator, the code can trigger state changes.</p>
+<img src="AnimationTriggers.png" width="50%">
+
+<h3 id="unity-event-listeners">Unity Event Listeners</h3>
+<p>The Unity event system is more tightly coupled. Listeners must reference the element containing an event. With custom assets, the event is a third party that also includes the data that triggered it.</p>
+<p>In the following example, we have a UnityEventListener MonoBehaviour that references a Trigger custom access. When the trigger fires it plays the audio source.</p>
+<img src="UnityEvent.png" width="50%">
+
+<h2 id="custom-asset-persistence">Custom Asset Persistence</h2>
+<p>If a custom asset is persistent in the Inspector, then it writes itself out to the PlayerPref database using a key combining the name and class.</p>
+<p>Persistence occurs <code>OnDisable</code> - when the operating system has thrown the game out of memory.</p>
+<p>For primitive assets, any updates happen without further coding.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb26-1" data-line-number="1">  Float age;</a>
+<a class="sourceLine" id="cb26-2" data-line-number="2">  age.<span class="fu">Value</span> = <span class="fl">32.2f</span>;</a></code></pre></div>
+<p>For custom assets containing a more complicated class or struct, the creator marks changes as part of the update. Creating accessors in the custom asset provides for clearer calling code that using Value - while calling <code>Set</code> on the update informs all listeners, but only for read/write assets that have changed.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb27-1" data-line-number="1">[<span class="fu">CreateAssetMenu</span>(menuName = <span class="st">&quot;Examples/LargerAssetSample&quot;</span>)]</a>
+<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="kw">public</span> <span class="kw">partial</span> <span class="kw">class</span> LargerAssetSample : CustomAsset.<span class="fu">OfType</span>&lt;CustomAssetsExample.<span class="fu">LargerAssetContents</span>&gt; {</a>
+<a class="sourceLine" id="cb27-3" data-line-number="3">  <span class="kw">public</span> <span class="dt">int</span> AnInteger { <span class="kw">get</span> { <span class="kw">return</span> Value.<span class="fu">I</span>; } <span class="kw">set</span> { <span class="fu">Set</span>(<span class="kw">ref</span> Value.<span class="fu">I</span>, value); } }</a>
+<a class="sourceLine" id="cb27-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb27-5" data-line-number="5">  <span class="kw">public</span> <span class="dt">float</span> AFloat { <span class="kw">get</span> { <span class="kw">return</span> Value.<span class="fu">F</span>; } <span class="kw">set</span> { <span class="fu">Set</span>(<span class="kw">ref</span> Value.<span class="fu">F</span>, value); } }</a>
+<a class="sourceLine" id="cb27-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb27-7" data-line-number="7">  <span class="kw">public</span> <span class="dt">string</span> AString { <span class="kw">get</span> { <span class="kw">return</span> Value.<span class="fu">S</span>; } <span class="kw">set</span> { <span class="fu">Set</span>(<span class="kw">ref</span> Value.<span class="fu">S</span>, value); } }</a>
+<a class="sourceLine" id="cb27-8" data-line-number="8">}</a></code></pre></div>
+<h3 id="but-what-if-im-different">But What if I'm Different?</h3>
+<p>Then there are two generic setters for you.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">protected</span> <span class="dt">void</span> Set&lt;TF&gt;(<span class="kw">ref</span> TF field, TF from);</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="co">// and</span></a>
+<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="kw">protected</span> <span class="dt">void</span> Set&lt;TF&gt;(<span class="kw">ref</span> TF field, TF from, Func&lt;TF, TF, <span class="dt">bool</span>&gt; equals);</a></code></pre></div>
+<p>The first used the <code>object.Equals</code> method to see if a change has happened. For non-primitives this will check for the same object (at the same address). This may be what you want. More often you will want to compare the members for equality.</p>
+<p>When the custom asset data is not a class of your making, overriding <code>Equals</code> may not be suitable. In Unity3d, Quaternion and Vector2/3/4 are classic examples. Quaternion.Equals does an exact comparison and an exact comparison does not play well with floating point due to rounding. Quaternions also override <code>==</code> to provide an approximately equals function.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb29-1" data-line-number="1">    <span class="kw">protected</span> <span class="dt">void</span> <span class="fu">Set</span>(<span class="kw">ref</span> Quaternion field, Quaternion from) {</a>
+<a class="sourceLine" id="cb29-2" data-line-number="2">      <span class="fu">Set</span>(<span class="kw">ref</span> field, from, (a, b) =&gt; a == b);</a>
+<a class="sourceLine" id="cb29-3" data-line-number="3">    }</a></code></pre></div>
+<h3 id="singularities-and-the-importance-of-equals">Singularities and the Importance of Equals</h3>
+<p>Many components used to create a custom assets are atomic. This means that while code may need to inspect fields, a update will always be a complete change to the component.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">public</span> <span class="kw">struct</span> Location {</a>
+<a class="sourceLine" id="cb30-2" data-line-number="2">    <span class="kw">public</span> <span class="dt">float</span> latitude;</a>
+<a class="sourceLine" id="cb30-3" data-line-number="3">    <span class="kw">public</span> <span class="dt">float</span> longitude;</a>
+<a class="sourceLine" id="cb30-4" data-line-number="4">    <span class="kw">public</span> <span class="dt">float</span> altitude;</a>
+<a class="sourceLine" id="cb30-5" data-line-number="5">    <span class="kw">public</span> <span class="dt">double</span> timestamp;</a>
+<a class="sourceLine" id="cb30-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb30-7" data-line-number="7">  [<span class="fu">CreateAssetMenu</span>(menuName = <span class="st">&quot;Custom Assets/Location&quot;</span>)]</a>
+<a class="sourceLine" id="cb30-8" data-line-number="8">  <span class="kw">public</span> <span class="kw">sealed</span> <span class="kw">class</span> LocationAsset : OfType&lt;Location&gt; {</a>
+<a class="sourceLine" id="cb30-9" data-line-number="9">    <span class="kw">public</span> <span class="kw">override</span> <span class="dt">bool</span> <span class="fu">Equals</span>(<span class="dt">object</span> other) {</a>
+<a class="sourceLine" id="cb30-10" data-line-number="10">      <span class="kw">if</span> (other == <span class="kw">null</span> || !(other <span class="kw">is</span> Location)) <span class="kw">return</span> <span class="kw">false</span>;</a>
+<a class="sourceLine" id="cb30-11" data-line-number="11">      Location another = (Location) other;</a>
+<a class="sourceLine" id="cb30-12" data-line-number="12">      <span class="kw">return</span> <span class="fu">AlmostEqual</span>(Value.<span class="fu">latitude</span>, another.<span class="fu">latitude</span>) &amp;&amp;</a>
+<a class="sourceLine" id="cb30-13" data-line-number="13">             <span class="fu">AlmostEqual</span>(Value.<span class="fu">longitude</span>, another.<span class="fu">longitude</span>) &amp;&amp;</a>
+<a class="sourceLine" id="cb30-14" data-line-number="14">             <span class="fu">AlmostEqual</span>(Value.<span class="fu">altitude</span>, another.<span class="fu">altitude</span>);</a>
+<a class="sourceLine" id="cb30-15" data-line-number="15">    }</a>
+<a class="sourceLine" id="cb30-16" data-line-number="16">    <span class="kw">public</span> <span class="dt">float</span> Latitude { get Value.<span class="fu">latitude</span>; }</a>
+<a class="sourceLine" id="cb30-17" data-line-number="17">    <span class="co">// etc</span></a>
+<a class="sourceLine" id="cb30-18" data-line-number="18">  }</a></code></pre></div>
+<p>I have introduced another helper function in <code>AlmostEqual</code>, defined as:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb31-1" data-line-number="1">    <span class="kw">protected</span> <span class="dt">bool</span> <span class="fu">AlmostEqual</span>(<span class="dt">float</span>  a, <span class="dt">float</span>  b) { <span class="kw">return</span> Math.<span class="fu">Abs</span>(a - b) &lt; <span class="fl">1e-5</span>; }</a>
+<a class="sourceLine" id="cb31-2" data-line-number="2">    <span class="kw">protected</span> <span class="dt">bool</span> <span class="fu">AlmostEqual</span>(<span class="dt">double</span> a, <span class="dt">double</span> b) { <span class="kw">return</span> Math.<span class="fu">Abs</span>(a - b) &lt; <span class="fl">1e-5</span>; }</a></code></pre></div>
+<p>It would be better to calculate the distance between the two points and check that.</p>
+<h3 id="quotes">Quotes</h3>
+<p><code>Quotes</code> is a <code>StringSet</code> Custom Asset that if given a list of lines and a <code>TextAsset</code> returns a line using the <code>Pick</code> interface. A quote looks like <em><strong>body of the quote (attribution)</strong></em> where the attribution is optional. Surround attributions in brackets and place them at the end of the line. RTF is acceptable in the quote.</p>
+<p>I would recommend setting <em><strong>Exhaustive Below</strong></em> to a figure like 50 or 100. Otherwise shorter lists appear to repeat entries too often.</p>
+<h4 id="rtf">RTF</h4>
+<p>RTF is a static function to convert a string quote into RTF format so that the attribution can be in grey. The text between brackets at the end of the line makes up the attribution.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb32-1" data-line-number="1">Debug.<span class="fu">Log</span>(Quotes.<span class="fu">RTF</span>(<span class="st">&quot;Life wasn&#39;t meant to be easy (George Bernard Shaw)&quot;</span>));</a></code></pre></div>
+<p>produces <em><strong>&quot;<em><strong>Life wasn't meant to be easy</strong></em>&quot;</strong></em> <em>George Bernard Shaw</em></p>
+<h3 id="preview-custom-editor">Preview Custom Editor</h3>
+<p>Unity custom editors provide additional functionality for the Inspector panel. <code>PreviewEditor&amp;lt;T&gt;</code> is a generic that adds a <em><strong>Preview</strong></em> button to the bottom of the Component.</p>
+<p><code>AudioClipsEditor</code> is a custom class that plays a sound when pressing <em><strong>Preview</strong></em>.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb33-1" data-line-number="1">  [<span class="fu">CustomEditor</span>(<span class="kw">typeof</span>(AudioClips))]</a>
+<a class="sourceLine" id="cb33-2" data-line-number="2">  <span class="kw">public</span> <span class="kw">class</span> AudioClipsEditor : PreviewEditor&lt;AudioSource&gt; {</a>
+<a class="sourceLine" id="cb33-3" data-line-number="3">    <span class="kw">protected</span> <span class="kw">override</span> <span class="dt">void</span> <span class="fu">Preview</span>() { ((AudioClips) target).<span class="fu">Play</span>(Source); }</a>
+<a class="sourceLine" id="cb33-4" data-line-number="4">  }</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb34-1" data-line-number="1">GameObject mainCamera = Objects.<span class="fu">Find</span>&lt;GameObject&gt;(<span class="st">&quot;Main Camera&quot;</span>);</a></code></pre></div>
+<p>Often the object is unique and named after it's underlying class.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode C#"><code class="sourceCode cs"><a class="sourceLine" id="cb35-1" data-line-number="1">setPickerSample = Objects.<span class="fu">Find</span>&lt;SetPickerSample&gt;();</a></code></pre></div>
+<p><code>Find</code> is resource hungry. Only use it in called methods like <code>Awake</code>, <code>Start</code> or <code>OnEnable</code>. It is never necessary for production code but is an excellent helper with play mode tests.</p>
