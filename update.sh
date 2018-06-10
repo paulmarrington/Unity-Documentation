@@ -16,12 +16,12 @@ cat > "index.md" << EOF
 title:  Askowl Unity Documentation
 description: Documentation for all the Askowl Unity3D Packages
 ---
+* Table of Contents
+{:toc}
+
 [Executive Summary](http://www.askowl.net/unity-package)
 
 Here lies the Documentation Executive Summary
-
-* Table of Contents
-{:toc}
 EOF
 
 for d in ../*    
