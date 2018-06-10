@@ -2,9 +2,10 @@
 ## Release 2018-06
 
 * [x] add to script to move doc to separate project
-* [ ] Create update script
-* [ ] Add root index.html
-* [ ] GitHub-Push should push Documentation to remote
+* [x] Create update script
+* [x] Add root index.html
+* [ ] update script should push Documentation to remote
+* [ ] easy trigger for update script
 * [ ] Point Wix to new doc reference
 * [ ] Close down private github repo
 
