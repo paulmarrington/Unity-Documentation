@@ -32,6 +32,6 @@ for d in ../*
     done
 
 git add -A
-git commit -m ""
+git commit -m "$(date)"
 git pull --commit --no-edit
 git push
