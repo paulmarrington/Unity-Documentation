@@ -2,9 +2,17 @@
 ## Release 2018-06
 
 * [x] add to script to move doc to separate project
-* [ ] use pandoc to build html and pdf
-* [ ] point projects docx to new doc reference
-* [ ] Move unity-faq to here
+* [ ] Create update script
+* [ ] Add root index.html
 * [ ] Point Wix to new doc reference
 * [ ] Close down private github repo
+
+## Release 2018-??
+
+- [ ] Extract executive summary for root index.md
+- [ ] Write executive summary for Documentation (in update.sh)
+- [ ] build html and pdf, etc
+- [ ] add links to html, md, pdf, etc to root index
+- [ ] point projects docx to new doc reference
+- [ ] Move unity-faq to here
 
