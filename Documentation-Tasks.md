@@ -4,6 +4,7 @@
 * [x] add to script to move doc to separate project
 * [ ] Create update script
 * [ ] Add root index.html
+* [ ] GitHub-Push should push Documentation to remote
 * [ ] Point Wix to new doc reference
 * [ ] Close down private github repo
 
