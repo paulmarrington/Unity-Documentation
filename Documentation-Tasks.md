@@ -15,6 +15,6 @@
 - [ ] Write executive summary for Documentation (in update.sh)
 - [ ] build html and pdf, etc
 - [ ] add links to html, md, pdf, etc to root index
-- [ ] point projects docx to new doc reference
+- [ ] point projects docx to new doc reference (http://unitydoc.marrington.net)
 - [ ] Move unity-faq to here
 

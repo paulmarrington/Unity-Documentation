@@ -30,3 +30,8 @@ for d in ../*
         [[ $dirName =~ ^(Documentation)$ ]] && continue
         syncOne $dirName
     done
+
+git add -A
+git commit -m ""
+git pull --commit --no-edit
+git push
