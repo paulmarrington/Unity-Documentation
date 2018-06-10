@@ -9,7 +9,7 @@
 - [ ] point projects docx to new doc reference (http://unitydoc.marrington.net)
 - [ ] Move unity-faq to here
 
-## Release 2018-06
+## ~~Release 2018-06~~
 
 - [x] ~~add to script to move doc to separate project~~
 - [x] ~~Create update script~~
