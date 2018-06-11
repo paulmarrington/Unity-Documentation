@@ -6,7 +6,8 @@
 - [ ] Docx - relink
 - [ ] Link to Wix
 
-## Release 2018-06
+## ~~Release 2018-06~~
 
-* [x] Move code from CustomAssets
-* [x] Get tests working
+* [x] ~~Move code from CustomAssets~~
+* [x] ~~Get tests working~~
+

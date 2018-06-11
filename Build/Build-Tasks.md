@@ -1,7 +1,5 @@
 # Askowl-Build
-## Future Work
+## Release 2018-??
 
-* Plan future work
-
-## Release x.x (month 201x)
+* [ ] Link on Wix "Unity Packages" page for image needs to be updated
 
