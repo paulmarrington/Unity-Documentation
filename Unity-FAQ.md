@@ -36,3 +36,7 @@ Unity 2018.1 includes a package manager, selected from the *Windows* menu. Curre
 ##### C# Structs are Different to Classes
 
 Structs, like ints and floats, are passed by value. Passing a struct to a method duplicates the contents, and again if used as the return value. So, don't use them for large amounts of data. The copy is shallow, so references to class Instances are not expensive. You can change the contents of a struct, but when you return all the changes disappear. It is not the case if you change data in a class instance that is inside the struct.
+
+##### Coroutine Overhead
+
+When you enter `yield return myCoroutine()`, Unity is pausing the current coroutine and starting a new one. It is the same as `yield return StartCoroutine(myCoroutine())`.
