@@ -40,3 +40,7 @@ Structs, like ints and floats, are passed by value. Passing a struct to a method
 ##### Coroutine Overhead
 
 When you enter `yield return myCoroutine()`, Unity is pausing the current coroutine and starting a new one. It is the same as `yield return StartCoroutine(myCoroutine())`.
+
+##### Quaternions
+
+Everyone says that you don't need to understand quaternions to use them. True until you hit the wall and need to do something the standard library doesn't provide. If you find yourself converting to Euler angles and back to Quaternions then it is time to work out how to make those unreal numbers dance.
