@@ -1,7 +1,10 @@
 # Package-Adze
-## Future Work
+## Release 2018.??
 
-* Plan future work
+* [ ] Doc: Update
+* [ ] Docx: update & link to Doc
+* [ ] Plan future work
 
-## Release x.x (month 201x)
+## Release 2018.06
 
+* [ ] Get running again

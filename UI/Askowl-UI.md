@@ -6,7 +6,8 @@ description: Making UI programming a little bit easier
 {:toc}
 > Read the code in the Examples Folder.
 
-#CanvasGroupFader
+# CanvasGroupFader
+
 A CanvasGroupFader is a MonoBehaviour that you can add as a component to a canvas and any children.
 
 To use it, get a reference to the canvas and call the static functions `CanvasGroupFader.FadeIn(canvas)` and `CanvasGroupFader.FadeOut(canvas)`. If the canvas does not have a CanvasGroupFader component, these functions will enable or disable the canvas. If the canvas has a CanvasGroupFader component, all the child UI elements are scanned and faded in and out in sequence.

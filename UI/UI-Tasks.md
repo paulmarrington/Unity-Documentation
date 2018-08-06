@@ -1,9 +1,5 @@
 # Askowl-UI
-## Future Work
-
-* [ ] Plan future work
-
-## Release 2018-06
+## Release 2018-??
 
 - [ ] Documentation
   - [ ] Add docx to all

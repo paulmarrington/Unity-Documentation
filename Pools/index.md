@@ -14,7 +14,7 @@ Unity3D games can run on lightweight platforms such as phones, tablets and conso
 
 `Instantiate()` and `Destroy()` aren't evil, but using them has a large impact on performance. The solution is to use a pool of these objects. It minimises expensive instantiation, and the garbage collector does not have to reclaim the memory for every usage.
 
-A GameObject becomes a pool of it has the `Pool` script attached. Any child object becomes candidates for pooling. Drag the ***Askowl/Assets/Prefabs/Pools*** prefab into the hierarchy. You can have as many pools as you wish and they may live in any scene. The names have to be unique.
+A GameObject becomes a pool if it has the `Pool` script attached. Any child object becomes candidates for pooling. Drag the ***Askowl/Assets/Prefabs/Pools*** prefab into the hierarchy. You can have as many pools as you wish and they may live in any scene. The names have to be unique.
 
 <img src="PoolInScene.png" width="50%">
 
