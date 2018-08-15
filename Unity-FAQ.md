@@ -44,3 +44,7 @@ When you enter `yield return myCoroutine()`, Unity is pausing the current corout
 ##### Quaternions
 
 Everyone says that you don't need to understand quaternions to use them. True until you hit the wall and need to do something the standard library doesn't provide. If you find yourself converting to Euler angles and back to Quaternions then it is time to work out how to make those unreal numbers dance.
+
+##### Lerp and Slerp Performance
+
+Everywhere you go there are warnings about how slow Slerp is when compared with Lerp. Indeed, the published algorithms support this. Slerp has many trigonometric functions while Lerp survives on multiply and divide. When I ran a test on my Mac, Slerp was less than 15% slower. How can this be? It may be that Unity is using an augmented Lerp when it is applicable. It could also be that an Intel Core i7 has faster maths for trigs than anticipated.
