@@ -4,7 +4,8 @@
 
 Unity provides lots of great functionality, but there are always more problems than there are solutions. All the solutions documented here were to solve problems in other Askowl libraries. They also stand on their own when simple is not so simple. There are currently four sections for Math, Data, Text and Unity. There is a lot here. All I can suggest is that you browse the table of contents.
 
-- [TOC]
+* Table of Contents
+{:toc}
 
 > Read the code in the Examples Folder and run the Example scene
 
