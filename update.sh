@@ -3,7 +3,7 @@ cd "$(dirname "$0")"
 
 syncOne() {
   mkdir -p $1
-  rsync -aizLh ../$1/Assets/Askowl/$1/Documentation/ $1
+  rsync -aizLh ../Askowl/$1/Assets/Askowl/$1/Documentation/ $1
   if [[ $1/Askowl-$1.md -nt $1/index.html ]]; then
     cp -f $1/Askowl-$1.md $1/index.md
   fi
@@ -26,10 +26,9 @@ Here lies the Documentation Executive Summary
 ## [Unity3d FAQ](Unity-FAQ)
 EOF
 
-for d in ../*    
+for d in ../Askowl/*    
     do    
         dirName=$(basename $d)
-        [[ $dirName =~ ^(Documentation)$ ]] && continue
         syncOne $dirName
     done
 

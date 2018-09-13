@@ -7,10 +7,10 @@
 * [x] Update chevrons to point to GPS location
 * [x] Display distance to GPS location
 * [x] Put a black hole at GPS location
-* [ ] Write documentation
-* [ ] Publish documentation
-* [ ] Update code to reference documentation
-* [ ] Update documentation index
+* [x] Write documentation
+* [x] Publish documentation
+* [x] Update code to reference documentation
+* [x] Update documentation index
 
 ## Release x.x (month 201x)
 

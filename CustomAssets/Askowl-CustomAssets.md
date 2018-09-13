@@ -213,40 +213,6 @@ Assert.False(myInt.Contains("Two"));
 ```
 `ToStringForMember` requires special mention as it can be use in Inspector event receivers to set values.
 
-### Custom Asset Sets
-`Set`, like `OfType` is a generic class. To instantiate it requires the set entries.
-
-```C#
-[CreateAssetMenu(menuName = "Examples/SetPicker", fileName = "SetPickerSample")]
-public sealed class SetPickerSample : Set<AudioClip> {
-  public void Play() { AudioSource.PlayClipAtPoint(clip: Pick(), position: Vector3.zero); }
-}
-```
-This example can play  a sound from the list. This is a great way to make a game sound less tedious.
-
-#### Pick()
-All classes inheriting from `Set` have a `Pick()` method with two controlling field entries:
-* ***cycle***: True to return entries in order, false to get a random selection.
-* ***exhaustiveBelow***: If the number of entries in the set is below this value, then while `Pick()` returns a random entrywith no repeats. From a list of three, nothing appears random.
-
-These options are available in the editor when you create a custom asset from a `Set`.
-
-#### Add(entry)
-While in most cases we use the Inspector to fill the `Set`, sometimes we need dynamic changes.
-#### Remove(entry)
-On occasions, a `Set` entry will expire, and it will be necessary to remove them.
-#### Contains(entry)
-See if a `Set` contains a specific entry.
-#### Count
-Retrieve the number of entries in a set.
-#### ForEach
-Call an action for every entry in a set. If the action returns false, all is complete.
-```C#
-mySet.ForEach((s) => {return s!="Exit";});
-```
-#### StringSet
-Strings as a set have many usages. `Quotes` implementats `StringSet`.
-
 ### AudioClips
 Playing one audio clip from a list has been a well-used proof of concept for `ScriptableObject`. Because custom assets, sets and some other toys from this package simplify everything, I am displaying the source here.
 

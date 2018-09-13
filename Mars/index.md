@@ -4,7 +4,7 @@ description: Libraries integrating the camera, GPS, gyroscope and compass
 ---
 * Table of Contents
 {:toc}
-# [Executive Summary](http://www.askowl.net/unity-mars-package)
+# [Executive Summary](http://unitydoc.marrington.net/Mars)
 
 Unity provides access to native components on Android and Apple phones. For markerless augmented reality, we need to use the camera, GPS, gyroscope and compass modules. ***Mars*** integrates these components while decoupling the interfaces to provide for hardware variations.
 

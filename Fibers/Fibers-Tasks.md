@@ -1,11 +1,14 @@
-# Askowl-Coroutines
+# Askowl-Fibers
 
 ## Future Work
 
-* [ ] Update documentation
+* [ ] 
 
-## ~~Release 2018-06~~
+## Release 2018-08
 
-* [x] review code
-* [x] run tests
+* [ ] Update to used pooled class instances on top of linked lists
+* [ ] Get it all working
+* [ ] write tests
+* [ ] Write documentation
+* [ ] add wix page
 
