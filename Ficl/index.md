@@ -10,8 +10,6 @@ description: FORTH-like language for intelligent app configuration
 
 FICL is a FORTH based language using stack based control and word based commands.
 
-Ref: FICL.javaBridgePlayficl.javaFICL_Persistence.java
-
 ## Arithmetic (+ - / * inc dec)
 
 ```
@@ -240,5 +238,3 @@ triggered 7 expected ( from 2 triggers )
 3 set: my-data
 triggered 11 expected ( from 2 triggers )
 ```
-
-Ref: BridgePlay

@@ -74,10 +74,12 @@
 - [x] doc and test ValueAttribute
 - [x] Remove all that is not base from documentation
 - [x] executive summary
+- [ ] check map doc for deleted methods (isa, etc)
+- [x] Shorten table of contents entries
 - [ ] Grammarly
 - [x] investigate transcripts
 - [ ] Upload md to github
-- [ ] update index to fold when too long
+- [x] update index to fold when too long
 - [ ] Create bit.ly short links
 - [ ] Docx - add short links throughout
 - [ ] Generate docx and process page for incorrect links
