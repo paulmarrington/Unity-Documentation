@@ -1283,7 +1283,7 @@ var tree = Trees.Instance.Add("A.B.C1..C2..C3").To("A.B");
 Assert.AreEqual("C1,C2,C3", Csv.ToString(tree.Children));
 ```
 
-Better yet, use `FirstChild`/`NextChild` for more concise code (See [Anchor](anchor) below)
+Better yet, use `FirstChild`/`NextChild` for more concise code (See [Anchor](#anchor) below)
 
 ###### Anchor
 
@@ -1523,7 +1523,7 @@ Find a component if it exists or creates it if it doesn't. Because of `Create`, 
 
 ### ConditionalHideAttribute
 
-This tool comes straight from [http://www.brechtos.com](Brecht Lecluyse) in a [http://www.brechtos.com/hiding-or-disabling-inspector-properties-using-propertydrawers-within-unity-5/](a blog from November 2015).
+This tool comes straight from [Brecht Lecluyse](http://www.brechtos.com) in a [a blog from November 2015](http://www.brechtos.com/hiding-or-disabling-inspector-properties-using-propertydrawers-within-unity-5/).
 
 Any complex `MonoBehaviour` can create a complex and confusing inspector. It is possible to simplify the inspector without custom code by looking for optional input.
 1. Booleans are true to display conditional fields
