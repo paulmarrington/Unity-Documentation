@@ -1,6 +1,6 @@
 ---
-title: Askowl Advertising Connector for Unity3D
-description: Choose your advertising network
+title: Able for Unity3D
+description: Askowl Base Library Enabler
 ---
 # [Able - Askowl Base Library Enabler](http://unitydoc.marrington.net/Able)
 * Table of Contents
