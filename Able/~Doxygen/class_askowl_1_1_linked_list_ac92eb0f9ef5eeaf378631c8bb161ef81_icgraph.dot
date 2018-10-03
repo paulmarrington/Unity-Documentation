@@ -1,0 +1,11 @@
+digraph "Askowl.LinkedList.Dispose"
+{
+ // INTERACTIVE_SVG=YES
+  bgcolor="transparent";
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node7 [label="Askowl.LinkedList.Dispose",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node7 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="Askowl.LinkedList\<\l Node \>::Destroy",height=0.2,width=0.4,color="black",URL="$class_askowl_1_1_linked_list.html#a5fe62a631ccf69acb6fe2d7980f9c9b9",tooltip="For the rare times we need to clear a linked list "];
+}

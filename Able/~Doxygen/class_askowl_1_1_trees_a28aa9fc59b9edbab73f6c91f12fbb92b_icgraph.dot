@@ -1,0 +1,11 @@
+digraph "Askowl.Trees.Next"
+{
+ // INTERACTIVE_SVG=YES
+  bgcolor="transparent";
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node9 [label="Askowl.Trees.Next",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node9 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="Askowl.Trees.Anchor",height=0.2,width=0.4,color="black",URL="$class_askowl_1_1_trees.html#aa8b37d1aeab721adcfc5c61348a95d68",tooltip="Mark here so wec an return to it "];
+}
