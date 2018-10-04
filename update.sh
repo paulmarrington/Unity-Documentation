@@ -3,12 +3,15 @@ cd "$(dirname "$0")"
 
 syncOne() {
   mkdir -p $1
-  rsync -aizLh ../Askowl/$1/Assets/Askowl/$1/Documentation/ $1
-  if [[ $1/Askowl-$1.md -nt $1/index.html ]]; then
-    cp -f $1/Askowl-$1.md $1/index.md
+  pushd $1
+  rsync -aizLh ../Askowl/$1/Assets/Askowl/$1/Documentation/ .
+  if [[ Askowl-$1.md -nt index.html ]]; then
+    cp -f Askowl-$1.md index.md
   fi
-  mv $1/~Doxygen $1/Doxygen
-  rm "$1/*.meta" "$1/*.tmp" "../Askowl/$1/Assets/Askowl/$1/Documentation/*.tmp"
+  doxygen doxyfile
+  rm *.meta
+  rm *.tmp
+  popd
   echo "## [$1]($1/)" >>index.md
   echo "Here there be $1" dragons >>index.md
 }
