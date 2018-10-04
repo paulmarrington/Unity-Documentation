@@ -12,6 +12,11 @@ syncOne() {
     doxygen doxyfile
     rm *.meta
     rm *.tmp
+    pushd Doxygen/html
+    cp namespace_askowl.html namespace_system.html
+    cp namespace_askowl.html namespace_unity_engine.html
+    cp namespace_askowl.html namespace_random.html
+    popd
   fi
   popd
   echo "## [$1]($1/)" >>index.md
