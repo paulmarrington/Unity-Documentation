@@ -7,6 +7,8 @@ syncOne() {
   if [[ $1/Askowl-$1.md -nt $1/index.html ]]; then
     cp -f $1/Askowl-$1.md $1/index.md
   fi
+  mv $1/~Doxygen $1/Doxygen
+  rm "$1/*.meta" "$1/*.tmp" "../Askowl/$1/Assets/Askowl/$1/Documentation/*.tmp"
   echo "## [$1]($1/)" >>index.md
   echo "Here there be $1" dragons >>index.md
 }
