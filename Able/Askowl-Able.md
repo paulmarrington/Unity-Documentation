@@ -2,7 +2,8 @@
 title: Able for Unity3D
 description: Askowl Base Library Enabler
 ---
-# [Able - Askowl Base Library Enabler](http://unitydoc.marrington.net/Able)
+# [Able - Askowl Base Library Enabler](http://unitydoc.marrington.net/Able/Doxygen/html/index.html)
+
 * Table of Contents
 {:toc}
 ## Executive Summary
@@ -12,7 +13,9 @@ Use the maths section for time conversion, comparisons and trigonometry. Inspect
 If you have a need to read CSV or JSON data from an unknown source, review the text section. 
 For Unity3D support view scripts to aid testing, locate components and game objects, pluggable logging, and various editor display and runtime components.
 
-> Read the code in the Examples Folder and run the Example scene
+> Read the code in the Examples Folder and run the Example scene.
+>
+> The Doxygen pages [here](http://unitydoc.marrington.net/Able/Doxygen/html/index.html)
 
 ## Introduction
 
@@ -674,12 +677,13 @@ C# provides a serviceable `Stack` class. Even `LinkedList` from this package can
 2. Cache with `Dispose()` for later - reducing garbage collection.
 3. Change the most recent item pushed with `Top` for dynamic data that needs a history.
 4. Use `Next` to retrieve or update the second-in-line.
-5. `Push` and `Pop` both return the current item making data with history easier to create.
-6. `Swap` is a convenience method that swaps `Top` with `Next`.
-7. `Count` will return the number of stack entries.
-8. Set `Count` to reduce the number of entries on the stack.
-9. A protected constructor allows inherited classes to bypass caching.
-The easiest way to show off the functionality is with the source to `CounterFifo`, a class that inherits from `Fifo<int>`.
+5. `Bottom` is used to retrieve or set the oldest item on the stack.
+6. `Push` and `Pop` both return the current item making data with history easier to create.
+7. `Swap` is a convenience method that swaps `Top` with `Next`.
+8. `Count` will return the number of stack entries.
+9. Set `Count` to reduce the number of entries on the stack.
+10. A protected constructor allows inherited classes to bypass caching.
+  The easiest way to show off the functionality is with the source to `CounterFifo`, a class that inherits from `Fifo<int>`.
 #### CounterFifo
 ```c#
 public class CounterFifo : Fifo<int> {
@@ -1959,6 +1963,10 @@ For more meaningful ranges we add an attribute called `RangeBounds`.
 ```
 
 The width of the range limits how many digits past the decimal point display.
+
+### Rich Text
+
+Unity supports a small HTML subset called rich text. It is available for use in UI elements and can be used in log displays. Since I can never remember the names of all but a few primary colours, I have added a static `Colour` (or `Color`) class helper.
 
 ### ScriptableObjects Display Drawer
 
