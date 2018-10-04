@@ -3,6 +3,8 @@ plugins:
 
 theme: jekyll-theme-slate
 
+include: [_*]
+
 markdown: kramdown
 highlighter: rouge
 kramdown:
