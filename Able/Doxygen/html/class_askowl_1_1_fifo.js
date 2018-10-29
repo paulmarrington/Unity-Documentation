@@ -5,6 +5,7 @@ var class_askowl_1_1_fifo =
     [ "Pop", "class_askowl_1_1_fifo.html#afd1c98adbb7b7ab81b69743dfccb8fe3", null ],
     [ "Push", "class_askowl_1_1_fifo.html#a6a5c2708041cb97ac4529c5fb8ac5e96", null ],
     [ "Swap", "class_askowl_1_1_fifo.html#a80c0c72b46712f45371d83acb3c1c05d", null ],
+    [ "Empty", "class_askowl_1_1_fifo.html#aa63597c11918ab224c992812d6ab4a4e", null ],
     [ "this[int i]", "class_askowl_1_1_fifo.html#af54c36b51e6565a773b18d7faeeb7e4c", null ],
     [ "Bottom", "class_askowl_1_1_fifo.html#a59051352850fd2a9d68b7b72870a1480", null ],
     [ "Count", "class_askowl_1_1_fifo.html#a4f9769f0176b9cf3f5b9aa1398a1cab3", null ],

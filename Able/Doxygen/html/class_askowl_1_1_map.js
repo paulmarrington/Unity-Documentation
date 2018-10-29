@@ -5,6 +5,7 @@ var class_askowl_1_1_map =
     [ "Remove", "class_askowl_1_1_map.html#a408447bcd9c716d01650238c61e539ef", null ],
     [ "Sort", "class_askowl_1_1_map.html#a1ae010d5beb30b8d765e1464a9fdcc00", null ],
     [ "Sort", "class_askowl_1_1_map.html#aefd8489f3872c583249d05c1d7a51402", null ],
+    [ "ToDictionary< Tv >", "class_askowl_1_1_map.html#ae9bdeeeb3d7d4cf42a7b67ae65949c7a", null ],
     [ "ToString", "class_askowl_1_1_map.html#a8ab2a4a3a896df20c3b57821889981d3", null ],
     [ "Count", "class_askowl_1_1_map.html#a1c5140788558de40c0eed2c162b823dc", null ],
     [ "First", "class_askowl_1_1_map.html#a2c5b1ea39a82c858419ba7f3cf06c345", null ],

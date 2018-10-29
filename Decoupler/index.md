@@ -1,14 +1,13 @@
 ---
 title: Askowl Decoupler for Unity3D
 ---
+* Table of Contents
+{:toc}
 # [Executive Summary](http://www.askowl.net/unity-decoupler-package)
 
 The Askowl Decoupler is here to provide an interface between your code and Unity packages. Take analytics packages as an example. There are dozens of them. With Askowl Analytics you can switch between them depending on which you have installed. You can also choose at platform build time. Not all analytics packages support XBox or Web apps. The same logic works for databases, social networks, authentication and many others.
 
 The decoupler also provides some support for components and prefabs. As an example, UI Text processing can use the built-in Unity components or those offered by TextMesh Pro. By using a decoupling element, the MonoBehaviour that uses them doesn't know the difference. You can even choose between them for each GameObject.
-
-* Table of Contents
-{:toc}
 
 > Read the code in the Examples Folder.
 
@@ -204,7 +203,7 @@ To use a decoupled service, you need to have an interface class. Often these are
 Decoupling means providing a familiar code interface to components of similar functionality. Two examples that come to mind are UI Text components and Cameras.
 
 ## How do I use decoupled components?
-Drag the decoupled component into the inspector for your game object. It is bright enough to work out and load the component it needs. When you have a choice, load a component first, and the decoupler uses it. If the decoupler already exists, select *Reset* to have it pick up and changes.
+Drag the decoupled component into the inspector for your game object. The decoupler is bright enough to work out and load the component it needs. When you have a choice, load a component first, and the decoupler uses it. If the decoupler already exists, select *Reset* to have it pick up and changes.
 
 <img src="Textual.png" width="50%">
 
@@ -221,13 +220,14 @@ void ChangeMessage(string newMsg) { messages.text = newMsg; }
 ## Creating Decoupled Components
 Given a choice between two systems, you need to create four classes - one for the interface, one for each of the systems and one to tell the editor which to load.
 
-So that the last may be first, the class to create a compiler definition needs to be in an Editor folder. It eradicates compiler errors.
+The class to create a compiler definition needs to be in an Editor folder. With this set we can compile without errors since any code since any code requiring an optional package can be commented out with `#define`.
 
 ```c#
   [InitializeOnLoad]
   public class TextMeshProDefinition : DefineSymbols {
     static TextMeshProDefinition() {
-      AddOrRemoveDefines(HasFolder("TextMesh Pro"), "TextMeshPro");
+      bool loaded = HasFolder("TextMesh Pro") || HasPackage("com.unity.textmeshpro");
+      AddOrRemoveDefines(addDefines: loaded, named: "TextMeshPro");
     }
   }
 ```
@@ -239,14 +239,14 @@ Now we can create the interface as a partial class.
     string text { get; set; }
   }
   public partial class Textual : ComponentDecoupler<Textual>, TextualInterface {
-    private TextualInterface Backer { get { return ComponentInterface as TextualInterface; } }
-    // required by TextualInterface
-    public string text { get { return Backer.text; } set { Backer.text = value; } }
+    private TextualInterface Backer => Instance as TextualInterface;
+    public string text { get => Backer.text; set => Backer.text = value; }
   }
 ```
 Let's deconstruct this.
 * First we create an interface for all the properties and methods we want to expose.
-* Next we add a property, `Backer`,  for retrieving an instance of the interface from the underlying generic data reference.
+* Next we add a class with a basic or mocked implementation of the interface.
+* In this class we add a property, `Backer`,  for retrieving an instance of the interface from the underlying generic data reference.
 * Lastly we need to place all the properties and methods onto the outer class for seamless use. The interface enforces this.
 
 The second class it the default component. It should either be a stub or a native component that comes with Unity.
