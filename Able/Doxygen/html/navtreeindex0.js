@@ -44,7 +44,7 @@ var NAVTREEINDEX0 =
 "class_askowl_1_1_emitter.html":[1,0,0,5],
 "class_askowl_1_1_exponential_moving_average.html":[1,0,0,6],
 "class_askowl_1_1_exponential_moving_average.html#a977eb29a535be894bf4a96bcd1ac738d":[1,0,0,6,1],
-"class_askowl_1_1_exponential_moving_average.html#aacb69ea70295dffe7d30a75f36d00a01":[1,0,0,6,0],
+"class_askowl_1_1_exponential_moving_average.html#ac08288c78fb5657c3355f7febc33e98c":[1,0,0,6,0],
 "class_askowl_1_1_exponential_moving_average.html#ae43e1c0c5db1d41384b3ed1b7850230a":[1,0,0,6,2],
 "class_askowl_1_1_fifo.html":[1,0,0,7],
 "class_askowl_1_1_fifo.html#a356fdf421ec6a5134e8fb96445736859":[1,0,0,7,1],
