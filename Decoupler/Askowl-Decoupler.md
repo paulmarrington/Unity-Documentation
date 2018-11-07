@@ -12,6 +12,7 @@ The decoupler also provides some support for components and prefabs. As an examp
 > Read the code in the Examples Folder.
 
 # Introduction
+
 Decoupling software components and systems have been a focus for many decades. In the 80s we talked about software black boxes. You didn't care what was inside, just on the inputs and outputs.
 
 Microsoft had much fun in the 90's designing and implementing COM and DCOM. I still think of this as the high point in design for supporting decoupled interfaces.
@@ -186,7 +187,33 @@ In a service that talks to a server, the yield waits for a response. This exampl
 
 It may seem like much work, but it is quite simple. Writing an interface is a matter of learning what is available and deciding what is required.
 
+## Mocking
+Another advantage of decoupling interfaces is the ability to add mocked services. Often services are unavailable or have restrictions on pre-production use. As an example, I mock the GPS service so that I can test in the Unity editor. I also mock authorisation, authentication and social media services.
+
+Also, partial mocking has value. I can subclass a database driver to make sure that they use test tables or documents.
+
+If a service implementation calls `RegisterAsMock` instead of `Register`, then this service locks itself in as the provider. Decoupler provides a generic `Mock` MonoBehaviour that allows you to turn mocking on and off from the inspector. It registeres the service in `Awake()`. There is a template in Decoupler/Mock.
+
+``` c#
+  public class MockTemplate : Mock<MockTemplate.Service> {
+    // Data that can be changed in the inspector to effect mock results
+    [SerializeField] private string templateData;
+
+    public class Service : TemplateService { =
+      /* mock implementations of service methods */
+    }
+  }
+
+  public class TemplateService : Service<TemplateService> {
+    /* abstract or default service methods */
+  }
+```
+
+There is always a risk of mocks leaking to production. Decoupler mocks write a warning to the log, so as long as you insist on a clean log before release, all is well.
+
+
 ## Built-In Interfaces
+
 To use a decoupled service, you need to have an interface class. Often these are provided with packages that need them, but for commonly needed ones, we have included them in Askowl Decoupler.
 
 * [Analytics](http://analytics.marrington.net)
@@ -200,6 +227,7 @@ To use a decoupled service, you need to have an interface class. Often these are
 * [Storage](http://storage.marrington.net)
 
 # Decoupling Components
+
 Decoupling means providing a familiar code interface to components of similar functionality. Two examples that come to mind are UI Text components and Cameras.
 
 ## How do I use decoupled components?
@@ -249,35 +277,32 @@ Let's deconstruct this.
 * In this class we add a property, `Backer`,  for retrieving an instance of the interface from the underlying generic data reference.
 * Lastly we need to place all the properties and methods onto the outer class for seamless use. The interface enforces this.
 
-The second class it the default component. It should either be a stub or a native component that comes with Unity.
+The second class is the default component. It should either be a stub or a native component that comes with Unity.
 
 ```c#
   public partial class Textual {
     private class UnityTextInterface : ComponentInterface, TextualInterface {
-      private Text UnityText { get { return Component as Text; } }
+      private Text UnityText => Component as Text;
 
-      public string text { get { return UnityText.text; } set { UnityText.text = value; } }
+      public string text { get => UnityText.text; set => UnityText.text = value; }
+
+      public UnityTextInterface() => Instantiate<Text>(primary: false);
     }
-#if UNITY_EDITOR
-    [InitializeOnLoadMethod]
-#endif
-    [RuntimeInitializeOnLoadMethod]
-    private static void UnityTextInitialise() { Instantiate<UnityTextInterface, Text>(primary: false); }
+    private UnityTextInterface unityTextInterface = new UnityTextInterface();
   }
 ```
 
-We could have placed this in the first partial, but it is cleaner separated. It uses a attributes that causes a static function, `UnityTextInitialise`, to execute on component load. You can skip the `[InitializeOnLoadMethod]` attribute if you don't require the editor to load the primary choice.
-
-Now we can replicate this for another component.
+We could have placed this in the first partial, but it is cleaner separated. Now we can replicate this for another component.
 
 ```c#
-  public partial class Textual {
     private class TextMeshProUguiInterface : ComponentInterface, TextualInterface {
-      private TextMeshProUGUI TmpText { get { return Component as TextMeshProUGUI; } }
+      private TextMeshProUGUI TmpText => Component as TextMeshProUGUI;
 
-      public string text { get { return TmpText.text; } set { TmpText.text = value; } }
+      public string text { get => TmpText.text; set => TmpText.text = value; }
+
+      public TextMeshProUguiInterface() =>
+          Instantiate<TextMeshProUGUI>(primary: true);
     }
-
 
 #if UNITY_EDITOR
     [InitializeOnLoadMethod]
