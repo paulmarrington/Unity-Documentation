@@ -167,4 +167,6 @@ private class FrameWorker : Worker<int> {
 }
 ```
 ## Debugging
+Set that static boolean `Fiber.Debugging` to get console output whenever a `Do()` action is called and whenever a new action is set. The output displays while running in the Unity Editor
+
 Asynchronous programming is always harder to follow. If you keep a handle to a Fiber, you can use `ToString()`. It lists out all the actions in the Fiber with square brackets around the one currently being processed. It appends you the current worker and queue.
