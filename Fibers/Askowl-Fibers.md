@@ -109,7 +109,8 @@ Do functions contain project specific logic. Since each `Do` function runs in a 
 ``` c#
 Fiber.Start.Do(Breaking).Do(Up).Do(Large).Do(Calculations)
 ```
-### WaitForSeconds and WaitForSecondsRealtime
+### WaitFor(seconds) and WaitRealtime(seconds)
+
 Delay the Fiber for the specified time. `WaitForSeconds` is scaled by `Time.timeScale`, while `WaitForSecondsRealtime` isn't. The Fiber worker is moved to a special queue that is only processed when the shortest waiting frame count expires. This further minimises the processing load during updates. 
 ## Creating New Fiber Commands
 You should only need to create new Fiber commands when dealing with external asynchronous events.
