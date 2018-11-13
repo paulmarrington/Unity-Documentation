@@ -76,7 +76,9 @@ All services have a name. Names are set by either specifying the name in `Regist
 Another type of service is to have multiple instances, and we need to do something with all of them. It could be anything from display a list of names for user selection or call a method on some or all of them. `Social` is one of these where we may be connected to multiple social networks and send a message to some.
 
 ```c#
-Decoupled.Social.ForEach((svs) => svs.Send(myMessage));
+for (int i = 0; i < Decoupled.Service.InstanceList.Count; i++) {
+  Decoupled.Service.InstanceList[i].Send(myMessage);
+}
 ```
 
 ### To choose a service randomly
@@ -319,7 +321,21 @@ This time the code only exists if we have defined the variable ***TextMeshPro***
 What happens when you don't have TextMesh Pro installed? When you attach a ***Textual*** component, it won't find a compatible concrete component, so it uses what it can file - `Text`.
 
 ## Built-In Interfaces
-### Decoupled.Textual
+
+### Place-holders
+
+I will document the interfaces once an implementation is released.
+
+1. ***Authentication*** - with Facebook, Google, etc
+2. ***Database*** - cloud-based service
+3. ***DynamicLinks*** - Cloud hyperlinking
+4. ***Invites*** - Invite others to your team/game
+5. ***Messaging*** - send and receive messages
+6. ***RemoteConfig*** - update configuration without a reinstall
+7. ***Social*** - for Facebook, Twitter, Google+, etc
+
+### Textual
+
 Add the component `Textual` to the inspector for your game object. It loads the Unity Text object unless you have installed the TextMesh Pro package.
 
 ```c#
