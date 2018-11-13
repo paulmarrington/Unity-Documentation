@@ -4,6 +4,7 @@ description: Like Coroutines but reduced overhead
 ---
 * Table of Contents
 {:toc}
+Download from the [Unity Store](https://assetstore.unity.com/packages/slug/131162)
 
 # [Executive Summary](http://www.askowl.net/unity-fibers)
 
@@ -12,6 +13,12 @@ Coroutines are the core mechanism in Unity3d MonoBehaviour classes to provide in
 ***Fibers*** provides an alternative co-operative multi-tasking approach with less overhead. It is not a drop-in replacement but is intended for heavy usage situations.
 
 On another subject, some unity packages, specifically FireBase, use C# 4+ Tasks, a preemptive multitasking interface. Anything using Task callbacks must be treated as independent threads with semaphores and the like to protect against data corruption. The Askowl Tasks class mergest tasks into Fibers so that they fit better and more safely into the Unity system.
+
+> Read the code in the Examples Folder and run the Example scene.
+>
+> The Doxygen pages [here](https://paulmarrington.github.io/Unity-Documentation/Fibers/Doxygen/html/annotated.html)
+
+
 
 # The Structure of a Fiber Operation
 
