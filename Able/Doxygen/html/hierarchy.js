@@ -21,6 +21,7 @@ var hierarchy =
     ] ],
     [ "Askowl.Emitter< T >", "class_askowl_1_1_emitter.html", null ],
     [ "Askowl.ExponentialMovingAverage", "class_askowl_1_1_exponential_moving_average.html", null ],
+    [ "Askowl.Fifo< Action >", "class_askowl_1_1_fifo.html", null ],
     [ "Askowl.Fifo< int >", "class_askowl_1_1_fifo.html", [
       [ "Askowl.CounterFifo", "class_askowl_1_1_counter_fifo.html", null ]
     ] ],
@@ -42,9 +43,6 @@ var hierarchy =
     [ "Askowl.LinkedList< Node >", "class_askowl_1_1_linked_list.html", null ],
     [ "LinkedListNode", null, [
       [ "Askowl.Cache.Boxed< T >", "class_askowl_1_1_cache_1_1_boxed.html", null ]
-    ] ],
-    [ "MonoBehaviour", null, [
-      [ "Askowl.Trig", "class_askowl_1_1_trig.html", null ]
     ] ],
     [ "Askowl.Pick< out out T >", "interface_askowl_1_1_pick.html", null ],
     [ "Askowl.Pick< float >", "interface_askowl_1_1_pick.html", [

@@ -3,7 +3,7 @@ var indexSectionsWithContent =
   0: "abcdefilnoprstw",
   1: "fpw",
   2: "a",
-  3: "abcdelprstw",
+  3: "abcdeflprstw",
   4: "adefinosw",
   5: "bs"
 };

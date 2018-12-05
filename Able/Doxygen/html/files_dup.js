@@ -15,6 +15,7 @@ var files_dup =
     [ "Json.cs", "_json_8cs_source.html", null ],
     [ "LabelAttribute.cs", "_label_attribute_8cs_source.html", null ],
     [ "LinkedList.cs", "_linked_list_8cs_source.html", null ],
+    [ "Lists.cs", "_lists_8cs_source.html", null ],
     [ "Log.cs", "_log_8cs_source.html", null ],
     [ "Map.cs", "_map_8cs_source.html", null ],
     [ "Objects.cs", "_objects_8cs_source.html", null ],

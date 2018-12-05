@@ -4,13 +4,13 @@ description: Like Coroutines but reduced overhead
 ---
 * Table of Contents
 {:toc}
-Download from the [Unity Store](https://assetstore.unity.com/packages/slug/131162)
+Download from the [Unity Store](https://assetstore.unity.com/packages/slug/133094)
 
 # [Executive Summary](http://www.askowl.net/unity-fibers)
 
 Coroutines are the core mechanism in Unity3d MonoBehaviour classes to provide independent processing as a form of co-operative multi-tasking. Activities that must occur in order use `yield return myCoroutine();` to wait on completion before continuing. Yield instructions must reside in methods that have an IEnumerator return type. C# turns them into a state machine. These state machines are not resettable, so they must be discarded once complete. Since every call generates a new state machine, this puts a heavy load on the garbage collector. Using coroutines in abundance can cause glitches in the running of VR and mobile applications.
 
-***Fibers*** provides an alternative co-operative multi-tasking approach with less overhead. It is not a drop-in replacement but is intended for heavy usage situations.
+***Fibers*** provides an alternative co-operative multi-tasking approach to Coroutines with less overhead. It is not a drop-in replacement but is intended for heavy usage situations.
 
 On another subject, some unity packages, specifically FireBase, use C# 4+ Tasks, a preemptive multitasking interface. Anything using Task callbacks must be treated as independent threads with semaphores and the like to protect against data corruption. The Askowl Tasks class mergest tasks into Fibers so that they fit better and more safely into the Unity system.
 
@@ -94,7 +94,7 @@ Each command in a Fiber list executes in a separate frame. If you want a short d
 Fiber.Start.Do(Event1).SkipFrames(10).Do(Event2);
 ```
 ### Update, LateUpdate and FixedUpdate
-By default, Fibers run on `Update()` which occurs once per frame. If `Time.timeScale` is changed then the time between updates changes accordingly. `FixedUpdate()` is on a reliable timer so that it is called regularly - more than once per frame if the frame rate is low. `LateUpdate()` is called once per frame after `Update()`. Use it to control a third-person camera so that any character movements are complete.
+By default, Fibers run on `Update()` which occurs once per frame. If `Time.timeScale` is changed then the time between updates changes accordingly. `OnFixedUpdate()` is on a reliable timer so that it is called regularly - more than once per frame if the frame rate is low. `OnLateUpdate()` is called once per frame after `OnUpdate()`. Use it to control a third-person camera so that any character movements are complete.
 ``` c#
 Fiber.Start.OnLateUpdate.Begin.Do(FollowingCamera). Again;
 Fiber.Start.OnFixedUpdate.Begin.Do(BlinkMessage).Repeat(10);
@@ -169,8 +169,9 @@ private class FrameWorker : Worker<int> {
   public override void Step() { Dispose(); }
     
   // more complex instantiation may require more preparation to convert for sorting
-// See the source SecondsWorker.cs for an example.
-  protected override void Prepare() { }
+  // See the source SecondsWorker.cs for an example. Returning false will abort the
+  // current operation
+  protected override boolean Prepare() { return true; }
 }
 ```
 ## Debugging

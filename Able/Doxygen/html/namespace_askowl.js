@@ -24,6 +24,5 @@ var namespace_askowl =
     [ "RangeBoundsAttribute", "class_askowl_1_1_range_bounds_attribute.html", "class_askowl_1_1_range_bounds_attribute" ],
     [ "Selector", "class_askowl_1_1_selector.html", "class_askowl_1_1_selector" ],
     [ "Set", "class_askowl_1_1_set.html", "class_askowl_1_1_set" ],
-    [ "Trees", "class_askowl_1_1_trees.html", "class_askowl_1_1_trees" ],
-    [ "Trig", "class_askowl_1_1_trig.html", "class_askowl_1_1_trig" ]
+    [ "Trees", "class_askowl_1_1_trees.html", "class_askowl_1_1_trees" ]
 ];

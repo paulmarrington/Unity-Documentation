@@ -8,13 +8,14 @@ var class_askowl_1_1_fiber =
     [ "Dispose", "class_askowl_1_1_fiber.html#a22b50a7da0ae5cb6821c209ec54c629b", null ],
     [ "Do", "class_askowl_1_1_fiber.html#a82a6a6c0a5628dd1cbca2760b14f905b", null ],
     [ "Exit", "class_askowl_1_1_fiber.html#ab41e9d71ba6c0af933aff463c28c042d", null ],
+    [ "Finish", "class_askowl_1_1_fiber.html#a0ef96d7c3967aaeafafc06dcb093b3c7", null ],
     [ "Repeat", "class_askowl_1_1_fiber.html#a70e621cca2d037e2633e0967cb8633ac", null ],
     [ "Restart", "class_askowl_1_1_fiber.html#ac594d2aedbf1959e9f0a775ced3fbb95", null ],
     [ "Restart", "class_askowl_1_1_fiber.html#a5c59d7555c66bce4a62ba7ea7b84cfdc", null ],
     [ "SkipFrames", "class_askowl_1_1_fiber.html#a57f0fc50cee76a4de43ba4671b53a7c2", null ],
     [ "ToString", "class_askowl_1_1_fiber.html#aaac8abf4c5cf981a7dd212e9a80b1e8e", null ],
-    [ "WaitFor", "class_askowl_1_1_fiber.html#ae0aea65a91c9004ab8e8d7e942e46879", null ],
     [ "WaitFor", "class_askowl_1_1_fiber.html#aa9834d12b272461519759a56356c5a01", null ],
+    [ "WaitFor", "class_askowl_1_1_fiber.html#ae0aea65a91c9004ab8e8d7e942e46879", null ],
     [ "WaitFor", "class_askowl_1_1_fiber.html#a9b9d5134a6521a580fe3c65bdb1e0255", null ],
     [ "WaitFor", "class_askowl_1_1_fiber.html#aa34bc8ad1199799289e19b25e0eec2f9", null ],
     [ "WaitFor", "class_askowl_1_1_fiber.html#a7e35ab76b92bf3f8db9316660d60159c", null ],
@@ -27,6 +28,5 @@ var class_askowl_1_1_fiber =
     [ "OnUpdates", "class_askowl_1_1_fiber.html#a830458f148fc6b7c7a217533e76b187a", null ],
     [ "Workers", "class_askowl_1_1_fiber.html#a5d434b9a1d64e8a80e62072b6c58a995", null ],
     [ "ActionNames", "class_askowl_1_1_fiber.html#a39a4182b1035f378997255f303712a19", null ],
-    [ "Begin", "class_askowl_1_1_fiber.html#a216cbed5561eb7388c5e9dc1499c46d8", null ],
-    [ "StartCall", "class_askowl_1_1_fiber.html#af7c2f09c121d5286bd970fc8d809f974", null ]
+    [ "Begin", "class_askowl_1_1_fiber.html#a216cbed5561eb7388c5e9dc1499c46d8", null ]
 ];
