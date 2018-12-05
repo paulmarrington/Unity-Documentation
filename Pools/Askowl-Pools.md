@@ -3,10 +3,11 @@ title: Askowl Pools for Unity3D
 description: Pooling GameObjects for Higher Performance
 ---
 
-* {:toc}
-
 # [Pooling](http://www.askowl.net/unity-pools)
 Download from the [Unity Store](https://assetstore.unity.com/packages/slug/134704)
+
+* * Table of Contents
+{:toc}
 
 ## Executive Summary
 
