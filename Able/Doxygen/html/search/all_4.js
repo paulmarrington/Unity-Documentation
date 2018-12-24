@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['elements',['Elements',['../class_askowl_1_1_set.html#af571274500e5d349a84a5c6aa9c307f2',1,'Askowl::Set']]],
-  ['emitter',['Emitter',['../class_askowl_1_1_emitter.html',1,'Askowl.Emitter'],['../class_askowl_1_1_emitter.html',1,'Askowl.Emitter&lt; T &gt;']]],
+  ['emitter',['Emitter',['../class_askowl_1_1_emitter.html',1,'Askowl.Emitter'],['../class_askowl_1_1_emitter.html',1,'Askowl.Emitter&lt; T &gt;'],['../interface_askowl_1_1_i_has_emitter.html#a6ed22ed1092adf6cc0b2813fe9e92b22',1,'Askowl.IHasEmitter.Emitter()']]],
   ['emitter_3c_20t_20_3e',['Emitter&lt; T &gt;',['../class_askowl_1_1_emitter.html',1,'Askowl']]],
   ['empty',['Empty',['../class_askowl_1_1_fifo.html#aa63597c11918ab224c992812d6ab4a4e',1,'Askowl.Fifo.Empty()'],['../class_askowl_1_1_linked_list.html#a05e8b492195978fdaacbdcdceceab037',1,'Askowl.LinkedList.Empty()']]],
   ['entries',['Entries',['../class_askowl_1_1_cache.html#a0b9c949b694ce049f4f91aa497d726be',1,'Askowl::Cache']]],

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['this_5bobject_20key_5d',['this[object key]',['../class_askowl_1_1_map.html#a3cd5a27ea462790896579daa77347dc3',1,'Askowl.Map.this[object key]()'],['../class_askowl_1_1_trees.html#aba8faae3d3ce2dbcf43ac3a2bb0f6d72',1,'Askowl.Trees.this[object key]()']]],
-  ['top',['Top',['../class_askowl_1_1_fifo.html#abc3be2dafe572ea72fe217bf6f95d3cd',1,'Askowl::Fifo']]]
+  ['reactivateitem',['ReactivateItem',['../class_askowl_1_1_cache.html#a50299b0dcfe10d69c39f7238fa762384',1,'Askowl.Cache.ReactivateItem()'],['../class_askowl_1_1_linked_list.html#a0d71975dd93983b434c55bb6e7485c8a',1,'Askowl.LinkedList.ReactivateItem()']]]
 ];

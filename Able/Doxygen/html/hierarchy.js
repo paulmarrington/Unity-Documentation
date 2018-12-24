@@ -36,6 +36,7 @@ var hierarchy =
       [ "Askowl.Map", "class_askowl_1_1_map.html", null ],
       [ "Askowl.Trees", "class_askowl_1_1_trees.html", null ]
     ] ],
+    [ "Askowl.IHasEmitter", "interface_askowl_1_1_i_has_emitter.html", null ],
     [ "IObservable", null, [
       [ "Askowl.Emitter< T >", "class_askowl_1_1_emitter.html", null ]
     ] ],
@@ -43,6 +44,10 @@ var hierarchy =
     [ "Askowl.LinkedList< Node >", "class_askowl_1_1_linked_list.html", null ],
     [ "LinkedListNode", null, [
       [ "Askowl.Cache.Boxed< T >", "class_askowl_1_1_cache_1_1_boxed.html", null ]
+    ] ],
+    [ "MonoBehaviour", null, [
+      [ "Commentary", "class_commentary.html", null ],
+      [ "Notation", "class_notation.html", null ]
     ] ],
     [ "Askowl.Pick< out out T >", "interface_askowl_1_1_pick.html", null ],
     [ "Askowl.Pick< float >", "interface_askowl_1_1_pick.html", [

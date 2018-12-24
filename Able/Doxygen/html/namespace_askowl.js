@@ -11,6 +11,7 @@ var namespace_askowl =
     [ "Emitter", "class_askowl_1_1_emitter.html", null ],
     [ "ExponentialMovingAverage", "class_askowl_1_1_exponential_moving_average.html", "class_askowl_1_1_exponential_moving_average" ],
     [ "Fifo", "class_askowl_1_1_fifo.html", "class_askowl_1_1_fifo" ],
+    [ "IHasEmitter", "interface_askowl_1_1_i_has_emitter.html", "interface_askowl_1_1_i_has_emitter" ],
     [ "IObserver", "interface_askowl_1_1_i_observer.html", "interface_askowl_1_1_i_observer" ],
     [ "Json", "class_askowl_1_1_json.html", "class_askowl_1_1_json" ],
     [ "LabelAttribute", "class_askowl_1_1_label_attribute.html", null ],

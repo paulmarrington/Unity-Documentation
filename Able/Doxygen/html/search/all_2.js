@@ -8,6 +8,8 @@ var searchData=
   ['clone',['Clone',['../class_askowl_1_1_cache_1_1_boxed.html#a9c491f021239fe64ce92581e483dc4cc',1,'Askowl::Cache::Boxed']]],
   ['color',['Color',['../class_askowl_1_1_rich_text_1_1_color.html',1,'Askowl::RichText']]],
   ['colour',['Colour',['../class_askowl_1_1_rich_text_1_1_colour.html',1,'Askowl::RichText']]],
+  ['comment',['Comment',['../class_commentary.html#aa18761c2002d4f1217184dd24217a7be',1,'Commentary']]],
+  ['commentary',['Commentary',['../class_commentary.html',1,'']]],
   ['compareitem',['CompareItem',['../class_askowl_1_1_linked_list.html#ac36cfb4d9ce16a2e679b3363cc1c5bda',1,'Askowl::LinkedList']]],
   ['compareitemstatic',['CompareItemStatic',['../class_askowl_1_1_linked_list.html#af72584ac7b69852961c86203e129d6aa',1,'Askowl::LinkedList']]],
   ['component',['component',['../struct_askowl_1_1_log_1_1_contents.html#aa44cc92c4bbcfe5c729cd3df60f607a6',1,'Askowl::Log::Contents']]],

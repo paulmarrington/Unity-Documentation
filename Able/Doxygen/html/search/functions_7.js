@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['isdisplayinginui',['IsDisplayingInUI',['../class_askowl_1_1_play_mode_controller.html#ad76bfd4d98fb1aa5b204f159b5fde233',1,'Askowl.PlayModeController.IsDisplayingInUI()'],['../class_askowl_1_1_play_mode_tests.html#adcd153c07f776830b50623f39e0a2faf',1,'Askowl.PlayModeTests.IsDisplayingInUI()']]]
+  ['isdisplayinginui',['IsDisplayingInUi',['../class_askowl_1_1_play_mode_controller.html#a2f99096548e9dd8851d1c1357ec15ba5',1,'Askowl.PlayModeController.IsDisplayingInUi()'],['../class_askowl_1_1_play_mode_tests.html#a87cdf4f288cf474373fe7a602b331fb3',1,'Askowl.PlayModeTests.IsDisplayingInUi()']]]
 ];

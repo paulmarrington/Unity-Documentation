@@ -6,7 +6,7 @@ description: Pooling GameObjects for Higher Performance
 # [Pooling](http://www.askowl.net/unity-pools)
 Download from the [Unity Store](https://assetstore.unity.com/packages/slug/134704)
 
-* * Table of Contents
+* Table of Contents
 {:toc}
 
 ## Executive Summary

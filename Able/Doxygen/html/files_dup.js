@@ -2,6 +2,7 @@ var files_dup =
 [
     [ "Cache.cs", "_cache_8cs_source.html", null ],
     [ "Clock.cs", "_clock_8cs_source.html", null ],
+    [ "Commentary.cs", "_commentary_8cs_source.html", null ],
     [ "Compare.cs", "_compare_8cs_source.html", null ],
     [ "Components.cs", "_components_8cs_source.html", null ],
     [ "ConditionalHideAttribute.cs", "_conditional_hide_attribute_8cs_source.html", null ],
@@ -18,6 +19,7 @@ var files_dup =
     [ "Lists.cs", "_lists_8cs_source.html", null ],
     [ "Log.cs", "_log_8cs_source.html", null ],
     [ "Map.cs", "_map_8cs_source.html", null ],
+    [ "Notation.cs", "_notation_8cs_source.html", null ],
     [ "Objects.cs", "_objects_8cs_source.html", null ],
     [ "Pick.cs", "_pick_8cs_source.html", null ],
     [ "PlayModeController.cs", "_play_mode_controller_8cs_source.html", null ],

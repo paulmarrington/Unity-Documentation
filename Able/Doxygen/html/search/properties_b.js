@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['value',['Value',['../class_askowl_1_1_trees.html#a63c87da16999858b3fe916eed4124169',1,'Askowl::Trees']]]
+  ['selector',['Selector',['../class_askowl_1_1_set.html#a3cdce568ec41edf20e9728de91da7709',1,'Askowl::Set']]]
 ];
