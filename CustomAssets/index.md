@@ -97,12 +97,65 @@ Try testing that component in isolation.
 By contrast, a custom asset approach would be more like:
 
 ```c#
-[SerializeField] PlayerManager;
+[SerializeField] maxHealth;
 ...
-health = PlayerManager.MaxHealth;
+health = maxHealth;
 ```
 
-To work with this version create a test scene and put in an individual PlayerManager custom asset. It might have different data, or it might include mock methods.
+Manager custom assets are the most useful if they are totally decoupled. They deal with data custom assets by making changes and responding to events. This manager can be tested in isolation without loading the complete game. It could also be tested in concert with the HealthManager and/or the HitManager for more complex scenarios.
+
+``` c#
+  [CreateAssetMenu(menuName = "Managers/Armor"), Serializable]
+  public class ArmorManager : Manager {
+    [SerializeField] private Float armorStrength = default;
+    [SerializeField] private Float hitAmount = default;
+    [SerializeField] private Float health = default;
+    [SerializeField] private Float armorDegradation = default;
+
+    protected override void Initialise() => hitAmount.Emitter.Subscribe(OnHit);
+
+    private void OnHit() {
+      // the stronger the armor the less a hit will do damage
+      var adjustedHit = hitAmount * (1.0f - armorStrength);
+      health.value -= adjustedHit;
+      // But eac hit damages the armor a little
+      armorStrength -= hitAmount * armorDegradation;
+    }
+  }
+```
+#### Manager Loading
+
+Player managers should be logic. Data have their own custom assets. Since managers only react to events they need to be explicitly loaded. In the Unity editor select the menu ***GameObject // Create Managers***. Drag the managers into the list in the newly created MonoBehaviour.
+
+<img src="Managers.png" width="75%" alt="Manager Custom Asset Container">
+
+For testing we don't need a scene. Another benefit of decoupling. `Manager` provides a `Load` method for independent testing. The asset can be found by name with or without a path. Only as much of the path as needed for uniqueness needs be given.
+
+``` c#
+  public class HealthManagerTest : PlayModeTests {
+    [UnityTest, Timeout(100000)] public IEnumerator HealthManager() {
+      //- Our health component will take 1,000 seconds to go from zero to full. Let's speed things up by 10x
+      Time.timeScale = 10;
+      try {
+        //- We don't need a specific scene, just load the custom assets
+        Manager.Load<HealthManagerTranscript>("HealthManager.asset");
+        var health = Manager.Load<Float>("Health.asset");
+        health.Set(0);
+        //- Timeout attribute will cause a test failure after 10 seconds
+        while (true) {
+          //- This causes a 1/10th of a second delay due to the modified scale
+          yield return new WaitForSeconds(1.0f);
+          //- Leaving once the test passes is a successful result. This should take 1 second at the current time scale.
+          if (health >= 0.01f) yield break;
+        }
+      } finally {
+        //- reset the time scale so other tests aren't effected.
+        Time.timeScale = 1;
+      }
+    }
+  }
+```
+
 
 ### Custom Assets as Configuration
 The most common use for scriptable objects is to ignore the scriptable part and use them as configuration containers. A Custom Asset is a file within the project. This file contains a reference to the script and serialised copies of all the data as added in the Unity editor.
@@ -210,7 +263,7 @@ MonoBehaviour:
 ```
 Each custom asset type has an entry on the ***Create / CustomAssets / asset name***. Use it, select the resulting file and fill in the fields. If you want to load it from disk using `Resources.Load(pathFromResources)` you will need to place it in a ***Resources*** folder.
 
-### OfType&lt;T>
+### OfType{T}
 `CustomAsset.OfType<T>` is the base type for all custom assets except `Trigger`. Functionality includes being able to register events on change, persistence and some read-only protection.
 ```c#
 [CreateAssetMenu(menuName = "Examples/LargerAssetSample")]
@@ -234,6 +287,19 @@ All CustomAsset instances have a description field. Since you can use generic as
   [SerializeField] private Boolean           boolean;
 ```
 Each if these custom assets can be in a project with or without supporting code. It is possible, for example, to have a `Float` value set in the ***On Value Changed*** field of a Slider or Scrollbar, then displayed using a driver like `CustomAsset.FloatDriver` to set the fill amount on a health bar Image component.
+
+#### Float
+The mutable `Float` custom asset also includes a range that can be set in the inspector. Attempts to change the value outside the limits will cause the value to be set to the closest bound. It allows managers to increase or decrease a value without being concerned with going outside acceptable limits.
+
+``` c#
+health += 0.2f;
+// is clearer to read than
+if (health < 0.8) health += 0.2f;
+```
+
+Bounds can be set with sliders or text entry. The latter is necessary if you need a value outside the range the sliders are set for.
+
+The range may need to be changed due to conditions. A tired warrior may not be able to have health over 80%. Use `Float.Minimum` and `Float.Maximum` to make the adjustments.
 
 ### Trigger
 A trigger is unusual in that it does not have any data apart from CustomAsset requirements. Triggers do not have persistence, so a subclass containing data cannot be saved.
@@ -263,40 +329,6 @@ myInt.Clear();
 Assert.False(myInt.Contains("Two"));
 ```
 `ToStringForMember` requires special mention as it can be use in Inspector event receivers to set values directly.
-
-### Custom Asset Sets
-`Set`, like `OfType` is a generic class. To instantiate it requires the type of set entries.
-
-```c#
-[CreateAssetMenu(menuName = "Examples/SetPicker", fileName = "SetPickerSample")]
-public sealed class SetPickerSample : Set<AudioClip> {
-  public void Play() { AudioSource.PlayClipAtPoint(clip: Pick(), position: Vector3.zero); }
-}
-```
-This example can be used to play one of a selection of sounds. This is a great way to make a game sound less tedious.
-
-#### Pick()
-All classes inheriting from `Set` have a `Pick()` method with two controlling field entries:
-* ***cycle***: True to return entries sequentially, false to get a random selection.
-* ***exhaustiveBelow***: If the number of entries in the set is below this value, then while `Pick()` returns a random entry, no entry is retrieved twice before all the others have had a turn. From a list of three, nothing appears random.
-
-These options are available in the editor when you create a custom asset from a `Set`.
-
-#### Add(entry)
-While in most cases the `Set` will be filled by the Unity Editor to save as an Asset, there are occasions where adding additional elements will be needed.
-#### Remove(entry)
-On occasions, a `Set` entry will expire, and it will be necessary to remove them.
-#### Contains(entry)
-See if a `Set` contains a specific entry.
-#### Count
-Retrieve the number of entries in a set.
-#### ForEach
-Call an action for every entry in a set. If the action returns false, all is complete.
-```c#
-mySet.ForEach((s) => {return s!="Exit";});
-```
-#### StringSet
-Strings as a set have many usages. `Quotes` is an implementation of `StringSet`.
 
 ### AudioClips
 Playing one from a selection of audio clips have been a well-used proof of concept for `ScriptableObject`. Because custom assets, sets and some other toys from this package make the implementation even simpler, I am displaying the source here.
@@ -345,6 +377,47 @@ If you are calling `Play` from code, then you can supply an `AudioSource` or a g
 ```
 
 Using `AudioClips` wherever you have sound effects makes your game sound a lot more lively. You could also consider making similar assets for visual effects or animations.
+
+### ChangeOverTime
+
+It is always fun to factor out common manager custom assets into common code. Health, mana, stamina and similar look better if changes are not instantaneous. And some, like poison, have to happen over a period. Create managers without code using the `ChangeOverTime` custom asset.
+
+<img src="Health-SmallPotion.png" width="75%" alt="Change custom asset over time">
+<img src="Health-PoisonArrow.png" width="75%" alt="Change custom asset over time">
+
+### Custom Asset Sets
+`Set`, like `OfType` is a generic class. To instantiate it requires the type of set entries.
+
+```c#
+[CreateAssetMenu(menuName = "Examples/SetPicker", fileName = "SetPickerSample")]
+public sealed class SetPickerSample : Set<AudioClip> {
+  public void Play() { AudioSource.PlayClipAtPoint(clip: Pick(), position: Vector3.zero); }
+}
+```
+This example can be used to play one of a selection of sounds. This is a great way to make a game sound less tedious.
+
+#### Pick()
+All classes inheriting from `Set` have a `Pick()` method with two controlling field entries:
+* ***cycle***: True to return entries sequentially, false to get a random selection.
+* ***exhaustiveBelow***: If the number of entries in the set is below this value, then while `Pick()` returns a random entry, no entry is retrieved twice before all the others have had a turn. From a list of three, nothing appears random.
+
+These options are available in the editor when you create a custom asset from a `Set`.
+
+#### Add(entry)
+While in most cases the `Set` will be filled by the Unity Editor to save as an Asset, there are occasions where adding additional elements will be needed.
+#### Remove(entry)
+On occasions, a `Set` entry will expire, and it will be necessary to remove them.
+#### Contains(entry)
+See if a `Set` contains a specific entry.
+#### Count
+Retrieve the number of entries in a set.
+#### ForEach
+Call an action for every entry in a set. If the action returns false, all is complete.
+```c#
+mySet.ForEach((s) => {return s!="Exit";});
+```
+#### StringSet
+Strings as a set have many usages. `Quotes` is an implementation of `StringSet`.
 
 ## Editing Custom Assets
 Serialised fields can be edited in the Unity Inspector just as you would a MonoBehaviour attached to a game object. Unlike a scriptable object, custom assets unload when play mode completes. In this way, they behave more like MonoBehaviours. There is a reason for this madness. In the Unity editor, scriptable objects remain loaded and only reload if the backing code or asset changes on disk. If we don't reset on leaving play mode, changed data from one run lives to the next.
@@ -438,6 +511,8 @@ Even the minimalistic code above is unnecessary for many CustomAsset application
 #### Drivers
 A driver is a MonoBehaviour that is designed to listen for custom asset changes and interact with other components of a game object directly. If you are passing information, the method must be in the ***Dynamic Data*** section.
 
+Add them to the Inspector view by dragging them in or using the menu ***Component/CustomAssets/Name of Driver***.
+
 <img src="Image-FillAmount-Driver.png" width="75%" alt="Sample CustomAsset.FloatDriver">
 
 Triggers are the exception and can use methods from ***Static Parameters***.
@@ -459,12 +534,19 @@ This package provides drivers for all primitive data type, but it is trivial to 
 
     protected override void OnChange() =>
       componentValueToSet.Invoke(Asset.Value);
+
+    #if UNITY_EDITOR
+    [MenuItem("Component/CustomAssets/Bang Driver")]
+    private static void AddConnector() => Selection.activeTransform.gameObject.AddComponent<MyBangDriver>();
+    #endif
   }
 ```
 Of course, you are unlikely to find a Unity component that knows what to do with a ***Bang*** object. You would be writing your own or relying on a Connect component (as described below) to distribute a ***Bang*** to the rest of the game object.
 
 #### Connectors
 If a component does not expose the data in the Unity inspector, then it is necessary to use a connector. The animator connector used above provides an excellent example.
+
+Add them to the Inspector view by dragging them in or using the menu ***Component/CustomAssets/Name of Connector***.
 
 ``` c#
   public class AnimatorCustomAssetConnector : MonoBehaviour {
@@ -475,12 +557,15 @@ If a component does not expose the data in the Unity inspector, then it is neces
 
     private Animator animator;
 
-    private void Awake() {
-      animator = GetComponent<Animator>();
-    }
+    private void Awake() => animator = GetComponent<Animator>();
+
+    #if UNITY_EDITOR
+    [MenuItem("Component/CustomAssets/Animator Connector")]
+    private static void AddConnector() => Selection.activeTransform.gameObject.AddComponent<AnimatorCustomAssetConnector>();
+    #endif
 ```
 
-Most collectors only require the information without a parameter name.
+Most connectors only require the information without a parameter name.
 
 ``` c#
   public class TransformCustomAssetConnector : MonoBehaviour {
@@ -501,6 +586,9 @@ An animator component relies on an outside source to set a named trigger, intege
 
 #### TransformConnector
 This connector allows for changes to the scale, rotation and position for any gameObject.transform. There is a video linked at the start of this document that uses changes of scale to show/hide a health-bar.
+
+#### GameObjectConnector
+The `GameObjectConnector` is a bit different. Add it to an existing GameObject with the menu ***Component/Custom Assets/GameObject Connector**** then drop in a custom asset that inherits from CustomAssets.Mutable.GameObject. Now code anywhere can access the game object until it is destroyed.
 
 ## Custom Asset Persistence
 If a custom asset is marked persistent in the Inspector, then it writes itself out to the PlayerPref database using a key combining the name and class.
