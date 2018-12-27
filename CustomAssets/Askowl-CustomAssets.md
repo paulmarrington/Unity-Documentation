@@ -304,6 +304,14 @@ The range may need to be changed due to conditions. A tired warrior may not be a
 ### Trigger
 A trigger is unusual in that it does not have any data apart from CustomAsset requirements. Triggers do not have persistence, so a subclass containing data cannot be saved.
 
+### IoT
+Unity runs on some interesting devices (such as VR, phones and tablets with various hardware interfaces. By making them custom assets we are creating an easy-to-use decoupled interface. Since many of these devices do not tell us of changes, polling is often enabled. The underlying service attends to the situations where the device is not available. The data returned will be either default or mock data. Currently there are drivers for:
+
+* CompassAsset
+* GpsAsset
+* GyroAsset; and
+* WebCamAsset
+
 ### Members
 A custom asset with any content data also can store and retrieve separate copies by name. For persistent custom assets, the member names and values saved to storage along with the main value.
 
@@ -436,6 +444,11 @@ The first significant departure from ScriptableObject that CustomAsset provides 
 Primitive custom assets (trigger, boolean, integer, float and string) are extremely easy to use. Drag a reference using the Unity editor into any MonoBehaviour or CustomEvent that needs to access or update them.
 
 Drivers and Connectors (described below) also need a reference. They register for changing events. The event fires when and only when the custom asset changes.
+
+### Polling
+No matter how hard we try there is data that changes and we cannot get be informed in a timely manner. The technique of last resort is called polling - where we check periodically for change. The inspector for any mutable custom asset will includes some polling fields. Just enable polling in the inspector and set the intervals.
+
+<img src="Polling.png" width="75%" alt="Polling for changes">
 
 ## Using Custom Assets
 Life begins now. Without writing any code, you can use the prepackaged custom assets and listeners to connect components without them knowing about each other.
