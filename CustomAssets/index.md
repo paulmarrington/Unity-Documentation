@@ -301,6 +301,26 @@ Bounds can be set with sliders or text entry. The latter is necessary if you nee
 
 The range may need to be changed due to conditions. A tired warrior may not be able to have health over 80%. Use `Float.Minimum` and `Float.Maximum` to make the adjustments.
 
+### Object (non-primitive) Custom Assets
+There will be times where using primitive custom assets is too granular and a more complex custom asset could be better represented as a class. There are a few boundaries. The class must be serialisable and any members you want to change in the inspector labelled as serialised fields.
+
+``` c#
+  [Serializable] public class LargerAssetContents {
+    public int I;
+    public float F;
+    public string S;
+  }
+```
+
+If the object custom asset is to be mutable, care must be taken while setting fields. The static `CustomAsset.Mutable.Field` class provides helpers for float, double, int, long, bool, string, Vector2, Vector3, Vector4 and Quaternion types. There is also a generic form for adding new structs. You will need to provide a comparator.
+
+``` c#
+Field.Set(largeAssetContents, ref largeAssetContents.F, 12);
+
+    public static void Set(this WithEmitter asset, ref Vector4 field, Vector4 from) =>
+      asset.Set(ref field, from, (a, b) => a == b);
+```
+
 ### Trigger
 A trigger is unusual in that it does not have any data apart from CustomAsset requirements. Triggers do not have persistence, so a subclass containing data cannot be saved.
 
