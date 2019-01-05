@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['workers',['Workers',['../class_askowl_1_1_fiber.html#a5d434b9a1d64e8a80e62072b6c58a995',1,'Askowl::Fiber']]]
+  ['seed',['Seed',['../class_askowl_1_1_fiber_1_1_worker.html#a5fbc72469da0bc94eb1980dd6fd97b69',1,'Askowl::Fiber::Worker']]]
 ];

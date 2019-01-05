@@ -130,76 +130,133 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a22b50a7da0ae5cb6821c209ec54c629b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a22b50a7da0ae5cb6821c209ec54c629b">Dispose</a> ()</td></tr>
 <tr class="memdesc:a22b50a7da0ae5cb6821c209ec54c629b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2DDvnwP">Cleans up Fiber before it goes into the recycling</a>  <a href="#a22b50a7da0ae5cb6821c209ec54c629b">More...</a><br /></td></tr>
 <tr class="separator:a22b50a7da0ae5cb6821c209ec54c629b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82a6a6c0a5628dd1cbca2760b14f905b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a82a6a6c0a5628dd1cbca2760b14f905b">Do</a> (<a class="el" href="class_askowl_1_1_fiber.html#a82c710cd5ab82d320228b0c01beb90c5">Action</a> nextAction, string actionsText=&quot;Actions&quot;)</td></tr>
-<tr class="memdesc:a82a6a6c0a5628dd1cbca2760b14f905b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2DDZjbO">Business logic activation step</a>  <a href="#a82a6a6c0a5628dd1cbca2760b14f905b">More...</a><br /></td></tr>
-<tr class="separator:a82a6a6c0a5628dd1cbca2760b14f905b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac594d2aedbf1959e9f0a775ced3fbb95"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#ac594d2aedbf1959e9f0a775ced3fbb95">Restart</a> ()</td></tr>
-<tr class="memdesc:ac594d2aedbf1959e9f0a775ced3fbb95"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2DDvmcf">Restart a fiber that includes an Idle command</a>  <a href="#ac594d2aedbf1959e9f0a775ced3fbb95">More...</a><br /></td></tr>
-<tr class="separator:ac594d2aedbf1959e9f0a775ced3fbb95"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c59d7555c66bce4a62ba7ea7b84cfdc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a5c59d7555c66bce4a62ba7ea7b84cfdc">Restart</a> (<a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> fiber)</td></tr>
-<tr class="memdesc:a5c59d7555c66bce4a62ba7ea7b84cfdc"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2DDvmcf">Restart another fiber that includes an Idle command</a>  <a href="#a5c59d7555c66bce4a62ba7ea7b84cfdc">More...</a><br /></td></tr>
-<tr class="separator:a5c59d7555c66bce4a62ba7ea7b84cfdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a674b839ebfddf7b04346d514f24c8be4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a674b839ebfddf7b04346d514f24c8be4">Break</a> ()</td></tr>
-<tr class="memdesc:a674b839ebfddf7b04346d514f24c8be4"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2DDvlFd">Break a Begin/End/Repeat/Again block</a>  <a href="#a674b839ebfddf7b04346d514f24c8be4">More...</a><br /></td></tr>
-<tr class="separator:a674b839ebfddf7b04346d514f24c8be4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab41e9d71ba6c0af933aff463c28c042d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#ab41e9d71ba6c0af933aff463c28c042d">Exit</a> ()</td></tr>
-<tr class="memdesc:ab41e9d71ba6c0af933aff463c28c042d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2DBVWCe">Abort fiber processing, cleaning up as we go</a>  <a href="#ab41e9d71ba6c0af933aff463c28c042d">More...</a><br /></td></tr>
-<tr class="separator:ab41e9d71ba6c0af933aff463c28c042d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f1ac271ef62925e93b86f04ac7a3257"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a6f1ac271ef62925e93b86f04ac7a3257">Go</a> ()</td></tr>
+<tr class="memdesc:a6f1ac271ef62925e93b86f04ac7a3257"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a6f1ac271ef62925e93b86f04ac7a3257">More...</a><br /></td></tr>
+<tr class="separator:a6f1ac271ef62925e93b86f04ac7a3257"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a657d260f2dc40d8ff61262becb7bb6c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a657d260f2dc40d8ff61262becb7bb6c9">Go</a> (<a class="el" href="class_askowl_1_1_fiber.html#a82c710cd5ab82d320228b0c01beb90c5">Action</a> updater)</td></tr>
+<tr class="memdesc:a657d260f2dc40d8ff61262becb7bb6c9"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a657d260f2dc40d8ff61262becb7bb6c9">More...</a><br /></td></tr>
+<tr class="separator:a657d260f2dc40d8ff61262becb7bb6c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6de7a8dabd6e8990a428d785c6bdf7c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a6de7a8dabd6e8990a428d785c6bdf7c0">Exit</a> ()</td></tr>
+<tr class="memdesc:a6de7a8dabd6e8990a428d785c6bdf7c0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2DBVWCe">Abort fiber processing, cleaning up as we go</a>  <a href="#a6de7a8dabd6e8990a428d785c6bdf7c0">More...</a><br /></td></tr>
+<tr class="separator:a6de7a8dabd6e8990a428d785c6bdf7c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ef96d7c3967aaeafafc06dcb093b3c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a0ef96d7c3967aaeafafc06dcb093b3c7">Finish</a> ()</td></tr>
 <tr class="memdesc:a0ef96d7c3967aaeafafc06dcb093b3c7"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a0ef96d7c3967aaeafafc06dcb093b3c7">More...</a><br /></td></tr>
 <tr class="separator:a0ef96d7c3967aaeafafc06dcb093b3c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70e621cca2d037e2633e0967cb8633ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a70e621cca2d037e2633e0967cb8633ac">Repeat</a> (int count)</td></tr>
 <tr class="memdesc:a70e621cca2d037e2633e0967cb8633ac"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2DDvp7V">Begin/Repeat loop for a specific number of times</a>  <a href="#a70e621cca2d037e2633e0967cb8633ac">More...</a><br /></td></tr>
 <tr class="separator:a70e621cca2d037e2633e0967cb8633ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c215885c6f9fe04fcc6d1c4b479354b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a5c215885c6f9fe04fcc6d1c4b479354b">Until</a> (Func&lt; <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>, bool &gt; isTrue)</td></tr>
+<tr class="memdesc:a5c215885c6f9fe04fcc6d1c4b479354b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a5c215885c6f9fe04fcc6d1c4b479354b">More...</a><br /></td></tr>
+<tr class="separator:a5c215885c6f9fe04fcc6d1c4b479354b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81fa94b014947b7f47accf6931e10316"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a81fa94b014947b7f47accf6931e10316">BreakIf</a> (Func&lt; <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>, bool &gt; isBreak)</td></tr>
+<tr class="memdesc:a81fa94b014947b7f47accf6931e10316"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a81fa94b014947b7f47accf6931e10316">More...</a><br /></td></tr>
+<tr class="separator:a81fa94b014947b7f47accf6931e10316"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a674b839ebfddf7b04346d514f24c8be4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a674b839ebfddf7b04346d514f24c8be4">Break</a> ()</td></tr>
+<tr class="memdesc:a674b839ebfddf7b04346d514f24c8be4"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2DDvlFd">Break a Begin/End/Repeat/Again block</a>  <a href="#a674b839ebfddf7b04346d514f24c8be4">More...</a><br /></td></tr>
+<tr class="separator:a674b839ebfddf7b04346d514f24c8be4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a703a39a166bf896cdbaa7740579d3d93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a703a39a166bf896cdbaa7740579d3d93">Break</a> (int after)</td></tr>
+<tr class="memdesc:a703a39a166bf896cdbaa7740579d3d93"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a703a39a166bf896cdbaa7740579d3d93">More...</a><br /></td></tr>
+<tr class="separator:a703a39a166bf896cdbaa7740579d3d93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6419aac44c55b19673eea2bb5140a07c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a6419aac44c55b19673eea2bb5140a07c">Skip</a> (int after)</td></tr>
+<tr class="memdesc:a6419aac44c55b19673eea2bb5140a07c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a6419aac44c55b19673eea2bb5140a07c">More...</a><br /></td></tr>
+<tr class="separator:a6419aac44c55b19673eea2bb5140a07c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5760e335e462e9ba646094bb7559f9b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a5760e335e462e9ba646094bb7559f9b8">If</a> (Func&lt; <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>, bool &gt; isTrue)</td></tr>
+<tr class="memdesc:a5760e335e462e9ba646094bb7559f9b8"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a5760e335e462e9ba646094bb7559f9b8">More...</a><br /></td></tr>
+<tr class="separator:a5760e335e462e9ba646094bb7559f9b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab46e71300bfd84f7b85a739dad0fcd01"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#ab46e71300bfd84f7b85a739dad0fcd01">Do</a> (<a class="el" href="class_askowl_1_1_fiber.html#a82c710cd5ab82d320228b0c01beb90c5">Action</a> nextAction, string name=null)</td></tr>
+<tr class="memdesc:ab46e71300bfd84f7b85a739dad0fcd01"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2DDZjbO">Business logic activation step</a>  <a href="#ab46e71300bfd84f7b85a739dad0fcd01">More...</a><br /></td></tr>
+<tr class="separator:ab46e71300bfd84f7b85a739dad0fcd01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac594d2aedbf1959e9f0a775ced3fbb95"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#ac594d2aedbf1959e9f0a775ced3fbb95">Restart</a> ()</td></tr>
+<tr class="memdesc:ac594d2aedbf1959e9f0a775ced3fbb95"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2DDvmcf">Restart a fiber that includes an Idle command</a>  <a href="#ac594d2aedbf1959e9f0a775ced3fbb95">More...</a><br /></td></tr>
+<tr class="separator:ac594d2aedbf1959e9f0a775ced3fbb95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c59d7555c66bce4a62ba7ea7b84cfdc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a5c59d7555c66bce4a62ba7ea7b84cfdc">Restart</a> (<a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> fiber)</td></tr>
+<tr class="memdesc:a5c59d7555c66bce4a62ba7ea7b84cfdc"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2DDvmcf">Restart another fiber that includes an Idle command</a>  <a href="#a5c59d7555c66bce4a62ba7ea7b84cfdc">More...</a><br /></td></tr>
+<tr class="separator:a5c59d7555c66bce4a62ba7ea7b84cfdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43279b1181076ea64b2bcda5150c6478"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a43279b1181076ea64b2bcda5150c6478">AsCoroutine</a> ()</td></tr>
 <tr class="memdesc:a43279b1181076ea64b2bcda5150c6478"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2DB3wgx">Return an IEnumerator to use with a yield in a Coroutine</a>  <a href="#a43279b1181076ea64b2bcda5150c6478">More...</a><br /></td></tr>
 <tr class="separator:a43279b1181076ea64b2bcda5150c6478"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96075994484e1d70d9c674905aa116c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a96075994484e1d70d9c674905aa116c0">WaitFor</a> (<a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> anotherFiber)</td></tr>
+<tr class="memdesc:a96075994484e1d70d9c674905aa116c0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a96075994484e1d70d9c674905aa116c0">More...</a><br /></td></tr>
+<tr class="separator:a96075994484e1d70d9c674905aa116c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b8f2d77abda32de674c07e51ca7ba8d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a4b8f2d77abda32de674c07e51ca7ba8d">WaitFor</a> (Func&lt; <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>, <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> &gt; getFiber)</td></tr>
+<tr class="memdesc:a4b8f2d77abda32de674c07e51ca7ba8d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a4b8f2d77abda32de674c07e51ca7ba8d">More...</a><br /></td></tr>
+<tr class="separator:a4b8f2d77abda32de674c07e51ca7ba8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaac8abf4c5cf981a7dd212e9a80b1e8e"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#aaac8abf4c5cf981a7dd212e9a80b1e8e">ToString</a> ()</td></tr>
 <tr class="memdesc:aaac8abf4c5cf981a7dd212e9a80b1e8e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2DDvmZN">Return Fiber contents and current state</a>  <a href="#aaac8abf4c5cf981a7dd212e9a80b1e8e">More...</a><br /></td></tr>
 <tr class="separator:aaac8abf4c5cf981a7dd212e9a80b1e8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9834d12b272461519759a56356c5a01"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#aa9834d12b272461519759a56356c5a01">WaitFor</a> (Emitter emitter)</td></tr>
-<tr class="memdesc:aa9834d12b272461519759a56356c5a01"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a>  <a href="#aa9834d12b272461519759a56356c5a01">More...</a><br /></td></tr>
-<tr class="separator:aa9834d12b272461519759a56356c5a01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a363da922f49d33fa02c3690dab499e38"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a363da922f49d33fa02c3690dab499e38">WaitFor</a> (Emitter emitter, string name=null)</td></tr>
+<tr class="memdesc:a363da922f49d33fa02c3690dab499e38"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a363da922f49d33fa02c3690dab499e38">More...</a><br /></td></tr>
+<tr class="separator:a363da922f49d33fa02c3690dab499e38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb69107b0df99bae8b7b1c47d964ac98"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#aeb69107b0df99bae8b7b1c47d964ac98">WaitFor</a> (Func&lt; <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>, Emitter &gt; getEmitter, string name=null)</td></tr>
+<tr class="memdesc:aeb69107b0df99bae8b7b1c47d964ac98"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#aeb69107b0df99bae8b7b1c47d964ac98">More...</a><br /></td></tr>
+<tr class="separator:aeb69107b0df99bae8b7b1c47d964ac98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57f0fc50cee76a4de43ba4671b53a7c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a57f0fc50cee76a4de43ba4671b53a7c2">SkipFrames</a> (int framesToSkip)</td></tr>
-<tr class="memdesc:a57f0fc50cee76a4de43ba4671b53a7c2"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a>  <a href="#a57f0fc50cee76a4de43ba4671b53a7c2">More...</a><br /></td></tr>
+<tr class="memdesc:a57f0fc50cee76a4de43ba4671b53a7c2"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a57f0fc50cee76a4de43ba4671b53a7c2">More...</a><br /></td></tr>
 <tr class="separator:a57f0fc50cee76a4de43ba4671b53a7c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4059e7a2ee6d5e978070fee7ce7bd9e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a4059e7a2ee6d5e978070fee7ce7bd9e2">SkipFrames</a> (Func&lt; <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>, int &gt; getter)</td></tr>
+<tr class="memdesc:a4059e7a2ee6d5e978070fee7ce7bd9e2"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a4059e7a2ee6d5e978070fee7ce7bd9e2">More...</a><br /></td></tr>
+<tr class="separator:a4059e7a2ee6d5e978070fee7ce7bd9e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa34bc8ad1199799289e19b25e0eec2f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#aa34bc8ad1199799289e19b25e0eec2f9">WaitFor</a> (IEnumerator enumerator)</td></tr>
 <tr class="memdesc:aa34bc8ad1199799289e19b25e0eec2f9"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a>  <a href="#aa34bc8ad1199799289e19b25e0eec2f9">More...</a><br /></td></tr>
 <tr class="separator:aa34bc8ad1199799289e19b25e0eec2f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a207a20295f37b30857517bb2e3973359"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a207a20295f37b30857517bb2e3973359">WaitFor</a> (Func&lt; <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>, IEnumerator &gt; getter)</td></tr>
+<tr class="memdesc:a207a20295f37b30857517bb2e3973359"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a207a20295f37b30857517bb2e3973359">More...</a><br /></td></tr>
+<tr class="separator:a207a20295f37b30857517bb2e3973359"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e35ab76b92bf3f8db9316660d60159c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a7e35ab76b92bf3f8db9316660d60159c">WaitFor</a> (int framesBetweenChecks, IEnumerator enumerator)</td></tr>
 <tr class="memdesc:a7e35ab76b92bf3f8db9316660d60159c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a>  <a href="#a7e35ab76b92bf3f8db9316660d60159c">More...</a><br /></td></tr>
 <tr class="separator:a7e35ab76b92bf3f8db9316660d60159c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0aea65a91c9004ab8e8d7e942e46879"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#ae0aea65a91c9004ab8e8d7e942e46879">WaitFor</a> (float seconds)</td></tr>
-<tr class="memdesc:ae0aea65a91c9004ab8e8d7e942e46879"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a>  <a href="#ae0aea65a91c9004ab8e8d7e942e46879">More...</a><br /></td></tr>
+<tr class="memdesc:ae0aea65a91c9004ab8e8d7e942e46879"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#ae0aea65a91c9004ab8e8d7e942e46879">More...</a><br /></td></tr>
 <tr class="separator:ae0aea65a91c9004ab8e8d7e942e46879"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0cda72e5650df6d28db92674bc5aeae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#ae0cda72e5650df6d28db92674bc5aeae">WaitFor</a> (Func&lt; <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>, float &gt; getter)</td></tr>
+<tr class="memdesc:ae0cda72e5650df6d28db92674bc5aeae"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#ae0cda72e5650df6d28db92674bc5aeae">More...</a><br /></td></tr>
+<tr class="separator:ae0cda72e5650df6d28db92674bc5aeae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9baac3c72229c86125a920319d749d9a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a9baac3c72229c86125a920319d749d9a">WaitRealtime</a> (float seconds)</td></tr>
-<tr class="memdesc:a9baac3c72229c86125a920319d749d9a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a>  <a href="#a9baac3c72229c86125a920319d749d9a">More...</a><br /></td></tr>
+<tr class="memdesc:a9baac3c72229c86125a920319d749d9a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a9baac3c72229c86125a920319d749d9a">More...</a><br /></td></tr>
 <tr class="separator:a9baac3c72229c86125a920319d749d9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af787ef10d3a95e55aa061865ba71ce6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#af787ef10d3a95e55aa061865ba71ce6f">WaitRealtime</a> (Func&lt; <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>, float &gt; getter)</td></tr>
+<tr class="memdesc:af787ef10d3a95e55aa061865ba71ce6f"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#af787ef10d3a95e55aa061865ba71ce6f">More...</a><br /></td></tr>
+<tr class="separator:af787ef10d3a95e55aa061865ba71ce6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b9d5134a6521a580fe3c65bdb1e0255"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a9b9d5134a6521a580fe3c65bdb1e0255">WaitFor</a> (Task task)</td></tr>
 <tr class="memdesc:a9b9d5134a6521a580fe3c65bdb1e0255"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a9b9d5134a6521a580fe3c65bdb1e0255">More...</a><br /></td></tr>
 <tr class="separator:a9b9d5134a6521a580fe3c65bdb1e0255"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a747267cd717b9008dab47fbc561848d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a747267cd717b9008dab47fbc561848d9">WaitFor</a> (Func&lt; <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>, Task &gt; getter)</td></tr>
+<tr class="memdesc:a747267cd717b9008dab47fbc561848d9"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a747267cd717b9008dab47fbc561848d9">More...</a><br /></td></tr>
+<tr class="separator:a747267cd717b9008dab47fbc561848d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a830458f148fc6b7c7a217533e76b187a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a830458f148fc6b7c7a217533e76b187a">OnUpdates</a> =&gt; MoveTo(Queue.Update)</td></tr>
+<tr class="memitem:a639d00f2b339873357d6c9ad8fff7758"><td class="memItemLeft" align="right" valign="top">Emitter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a639d00f2b339873357d6c9ad8fff7758">OnComplete</a></td></tr>
+<tr class="memdesc:a639d00f2b339873357d6c9ad8fff7758"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a639d00f2b339873357d6c9ad8fff7758">More...</a><br /></td></tr>
+<tr class="separator:a639d00f2b339873357d6c9ad8fff7758"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4960f92be15feae181204e58af991c4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#ae4960f92be15feae181204e58af991c4">Running</a></td></tr>
+<tr class="memdesc:ae4960f92be15feae181204e58af991c4"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#ae4960f92be15feae181204e58af991c4">More...</a><br /></td></tr>
+<tr class="separator:ae4960f92be15feae181204e58af991c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a830458f148fc6b7c7a217533e76b187a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a830458f148fc6b7c7a217533e76b187a">OnUpdates</a> =&gt; AddAction(_ =&gt; node.MoveTo(Queue.Update), &quot;OnUpdates&quot;)</td></tr>
 <tr class="memdesc:a830458f148fc6b7c7a217533e76b187a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2Pqv2Ub">Return Fiber processing to frame Update queue</a>  <a href="#a830458f148fc6b7c7a217533e76b187a">More...</a><br /></td></tr>
 <tr class="separator:a830458f148fc6b7c7a217533e76b187a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52bdb7471cfed6dc6eed470446c4741a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a52bdb7471cfed6dc6eed470446c4741a">OnFixedUpdates</a> =&gt; MoveTo(Queue.Update)</td></tr>
+<tr class="memitem:a52bdb7471cfed6dc6eed470446c4741a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a52bdb7471cfed6dc6eed470446c4741a">OnFixedUpdates</a> =&gt; AddAction(_ =&gt; node.MoveTo(Queue.FixedUpdate), &quot;OnFixedUpdates&quot;)</td></tr>
 <tr class="memdesc:a52bdb7471cfed6dc6eed470446c4741a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2Pqv2Ub">Move Fiber processing to FixedUpdate queue</a>  <a href="#a52bdb7471cfed6dc6eed470446c4741a">More...</a><br /></td></tr>
 <tr class="separator:a52bdb7471cfed6dc6eed470446c4741a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c8e11baddc20e0a860491ae560a0310"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a0c8e11baddc20e0a860491ae560a0310">OnLateUpdates</a> =&gt; MoveTo(Queue.Update)</td></tr>
+<tr class="memitem:a0c8e11baddc20e0a860491ae560a0310"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a0c8e11baddc20e0a860491ae560a0310">OnLateUpdates</a> =&gt; AddAction(_ =&gt; node.MoveTo(Queue.LateUpdate), &quot;OnLateUpdates&quot;)</td></tr>
 <tr class="memdesc:a0c8e11baddc20e0a860491ae560a0310"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2Pqv2Ub">Move Fiber processing to LateUpdate queue</a>  <a href="#a0c8e11baddc20e0a860491ae560a0310">More...</a><br /></td></tr>
 <tr class="separator:a0c8e11baddc20e0a860491ae560a0310"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8134238c8c29978b85ded85cdfcd039"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#ad8134238c8c29978b85ded85cdfcd039">Idle</a> =&gt; PrepareFiberToRun().StartCall()</td></tr>
-<tr class="memdesc:ad8134238c8c29978b85ded85cdfcd039"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2DDvmcf">Separate Fiber into more than one statement</a>  <a href="#ad8134238c8c29978b85ded85cdfcd039">More...</a><br /></td></tr>
-<tr class="separator:ad8134238c8c29978b85ded85cdfcd039"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a663e2a1b68dc01e834dfbd9726dc9dce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a663e2a1b68dc01e834dfbd9726dc9dce">End</a> =&gt; EndCallee(ReturnFromCallee)</td></tr>
+<tr class="memitem:a663e2a1b68dc01e834dfbd9726dc9dce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a663e2a1b68dc01e834dfbd9726dc9dce">End</a> =&gt; AddAction(NextAction).AddAction(_ =&gt; blockStack.Pop(), &quot;End&quot;)</td></tr>
 <tr class="memdesc:a663e2a1b68dc01e834dfbd9726dc9dce"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2PtbezT">Begin/End block - use Break() to create an <code>if</code></a>  <a href="#a663e2a1b68dc01e834dfbd9726dc9dce">More...</a><br /></td></tr>
 <tr class="separator:a663e2a1b68dc01e834dfbd9726dc9dce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47d8ae00ad6f2c450500fcd1acc25e16"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a47d8ae00ad6f2c450500fcd1acc25e16">Again</a> =&gt; EndCallee(ToBegin)</td></tr>
+<tr class="memitem:a47d8ae00ad6f2c450500fcd1acc25e16"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a47d8ae00ad6f2c450500fcd1acc25e16">Again</a> =&gt; AddAction(_ =&gt; action = blockStack.Top).AddAction(NextAction).<a class="el" href="class_askowl_1_1_fiber.html#a663e2a1b68dc01e834dfbd9726dc9dce">End</a></td></tr>
 <tr class="memdesc:a47d8ae00ad6f2c450500fcd1acc25e16"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2DDvnNl">Begin/Again repeating operations. Use Break() or Exit() to leave</a>  <a href="#a47d8ae00ad6f2c450500fcd1acc25e16">More...</a><br /></td></tr>
 <tr class="separator:a47d8ae00ad6f2c450500fcd1acc25e16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d434b9a1d64e8a80e62072b6c58a995"><td class="memItemLeft" align="right" valign="top">readonly Fifo&lt; <a class="el" href="class_askowl_1_1_fiber_1_1_worker.html">Worker</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a5d434b9a1d64e8a80e62072b6c58a995">Workers</a> = Fifo&lt;<a class="el" href="class_askowl_1_1_fiber_1_1_worker.html">Worker</a>&gt;.Instance</td></tr>
+<tr class="memitem:ab91e63b10127cf9151b55a325ffe638b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#ab91e63b10127cf9151b55a325ffe638b">Else</a> =&gt; AddAction(_ =&gt; <a class="el" href="class_askowl_1_1_fiber.html#a674b839ebfddf7b04346d514f24c8be4">Break</a>(2), &quot;Else&quot;).AddAction(NextAction)</td></tr>
+<tr class="memdesc:ab91e63b10127cf9151b55a325ffe638b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#ab91e63b10127cf9151b55a325ffe638b">More...</a><br /></td></tr>
+<tr class="separator:ab91e63b10127cf9151b55a325ffe638b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7a2a16efc97a34868ae0c0cce659167"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#ad7a2a16efc97a34868ae0c0cce659167">Then</a> =&gt; AddAction(NextAction, &quot;Then&quot;)</td></tr>
+<tr class="memdesc:ad7a2a16efc97a34868ae0c0cce659167"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#ad7a2a16efc97a34868ae0c0cce659167">More...</a><br /></td></tr>
+<tr class="separator:ad7a2a16efc97a34868ae0c0cce659167"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8134238c8c29978b85ded85cdfcd039"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#ad8134238c8c29978b85ded85cdfcd039">Idle</a> =&gt; <a class="el" href="class_askowl_1_1_fiber.html#a96075994484e1d70d9c674905aa116c0">WaitFor</a>(idleEmitter, &quot;Idle&quot;)</td></tr>
+<tr class="memdesc:ad8134238c8c29978b85ded85cdfcd039"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2DDvmcf">Separate Fiber into more than one statement</a>  <a href="#ad8134238c8c29978b85ded85cdfcd039">More...</a><br /></td></tr>
+<tr class="separator:ad8134238c8c29978b85ded85cdfcd039"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d434b9a1d64e8a80e62072b6c58a995"><td class="memItemLeft" align="right" valign="top">readonly Fifo&lt; <a class="el" href="class_askowl_1_1_fiber_1_1_worker.html">Worker</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a5d434b9a1d64e8a80e62072b6c58a995">Workers</a> = Fifo&lt;<a class="el" href="class_askowl_1_1_fiber_1_1_worker.html">Worker</a>&gt;.<a class="el" href="class_askowl_1_1_fiber.html#af336d831c07ae95d8ae83d353ebf73fa">Instance</a></td></tr>
 <tr class="memdesc:a5d434b9a1d64e8a80e62072b6c58a995"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2Ptbf6V">List of workers associated with Fiber actions</a>  <a href="#a5d434b9a1d64e8a80e62072b6c58a995">More...</a><br /></td></tr>
 <tr class="separator:a5d434b9a1d64e8a80e62072b6c58a995"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -211,6 +268,9 @@ Static Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
+<tr class="memitem:af336d831c07ae95d8ae83d353ebf73fa"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#af336d831c07ae95d8ae83d353ebf73fa">Instance</a><code> [get]</code></td></tr>
+<tr class="memdesc:af336d831c07ae95d8ae83d353ebf73fa"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#af336d831c07ae95d8ae83d353ebf73fa">More...</a><br /></td></tr>
+<tr class="separator:af336d831c07ae95d8ae83d353ebf73fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c560e994a7f037bdf52e77fe86926c3"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a9c560e994a7f037bdf52e77fe86926c3">Start</a><code> [get]</code></td></tr>
 <tr class="memdesc:a9c560e994a7f037bdf52e77fe86926c3"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2DDvnwP">Prepare a Fiber and place it on the Update queue</a>  <a href="#a9c560e994a7f037bdf52e77fe86926c3">More...</a><br /></td></tr>
 <tr class="separator:a9c560e994a7f037bdf52e77fe86926c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -261,12 +321,12 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2DB3wgx">Return an IEnumerator to use with a yield in a Coroutine</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00215">215</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00189">189</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
 <a id="a674b839ebfddf7b04346d514f24c8be4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a674b839ebfddf7b04346d514f24c8be4">&#9670;&nbsp;</a></span>Break()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a674b839ebfddf7b04346d514f24c8be4">&#9670;&nbsp;</a></span>Break() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -281,6 +341,50 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a href="http://bit.ly/2DDvlFd">Break a Begin/End/Repeat/Again block</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00137">137</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+
+</div>
+</div>
+<a id="a703a39a166bf896cdbaa7740579d3d93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a703a39a166bf896cdbaa7740579d3d93">&#9670;&nbsp;</a></span>Break() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Askowl.Fiber.Break </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>after</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href=""></a> //#TBD#// </p>
+
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00142">142</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+
+</div>
+</div>
+<a id="a81fa94b014947b7f47accf6931e10316"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81fa94b014947b7f47accf6931e10316">&#9670;&nbsp;</a></span>BreakIf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.BreakIf </td>
+          <td>(</td>
+          <td class="paramtype">Func&lt; <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>, bool &gt;&#160;</td>
+          <td class="paramname"><em>isBreak</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href=""></a> //#TBD#// </p>
 
 </div>
 </div>
@@ -301,12 +405,10 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2DDvnwP">Cleans up Fiber before it goes into the recycling</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00081">81</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
-
 </div>
 </div>
-<a id="a82a6a6c0a5628dd1cbca2760b14f905b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82a6a6c0a5628dd1cbca2760b14f905b">&#9670;&nbsp;</a></span>Do()</h2>
+<a id="ab46e71300bfd84f7b85a739dad0fcd01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab46e71300bfd84f7b85a739dad0fcd01">&#9670;&nbsp;</a></span>Do()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -321,7 +423,7 @@ Properties</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>actionsText</em> = <code>&quot;Actions&quot;</code>&#160;</td>
+          <td class="paramname"><em>name</em> = <code>null</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -333,18 +435,16 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2DDZjbO">Business logic activation step</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00105">105</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
-
 </div>
 </div>
-<a id="ab41e9d71ba6c0af933aff463c28c042d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab41e9d71ba6c0af933aff463c28c042d">&#9670;&nbsp;</a></span>Exit()</h2>
+<a id="a6de7a8dabd6e8990a428d785c6bdf7c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6de7a8dabd6e8990a428d785c6bdf7c0">&#9670;&nbsp;</a></span>Exit()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Askowl.Fiber.Exit </td>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.Exit </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -354,7 +454,7 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2DBVWCe">Abort fiber processing, cleaning up as we go</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00155">155</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00083">83</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -375,7 +475,68 @@ Properties</h2></td></tr>
 
 <p><a href=""></a> //#TBD#// </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00169">169</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00089">89</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+
+</div>
+</div>
+<a id="a6f1ac271ef62925e93b86f04ac7a3257"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f1ac271ef62925e93b86f04ac7a3257">&#9670;&nbsp;</a></span>Go() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.Go </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href=""></a> //#TBD#// </p>
+
+</div>
+</div>
+<a id="a657d260f2dc40d8ff61262becb7bb6c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a657d260f2dc40d8ff61262becb7bb6c9">&#9670;&nbsp;</a></span>Go() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.Go </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_askowl_1_1_fiber.html#a82c710cd5ab82d320228b0c01beb90c5">Action</a>&#160;</td>
+          <td class="paramname"><em>updater</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href=""></a> //#TBD#// </p>
+
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00060">60</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+
+</div>
+</div>
+<a id="a5760e335e462e9ba646094bb7559f9b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5760e335e462e9ba646094bb7559f9b8">&#9670;&nbsp;</a></span>If()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.If </td>
+          <td>(</td>
+          <td class="paramtype">Func&lt; <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>, bool &gt;&#160;</td>
+          <td class="paramname"><em>isTrue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href=""></a> //#TBD#// </p>
 
 </div>
 </div>
@@ -397,7 +558,7 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2DDvp7V">Begin/Repeat loop for a specific number of times</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00172">172</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00111">111</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -418,7 +579,7 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2DDvmcf">Restart a fiber that includes an Idle command</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00139">139</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00180">180</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -440,12 +601,32 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2DDvmcf">Restart another fiber that includes an Idle command</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00145">145</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+</div>
+</div>
+<a id="a6419aac44c55b19673eea2bb5140a07c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6419aac44c55b19673eea2bb5140a07c">&#9670;&nbsp;</a></span>Skip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Askowl.Fiber.Skip </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>after</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href=""></a> //#TBD#// </p>
+
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00148">148</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
 <a id="a57f0fc50cee76a4de43ba4671b53a7c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a57f0fc50cee76a4de43ba4671b53a7c2">&#9670;&nbsp;</a></span>SkipFrames()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a57f0fc50cee76a4de43ba4671b53a7c2">&#9670;&nbsp;</a></span>SkipFrames() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -460,7 +641,27 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><a href=""></a> </p>
+<p><a href=""></a> //#TBD#// </p>
+
+</div>
+</div>
+<a id="a4059e7a2ee6d5e978070fee7ce7bd9e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4059e7a2ee6d5e978070fee7ce7bd9e2">&#9670;&nbsp;</a></span>SkipFrames() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.SkipFrames </td>
+          <td>(</td>
+          <td class="paramtype">Func&lt; <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>, int &gt;&#160;</td>
+          <td class="paramname"><em>getter</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href=""></a> //#TBD#// </p>
 
 </div>
 </div>
@@ -483,8 +684,28 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="aa9834d12b272461519759a56356c5a01"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9834d12b272461519759a56356c5a01">&#9670;&nbsp;</a></span>WaitFor() <span class="overload">[1/5]</span></h2>
+<a id="a5c215885c6f9fe04fcc6d1c4b479354b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c215885c6f9fe04fcc6d1c4b479354b">&#9670;&nbsp;</a></span>Until()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.Until </td>
+          <td>(</td>
+          <td class="paramtype">Func&lt; <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>, bool &gt;&#160;</td>
+          <td class="paramname"><em>isTrue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href=""></a> //#TBD#// </p>
+
+</div>
+</div>
+<a id="a363da922f49d33fa02c3690dab499e38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a363da922f49d33fa02c3690dab499e38">&#9670;&nbsp;</a></span>WaitFor() <span class="overload">[1/11]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -493,18 +714,28 @@ Properties</h2></td></tr>
           <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.WaitFor </td>
           <td>(</td>
           <td class="paramtype">Emitter&#160;</td>
-          <td class="paramname"><em>emitter</em></td><td>)</td>
+          <td class="paramname"><em>emitter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>name</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p><a href=""></a> </p>
+<p><a href=""></a> //#TBD#// </p>
 
 </div>
 </div>
 <a id="ae0aea65a91c9004ab8e8d7e942e46879"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0aea65a91c9004ab8e8d7e942e46879">&#9670;&nbsp;</a></span>WaitFor() <span class="overload">[2/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0aea65a91c9004ab8e8d7e942e46879">&#9670;&nbsp;</a></span>WaitFor() <span class="overload">[2/11]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -519,34 +750,12 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><a href=""></a> </p>
-
-</div>
-</div>
-<a id="a9b9d5134a6521a580fe3c65bdb1e0255"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b9d5134a6521a580fe3c65bdb1e0255">&#9670;&nbsp;</a></span>WaitFor() <span class="overload">[3/5]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.WaitFor </td>
-          <td>(</td>
-          <td class="paramtype">Task&#160;</td>
-          <td class="paramname"><em>task</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
 <p><a href=""></a> //#TBD#// </p>
-
-<p class="definition">Definition at line <a class="el" href="_task_worker_8cs_source.html#l00010">10</a> of file <a class="el" href="_task_worker_8cs_source.html">TaskWorker.cs</a>.</p>
 
 </div>
 </div>
 <a id="aa34bc8ad1199799289e19b25e0eec2f9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa34bc8ad1199799289e19b25e0eec2f9">&#9670;&nbsp;</a></span>WaitFor() <span class="overload">[4/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa34bc8ad1199799289e19b25e0eec2f9">&#9670;&nbsp;</a></span>WaitFor() <span class="overload">[3/11]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -565,8 +774,98 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a id="a9b9d5134a6521a580fe3c65bdb1e0255"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b9d5134a6521a580fe3c65bdb1e0255">&#9670;&nbsp;</a></span>WaitFor() <span class="overload">[4/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.WaitFor </td>
+          <td>(</td>
+          <td class="paramtype">Task&#160;</td>
+          <td class="paramname"><em>task</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href=""></a> //#TBD#// </p>
+
+</div>
+</div>
+<a id="aeb69107b0df99bae8b7b1c47d964ac98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb69107b0df99bae8b7b1c47d964ac98">&#9670;&nbsp;</a></span>WaitFor() <span class="overload">[5/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.WaitFor </td>
+          <td>(</td>
+          <td class="paramtype">Func&lt; <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>, Emitter &gt;&#160;</td>
+          <td class="paramname"><em>getEmitter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>name</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href=""></a> //#TBD#// </p>
+
+</div>
+</div>
+<a id="ae0cda72e5650df6d28db92674bc5aeae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0cda72e5650df6d28db92674bc5aeae">&#9670;&nbsp;</a></span>WaitFor() <span class="overload">[6/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.WaitFor </td>
+          <td>(</td>
+          <td class="paramtype">Func&lt; <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>, float &gt;&#160;</td>
+          <td class="paramname"><em>getter</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href=""></a> //#TBD#// </p>
+
+</div>
+</div>
+<a id="a207a20295f37b30857517bb2e3973359"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a207a20295f37b30857517bb2e3973359">&#9670;&nbsp;</a></span>WaitFor() <span class="overload">[7/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.WaitFor </td>
+          <td>(</td>
+          <td class="paramtype">Func&lt; <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>, IEnumerator &gt;&#160;</td>
+          <td class="paramname"><em>getter</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href=""></a> //#TBD#// </p>
+
+</div>
+</div>
 <a id="a7e35ab76b92bf3f8db9316660d60159c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7e35ab76b92bf3f8db9316660d60159c">&#9670;&nbsp;</a></span>WaitFor() <span class="overload">[5/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e35ab76b92bf3f8db9316660d60159c">&#9670;&nbsp;</a></span>WaitFor() <span class="overload">[8/11]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -595,8 +894,68 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a id="a747267cd717b9008dab47fbc561848d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a747267cd717b9008dab47fbc561848d9">&#9670;&nbsp;</a></span>WaitFor() <span class="overload">[9/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.WaitFor </td>
+          <td>(</td>
+          <td class="paramtype">Func&lt; <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>, Task &gt;&#160;</td>
+          <td class="paramname"><em>getter</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href=""></a> //#TBD#// </p>
+
+</div>
+</div>
+<a id="a96075994484e1d70d9c674905aa116c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96075994484e1d70d9c674905aa116c0">&#9670;&nbsp;</a></span>WaitFor() <span class="overload">[10/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.WaitFor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td>
+          <td class="paramname"><em>anotherFiber</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href=""></a> //#TBD#// </p>
+
+</div>
+</div>
+<a id="a4b8f2d77abda32de674c07e51ca7ba8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b8f2d77abda32de674c07e51ca7ba8d">&#9670;&nbsp;</a></span>WaitFor() <span class="overload">[11/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.WaitFor </td>
+          <td>(</td>
+          <td class="paramtype">Func&lt; <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>, <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> &gt;&#160;</td>
+          <td class="paramname"><em>getFiber</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href=""></a> //#TBD#// </p>
+
+</div>
+</div>
 <a id="a9baac3c72229c86125a920319d749d9a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9baac3c72229c86125a920319d749d9a">&#9670;&nbsp;</a></span>WaitRealtime()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9baac3c72229c86125a920319d749d9a">&#9670;&nbsp;</a></span>WaitRealtime() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -611,7 +970,27 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><a href=""></a> </p>
+<p><a href=""></a> //#TBD#// </p>
+
+</div>
+</div>
+<a id="af787ef10d3a95e55aa061865ba71ce6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af787ef10d3a95e55aa061865ba71ce6f">&#9670;&nbsp;</a></span>WaitRealtime() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.WaitRealtime </td>
+          <td>(</td>
+          <td class="paramtype">Func&lt; <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>, float &gt;&#160;</td>
+          <td class="paramname"><em>getter</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href=""></a> //#TBD#// </p>
 
 </div>
 </div>
@@ -623,14 +1002,14 @@ Properties</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.Again =&gt; EndCallee(ToBegin)</td>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.Again =&gt; AddAction(_ =&gt; action = blockStack.Top).AddAction(NextAction).<a class="el" href="class_askowl_1_1_fiber.html#a663e2a1b68dc01e834dfbd9726dc9dce">End</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p><a href="http://bit.ly/2DDvnNl">Begin/Again repeating operations. Use Break() or Exit() to leave</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00166">166</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00108">108</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -656,7 +1035,25 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2DDvmZN">Displays Do() and action events on Unity console</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00114">114</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00211">211</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+
+</div>
+</div>
+<a id="ab91e63b10127cf9151b55a325ffe638b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab91e63b10127cf9151b55a325ffe638b">&#9670;&nbsp;</a></span>Else</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.Else =&gt; AddAction(_ =&gt; <a class="el" href="class_askowl_1_1_fiber.html#a674b839ebfddf7b04346d514f24c8be4">Break</a>(2), &quot;Else&quot;).AddAction(NextAction)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href=""></a> //#TBD#// </p>
+
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00164">164</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -667,14 +1064,14 @@ Properties</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.End =&gt; EndCallee(ReturnFromCallee)</td>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.End =&gt; AddAction(NextAction).AddAction(_ =&gt; blockStack.Pop(), &quot;End&quot;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p><a href="http://bit.ly/2PtbezT">Begin/End block - use Break() to create an <code>if</code></a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00163">163</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00105">105</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -685,14 +1082,32 @@ Properties</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.Idle =&gt; PrepareFiberToRun().StartCall()</td>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.Idle =&gt; <a class="el" href="class_askowl_1_1_fiber.html#a96075994484e1d70d9c674905aa116c0">WaitFor</a>(idleEmitter, &quot;Idle&quot;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p><a href="http://bit.ly/2DDvmcf">Separate Fiber into more than one statement</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00136">136</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00177">177</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+
+</div>
+</div>
+<a id="a639d00f2b339873357d6c9ad8fff7758"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a639d00f2b339873357d6c9ad8fff7758">&#9670;&nbsp;</a></span>OnComplete</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Emitter Askowl.Fiber.OnComplete</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href=""></a> //#TBD#// </p>
+
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00014">14</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -703,14 +1118,14 @@ Properties</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.OnFixedUpdates =&gt; MoveTo(Queue.Update)</td>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.OnFixedUpdates =&gt; AddAction(_ =&gt; node.MoveTo(Queue.FixedUpdate), &quot;OnFixedUpdates&quot;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p><a href="http://bit.ly/2Pqv2Ub">Move Fiber processing to FixedUpdate queue</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00095">95</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00078">78</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -721,14 +1136,14 @@ Properties</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.OnLateUpdates =&gt; MoveTo(Queue.Update)</td>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.OnLateUpdates =&gt; AddAction(_ =&gt; node.MoveTo(Queue.LateUpdate), &quot;OnLateUpdates&quot;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p><a href="http://bit.ly/2Pqv2Ub">Move Fiber processing to LateUpdate queue</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00097">97</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00080">80</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -739,14 +1154,50 @@ Properties</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.OnUpdates =&gt; MoveTo(Queue.Update)</td>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.OnUpdates =&gt; AddAction(_ =&gt; node.MoveTo(Queue.Update), &quot;OnUpdates&quot;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p><a href="http://bit.ly/2Pqv2Ub">Return Fiber processing to frame Update queue</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00093">93</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00076">76</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+
+</div>
+</div>
+<a id="ae4960f92be15feae181204e58af991c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4960f92be15feae181204e58af991c4">&#9670;&nbsp;</a></span>Running</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Askowl.Fiber.Running</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href=""></a> //#TBD#// </p>
+
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00017">17</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+
+</div>
+</div>
+<a id="ad7a2a16efc97a34868ae0c0cce659167"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7a2a16efc97a34868ae0c0cce659167">&#9670;&nbsp;</a></span>Then</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.Then =&gt; AddAction(NextAction, &quot;Then&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href=""></a> //#TBD#// </p>
+
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00167">167</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -757,7 +1208,7 @@ Properties</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">readonly Fifo&lt;<a class="el" href="class_askowl_1_1_fiber_1_1_worker.html">Worker</a>&gt; Askowl.Fiber.Workers = Fifo&lt;<a class="el" href="class_askowl_1_1_fiber_1_1_worker.html">Worker</a>&gt;.Instance</td>
+          <td class="memname">readonly Fifo&lt;<a class="el" href="class_askowl_1_1_fiber_1_1_worker.html">Worker</a>&gt; Askowl.Fiber.Workers = Fifo&lt;<a class="el" href="class_askowl_1_1_fiber_1_1_worker.html">Worker</a>&gt;.<a class="el" href="class_askowl_1_1_fiber.html#af336d831c07ae95d8ae83d353ebf73fa">Instance</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -791,7 +1242,33 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2DDvnNl">Loops and Blocks - Begin/End, Begin/Again, Begin-Repeat</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00126">126</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00096">96</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+
+</div>
+</div>
+<a id="af336d831c07ae95d8ae83d353ebf73fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af336d831c07ae95d8ae83d353ebf73fa">&#9670;&nbsp;</a></span>Instance</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.Instance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a href=""></a> //#TBD#// </p>
+
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00023">23</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -817,7 +1294,7 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2DDvnwP">Prepare a Fiber and place it on the Update queue</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00033">33</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00039">39</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>

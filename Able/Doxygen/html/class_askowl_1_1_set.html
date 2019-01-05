@@ -128,7 +128,7 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a81a08cb7a6f646b20d73fc6f4ff44c83"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_set.html#a81a08cb7a6f646b20d73fc6f4ff44c83">InitialSize</a> =&gt; elements?.Count ?? 0</td></tr>
+<tr class="memitem:a81a08cb7a6f646b20d73fc6f4ff44c83"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_set.html#a81a08cb7a6f646b20d73fc6f4ff44c83">InitialSize</a> =&gt; elements.Length</td></tr>
 <tr class="memdesc:a81a08cb7a6f646b20d73fc6f4ff44c83"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a81a08cb7a6f646b20d73fc6f4ff44c83">More...</a><br /></td></tr>
 <tr class="separator:a81a08cb7a6f646b20d73fc6f4ff44c83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -137,12 +137,6 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a9cacd66e535f1e5a5c18f95eab0d7823"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_set.html#a9cacd66e535f1e5a5c18f95eab0d7823">BuildSelector</a> ()</td></tr>
 <tr class="memdesc:a9cacd66e535f1e5a5c18f95eab0d7823"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2NWwH3e">Rebuild selections if we change contents</a>  <a href="#a9cacd66e535f1e5a5c18f95eab0d7823">More...</a><br /></td></tr>
 <tr class="separator:a9cacd66e535f1e5a5c18f95eab0d7823"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc469fcb00f155e30c68d63e6cc16ee3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_set.html#abc469fcb00f155e30c68d63e6cc16ee3">Add</a> (T entry)</td></tr>
-<tr class="memdesc:abc469fcb00f155e30c68d63e6cc16ee3"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2NWwH3e">Add one entry to those open for selection</a>  <a href="#abc469fcb00f155e30c68d63e6cc16ee3">More...</a><br /></td></tr>
-<tr class="separator:abc469fcb00f155e30c68d63e6cc16ee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77b308889950dc00ac944a646c8c280c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_set.html#a77b308889950dc00ac944a646c8c280c">Remove</a> (T entry)</td></tr>
-<tr class="memdesc:a77b308889950dc00ac944a646c8c280c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2NWwH3e">Remove one entry to those open for selection</a>  <a href="#a77b308889950dc00ac944a646c8c280c">More...</a><br /></td></tr>
-<tr class="separator:a77b308889950dc00ac944a646c8c280c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -153,38 +147,8 @@ Properties</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a href="http://bit.ly/2NXaCSb">Create a set in the inspector and provide an interface to pick one</a>  </p>
 
-<p class="definition">Definition at line <a class="el" href="_set_8cs_source.html#l00011">11</a> of file <a class="el" href="_set_8cs_source.html">Set.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_set_8cs_source.html#l00010">10</a> of file <a class="el" href="_set_8cs_source.html">Set.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="abc469fcb00f155e30c68d63e6cc16ee3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc469fcb00f155e30c68d63e6cc16ee3">&#9670;&nbsp;</a></span>Add()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_askowl_1_1_set.html">Askowl.Set</a>&lt; T &gt;.Add </td>
-          <td>(</td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>entry</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p><a href="http://bit.ly/2NWwH3e">Add one entry to those open for selection</a> </p>
-
-<p class="definition">Definition at line <a class="el" href="_set_8cs_source.html#l00060">60</a> of file <a class="el" href="_set_8cs_source.html">Set.cs</a>.</p>
-
-</div>
-</div>
 <a id="a9cacd66e535f1e5a5c18f95eab0d7823"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9cacd66e535f1e5a5c18f95eab0d7823">&#9670;&nbsp;</a></span>BuildSelector()</h2>
 
@@ -210,6 +174,8 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2NWwH3e">Rebuild selections if we change contents</a> </p>
 
+<p class="definition">Definition at line <a class="el" href="_set_8cs_source.html#l00036">36</a> of file <a class="el" href="_set_8cs_source.html">Set.cs</a>.</p>
+
 </div>
 </div>
 <a id="a22a9c6587529d8daadd617a3815e7e92"></a>
@@ -231,36 +197,6 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a77b308889950dc00ac944a646c8c280c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a77b308889950dc00ac944a646c8c280c">&#9670;&nbsp;</a></span>Remove()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_askowl_1_1_set.html">Askowl.Set</a>&lt; T &gt;.Remove </td>
-          <td>(</td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>entry</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p><a href="http://bit.ly/2NWwH3e">Remove one entry to those open for selection</a> </p>
-
-<p class="definition">Definition at line <a class="el" href="_set_8cs_source.html#l00066">66</a> of file <a class="el" href="_set_8cs_source.html">Set.cs</a>.</p>
-
-</div>
-</div>
 <a id="aae96fe56c080ba8efdf378b1c92c938c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aae96fe56c080ba8efdf378b1c92c938c">&#9670;&nbsp;</a></span>Reset()</h2>
 
@@ -277,6 +213,8 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a href="http://bit.ly/2NWwH3e">Remove all set entries</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="_set_8cs_source.html#l00045">45</a> of file <a class="el" href="_set_8cs_source.html">Set.cs</a>.</p>
 
 </div>
 </div>
@@ -307,7 +245,7 @@ Properties</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int <a class="el" href="class_askowl_1_1_set.html">Askowl.Set</a>&lt; T &gt;.InitialSize =&gt; elements?.Count ?? 0</td>
+          <td class="memname">int <a class="el" href="class_askowl_1_1_set.html">Askowl.Set</a>&lt; T &gt;.InitialSize =&gt; elements.Length</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -341,7 +279,7 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2NTAqP3">Selector to call to get picked elements</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_set_8cs_source.html#l00045">45</a> of file <a class="el" href="_set_8cs_source.html">Set.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_set_8cs_source.html#l00051">51</a> of file <a class="el" href="_set_8cs_source.html">Set.cs</a>.</p>
 
 </div>
 </div>

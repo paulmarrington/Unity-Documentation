@@ -6,67 +6,84 @@ description: Horizontal scrolling messaging display
 {:toc}
 > Read the code in the Examples Folder.
 
+# Executive Summary
+
+Marquee is a simple Unity3D package to display a single line of text scrolling across the bottom of the game display. It is a useful technique for displaying hints, news or distractions without pausing the game. You can supply it with lists of items in one or more text files. RTF is supported as well as a simple technique to separate quotes from attributions.
+
 # Introduction
 
 A marquee is a canopy over the entrance to a theatre among other buildings. The marquee commonly displayed news about the shows.
 
-In this incarnation, a `Marquee` is a text scroller for a UI component. It is a `Scroller` (see Askowl-Lib) inside a MonoBehaviour.
+In this incarnation, a `Marquee` is a scrolling text asset for a UI component. It is a `Scroller` (see the Able package) inside a MonoBehaviour.
 
-At the highest level, `Tickertape` will take one or more text files and display lines from them randomly.
+`Tickertape` is a manager custom asset that serves items to the marquee. It takes a list of messages from the asset and one or more text files and display lines from them randomly. There are overrides for urgent and immediate messages.
 
-# Marquee
+<img src="Screen Shot.png" width="100%" alt="Marquee in action">
 
-A `Marquee` instance has one task - to scroll text from right to left across a viewport. It is designed to be attached to a `GameObject` within a canvas.
+# Installation
 
-* Scene - that is to display the Marquee
-  * Canvas - to hold 2D objects
-  * GameObject - for the Marquee
-    * Rect Transform - sized as the viewport
-    * Rect Mask 2D - so Marquee text does not display outside the viewport
-    * Marquee Instance - or a class that inherits from it
-    * Characters per second (defaults to 20)
-    * Repeats (defaults to 0)
+Given that most games and apps only have one Marquee, it is probably easiest to take a copy of the ***Assets/Askowl/Marquee*** directory and modify the custom assets to suit your requirements. Merely drag the Marquee prefab into a canvas in your hierarchy.
 
-Call `Marquee.Show(text)` and the text will be displayed next. If message queue up there is no guarantee of order that they will appear.
+<img src="Hierarchy.png" width="50%" alt="Marquee prefab in hierarchy">
 
-`Show` returns a Coroutine that can be used to wait until the text is completely displayed `repeats` time.
+Also drop the ***Managers*** prefab into your project or update your existing ***Managers*** instance adding the ***Tickertape*** manager.
 
-```c#
-IEnumerator Messages(string[] messages) {
-  yield return marquee.Hide();
-  foreach(var message in messages) {
-    yield return marquee.Show(message);
-  }
-}
-```
+<img src="Component - Managers.png" width="100%" alt="Custom Asset Manager Component">
 
-The example also shows a use for `Hide()`. It will wait for the current text to complete, aborting any repeats. If you want the repeats to complete as well, change the `foreach` body to:
+Tune by adjusting contents in custom assets, starting with ***Tickertape***.
 
-```c#
-  marquee.Show(message);
-  yield return marquee.Hide();
-```
+ <img src="Custom Asset - Tickertape.png" alt="Tickertape Manager Custom Asset">
 
-# Tickertape
-The `Tickertape` prefab is in Assets/Askowl-Marquee/Marquee.
-Drag it to your scene canvas. Add references to one or more text assets where each file includes single-line quotes, hints or messages. Check the `RectTransfor` to make sure the Left, Right, Pos Z, Top and Bottom fields are all 0.
+***Able*** provides a property drawer that allows the viewing and editing of custom asset references. Contents (Quotes), Now Showing and Display Complete are three such custom assets. The latter two provided a decoupled interface with the Marquee MonoBehaviour.
 
-# Manual Intervention
+## Auto Start
+If your information is context specific, then it would be usual to disable auto-start. To start a display, have a reference to the Tickertape custom asset and call ***Show***, ***ShowNext*** or ***ShowImmediate*** as documented below.
 
-Uncheck the ***Auto Start*** box if you don't want to see messages as soon as your scene loads. Get a reference to the component that is the ticker tape by whatever means.
+## Seconds Between Feeds
+In the current implementation, each item is on the screen alone, with the following one displaying once the predecessor has disappeared.
 
-To start showing items, call `Show()`. You can cease displaying any time by disabling the game object or calling `Stop()`.
+## Quotes
+***Quotes*** Is a custom asset with quotes ready to display either embedded in it or one or more text files. See the CustomAsset documentation for more details. You can replace or supplement this list during play with ***Clear*** and ***Add***.
 
-# Injecting a Special Message
-To display a message, use `Show`. Once the current text completes its path across the screen, your message will start. Afterwards, the random quotes and hints will begin again.
+Each line becomes one displayed item if the line ends in an attribution within brackets it is formatted differently.
 
-# Adding Message Sources
-If you want to add more sources of hints, quotes or jokes, `Add` provides three approaches.
+> Gratitude is the heart's memory (French Proverb)
 
-```c#
-Add(params TextAsset[]);
-Add(params string[] TextAssetNames);
-Add(string name, Pick<string> picker);
-```
+becomes
 
-Use the last interface to add a list of quotes created with `Select<string>`. Alternatively, use `AssetSelect<string>` and save messages in the asset on disk ready to load with `AssetSelect<string>.Asset(name)`.
+ <img src="Quote.png" alt="Tickertape Manager Custom Asset">
+
+## Now Showing
+***Now Showing*** Is a string custom asset containing the text currently displayed. A change causes a restart with the words appearing on the right.
+
+## Showing Complete
+A trigger custom asset that fires when the current text has left the screen.  Use with ***Now Showing*** to drive the Marquee directly for more control of what is displayed when.
+
+## Additional Tuning Parameters
+There are additional custom assets that you can edit from the ***Assets/Askowl/Marquee*** directory.
+
+### Characters per second
+This numeric value will control how fast the text scrolls across the screen. An amount of 16 will provide a slow read, while 100 is only readable to the quick of comprehension. You could change the speed to give a sense of urgency.
+
+### Repeats per message
+I am not sure why I added this one. Set to zero, so we see a message once.
+
+## Actions from Tickertape Manager Custom Asset
+### Show
+Start displaying items.
+
+### Stop
+Don't display any more items after the current one is complete. Disable
+the component if you want an immediate cessation.
+
+### ShowNext
+Display the provided text after the current item is complete.
+
+### ShowImmediate
+Drop the current display and show the provided message immediately
+
+### Clear
+Remove all `Quote` custom asset being used to generate messages to display
+
+### Add
+Add a `Quote` custom asset to the items that can be displayed.

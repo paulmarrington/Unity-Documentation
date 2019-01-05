@@ -1,6 +1,7 @@
 var class_askowl_1_1_fifo =
 [
     [ "Fifo", "class_askowl_1_1_fifo.html#ad0602d47ce257b912824a5d0ca2b54c1", null ],
+    [ "Clear", "class_askowl_1_1_fifo.html#a8f0108a2e14cc265496560174eb50f18", null ],
     [ "Dispose", "class_askowl_1_1_fifo.html#a356fdf421ec6a5134e8fb96445736859", null ],
     [ "Pop", "class_askowl_1_1_fifo.html#afd1c98adbb7b7ab81b69743dfccb8fe3", null ],
     [ "Push", "class_askowl_1_1_fifo.html#ac5bcd928e5e28145e39cdf12a6eb56dc", null ],

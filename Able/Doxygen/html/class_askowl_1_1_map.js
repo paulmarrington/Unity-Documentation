@@ -1,6 +1,7 @@
 var class_askowl_1_1_map =
 [
     [ "Add", "class_askowl_1_1_map.html#af8d9977032bf7b785e0b8353625be94f", null ],
+    [ "Clear", "class_askowl_1_1_map.html#a9bd1dd1d83cdde6ff5787d21d635251b", null ],
     [ "Dispose", "class_askowl_1_1_map.html#afe1f6e0280ec9fca458fcc613de633a0", null ],
     [ "Remove", "class_askowl_1_1_map.html#a408447bcd9c716d01650238c61e539ef", null ],
     [ "Sort", "class_askowl_1_1_map.html#a1ae010d5beb30b8d765e1464a9fdcc00", null ],
