@@ -5,6 +5,8 @@ description: Horizontal scrolling messaging display
 * Table of Contents
 {:toc}
 > Read the code in the Examples Folder.
+>
+> The Doxygen pages [here](https://paulmarrington.github.io/Unity-Documentation/Marquee/Doxygen/html/annotated.html)
 
 # Executive Summary
 
