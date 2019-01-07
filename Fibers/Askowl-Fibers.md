@@ -38,6 +38,8 @@ Fiber.Start
   .Do(Stagger).WaitFor(seconds: 0.2f)
   .Begin.Do(Stars).WaitFor(seconds: 0.2f).Do(CheckForDeath).Repeat(5);
 ```
+Note that each step in a fiber is passed a reference. This is mostly so that you can call `fiber.Break()` if needed.
+
 Once a Fiber terminates it is placed in a recycle bin for later reuse. The section below includes functions that allow loops, repeats and conditional exits.
 
 ## Built-in Fiber Commands
@@ -68,17 +70,58 @@ A Fiber can have a repeat count. It could be the number of sparkler flashes or t
 Fiber.Start.Begin.Do(ShowLightBulb).WaitForSeconds(3).Repeat(5);
 ```
 ### Begin End
-A Fiber command does not have an `if` statement, but the same result can be gained with Begin, Break and End.
+Use `Break()` from inside any Do-code to go to the next command after `End`*[]:
+
 ``` c#
 private void Step1(Fiber fiber) {
   if (noMore) fiber.Break();
 }
 Fiber.Start.Begin.Do(Step1).WaitFor(seconds: 1f).Do(Step2).End.Do(Step3);
 ```
+
+### Begin Until
+Another looping function that can be terminated with a boolean test at the end of each cycle.
+``` c#
+Fiber mineAlert = Fiber.Instance.Begin.WaitFor(flashAlarmLight)
+                       .Until(_ => MineDistance() > 1.0f);
+```
+
 ### Break
 Break when called within a Fiber function exits the inner block.
+
+### BreakIf
+`BreakIf` does what it says. Break out of the inner block if a function with a boolean return returns true.
+
+```c#
+counter         = 0;
+var fiber = Fiber.Start.Begin.Do(_ => counter++).BreakIf(_ => counter > 5).Again;
+```
+
+### Do
+Do functions contain project specific logic. Since each `Do` function runs in a single frame, make them short and sweat.
+``` c#
+Fiber.Start.Do(Breaking).Do(Up).Do(Large).Do(Calculations)
+```
+
 ### Exit
 When `Exit()` is called from within a Fiber function, the Fiber stack terminates after cleaning up. Mostly used for unexpected conditions or in response to an error.
+
+### Go
+Unless you dispose of a fiber, it will live on for as long as you keep at least one reference. `Go` will restart a fiber from the first action even if it is not running. Use `Exit` if you want to terminate an earlier run first.
+
+``` c#
+var ping = Fiber.Start.Do(_ => Ping()).WaitFor(seconds: 1.0f);
+// ...
+if (sonar) ping.Go();
+```
+
+### Finish
+`Finish` is the quintessential do-nothing function. Using `Start` turns creating a Fiber into a statement. If you don't need a reference, the statement is not an assignment. Such a statement must end in a function call to pass the C# compiler.
+
+``` c#
+Fiber.Start.Begin.Do(_ => Something()).Again.Finish();
+```
+
 ### Idle and Restart
 `Idle` is a built-in emitter listener where `Restart` is the trigger. Restart can be given a reference to the fiber to kick.
 ``` c#
@@ -88,6 +131,52 @@ if (moreToDo)  idlingFiber.Restart().Do(SomeMore).Idle;
 if (oneMoreThing)  idlingFiber.Restart().Do(LastAction);
 idlingFiber.Restart(); // otherwise fiber will never be released.
 ```
+### If // Else // Then
+This most common example of program logic needs little explanation.
+
+```c#
+var fiber1 = Fiber.Instance
+                 .If(_ => mark == 1).Do(_ => mark = 2).Then;
+// or...
+var fiber2 = Fiber.Instance
+                 .If(_ => mark == 1).Do(_ => mark = 2)
+                 .Else.Do(_ => mark = 3).Then;
+```
+
+### Instance
+`Instance` allows a fiber to be compiled to be run later with `Go()`, `WaitFor(Fiber)` or `AsCoroutine()`. Precompilation is good since all functions provided as parameters to `Do()`, `WaitFor()` and others compile to an anonymous class which is instantiated when it is created. By function I mean lambdas, inner functions or references to members of an existing class. There is always state to be kept around the function.
+
+So, the **Only** way to take the load from the garbage collector is to precompile fibers and reuse then. This does not apply to infinite loops since they only ever have one instance.
+
+```c#
+Fiber change;
+float changeAmount, changeInterval;
+int changeSteps;
+
+void Awake {
+  // No Need to precompile since the loop is infinite
+  void trickleCharge(Fiber fiber) => health.Value += trickleChargePerSecond;
+  Fiber.Start.Begin.WaitFor(seconds: 1.0f).Do(trickleCharge).Again.Finish();
+  change = Fiber.Instance.Begin
+                .Do(_ => health.Value += changeAmount)
+                .WaitFor(_ => changeInterval)
+                .Repeat(_ => changeSteps);
+}
+
+void ChangeHealth(float amount, float every, int over) {
+  changeAmount = amount;
+  changeInterval = every;
+  changeSteps = over;
+  change.Go();
+}
+```
+
+For a more complete implementation, look at the source to `ChangeOverTime` in this package.
+
+There is one trip-up for new players that I want to point out. Note `WaitFor(_ => changeInterval)` is a function rather than just a float reference. If we had said `WaitFor(changeInterval)` instead, the waiting time would have been zero since `ChangeInterval` was zero at the time of compile.
+
+Since all functions are generated at the time of compile, the steps are quite efficient when run.
+
 ### SkipFrames
 Each command in a Fiber list executes in a separate frame. If you want a short delay, it is efficient to call SkipFrames. The Fiber worker moves to a special queue and only processed when the shortest waiting frame count expires, reducing update ovrhead. The frame rate is usually 30 fps or 60 fps for Unity games.
 ``` c#
@@ -100,7 +189,12 @@ Fiber.Start.OnLateUpdate.Begin.Do(FollowingCamera). Again;
 Fiber.Start.OnFixedUpdate.Begin.Do(BlinkMessage).Repeat(10);
 Fiber.Start.OnFixedUpdate.OnUpdate.Do(WhyDidIDoThat);
 ```
-### WaitFor(Emitter)
+### WaitFor
+The main reason for Fibers, Coroutines and Threads is that most tasks spend much more time waiting for something than actually doing anything. Enter `WaitFor` to the rescue. Most `WaitFor` commands come in two flavours - to provide the source directly or by calling a function. There is method to this madness. If the resource is unavailable or likely to change in the Fiber compile phase, then the function approach must be used. Examples would include an emitter that may not yet have been created or a number of seconds that could change between fiber runs.
+
+The `WaitFor` commands here provide all basic usage. `WaitFor(Emitter)` can be used for almost any other case you will require.
+
+#### WaitFor(Emitter) and WaitFor((fiber) => emitter)
 An `Emitter` is an Able class that implements the observer pattern. When used Fibers, they are the key to inter-Fiber synchronisation. By giving external processes emitters, they allow Fibers to wait on asynchronous results.
 ``` c#
       using (emitter = Askowl.Emitter.Instance) {
@@ -109,16 +203,36 @@ An `Emitter` is an Able class that implements the observer pattern. When used Fi
         Fiber.Start.WaitRealtime(0.2f).Do(Fire);
       }
 ```
-### WaitFor(IEnumerator)
-A C# method with an IEnumerator return value is a state machine with each state transferal happening each update. Use for existing coroutines you would like to integrate. Use sparingly because coroutine state machines use the heap and increase garbage collection.
-### Do
-Do functions contain project specific logic. Since each `Do` function runs in a single frame, make them short and sweat.
-``` c#
-Fiber.Start.Do(Breaking).Do(Up).Do(Large).Do(Calculations)
-```
-### WaitFor(seconds) and WaitRealtime(seconds)
+#### WaitFor(Fiber) or WaitFor((fiber) => anotherFiber)
+Waiting for another Fiber is a way of factoring out common sequences. The driving fiber continues once the fiber being waited on completes. If the inner fiber is not running, `Go` is called.
 
-Delay the Fiber for the specified time. `WaitForSeconds` is scaled by `Time.timeScale`, while `WaitForSecondsRealtime` isn't. The Fiber worker is moved to a special queue that is only processed when the shortest waiting frame count expires. This further minimises the processing load during updates. 
+```c#
+// Create and display a thingamebob
+Fiber display = Fiber.Instance.Do(_ => whatever);
+// Wait for the thingamebob to finish doing it's thing
+Fiber completion = Fiber.Instance.If(display.Running)
+                        .WaitFor(display.OnComplete).Then;
+// Allow current thingamebob to complete before starting another
+Fiber nextDisplay = Fiber.Instance.WaitFor(completion)
+                         .Do(_ => SetNextDisplay).WaitFor(display);
+// Let thingamebob to complete before falling over
+Fiber fallOver = Fiber.Instance.WaitFor(Completion).Do(_ => FallOver();
+// ...
+display.Go();
+// ...
+if (fellOver) fallOver.Go() else nextDisplay.Go();
+```
+
+This, admittedly theoretical example follows the dance of four fibers. Note that we don't need to start the completion fiber.
+
+#### WaitFor(IEnumerator) or WaitFor((fiber) => iEnumerator)
+A C# method with an IEnumerator return value is a state machine with each state transferal happening each update. Use for existing coroutines you would like to integrate. Use sparingly because coroutine state machines use the heap and increase garbage collection.
+
+#### WaitFor(seconds), WaitFor((fiber) => seconds), WaitRealtime(seconds) and WaitRealtime((fiber) => seconds)
+Delay the Fiber for the specified time. `WaitForSeconds` is scaled by `Time.timeScale`, while `WaitForSecondsRealtime` isn't. The Fiber worker is moved to a special queue that is only processed when the shortest waiting frame count expires. This further minimises the processing load during updates.
+
+#### Waitfor(Task)
+C# and .NET Core provide support for Tasks - a preemptive thread-based multi-tasking approach. Task works fine with Unity except that a response can be sent at any time, not just in one of the update cycles. Attempting to do any Unity work at these times will be disastrous. Using this action within a Fiber will synchronise to Update, LateUpdate or FixedUpdate as you require.
 ## Creating New Fiber Commands
 You should only need to create new Fiber commands when dealing with external asynchronous events.
 ### Using an Emitter
