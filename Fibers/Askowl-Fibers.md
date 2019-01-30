@@ -110,6 +110,14 @@ When `Exit()` is called from within a Fiber function, the Fiber stack terminates
 Fiber.Start.WaitFor(seconds: 2).Exit(otherFiber)
 ```
 
+### Fire
+
+Fire an emitter in a way that fits into a fiber stream.
+
+``` c#
+Fiber.Start.Begin.WaitFor(seconds: 5.0f).Fire(FiveSecondWarningEmitter).Again;
+```
+
 
 ### Go
 Unless you dispose of a fiber, it lives on for as long as you keep at least one reference. `Go` restarts a fiber from the first action even if it is not running. Use `Exit` if you want to terminate an earlier run first.
@@ -361,6 +369,8 @@ emitter.Listen(incrementCounter);
 emitter.Fire;
 ```
 
+### Emitter.Action
+`Emitter.Action` is the delegate used as the `Emitter.Listen` parameter. It gets a copy of the emitter (and any context) and returns true normally or false to remove the listener from the listening queue.
 
 ### Emitter.Context
 If we respond to an emitter from a class scope, we can keep context in the class. When it is at the function scope, we need to have the emitter know some more about the context.
@@ -385,5 +395,14 @@ If we respond to an emitter from a class scope, we can keep context in the class
 
  `Emitter.Dispose()' calls dispose on the context if and only if the context is `IDisposable`.
 
+### Emitter.Firings
+An emitter keeps a count of the number of times it has been fired. It is particularly useful to check if an emitter has fired before a listener has been attacked.
+
+### Emitter.RemoveAllListeners
+Does as it says.
+
 ### SingleFireInstance
 I find that in most cases I get an emitter from the cache, wait for one firing then dispose of it. Because this is an asynchronous process, it is messy. It is better for the emitter to dispose of itself.
+
+### Emitter.Waiting
+Returns true if an emitter has one or more listeners registered.
