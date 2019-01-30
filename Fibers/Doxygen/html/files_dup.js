@@ -1,5 +1,6 @@
 var files_dup =
 [
+    [ "Emitter.cs", "_emitter_8cs_source.html", null ],
     [ "EmitterWorker.cs", "_emitter_worker_8cs_source.html", null ],
     [ "Fiber.cs", "_fiber_8cs_source.html", null ],
     [ "FiberController.cs", "_fiber_controller_8cs_source.html", null ],

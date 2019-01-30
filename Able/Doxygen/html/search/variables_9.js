@@ -5,5 +5,6 @@ var searchData=
   ['next',['Next',['../class_askowl_1_1_map.html#a7c789162a1536a2cd128c5c30e1f4d56',1,'Askowl::Map']]],
   ['nextchild',['NextChild',['../class_askowl_1_1_trees.html#aff6ce5b8361b9a753a05f5f3b3322ef3',1,'Askowl::Trees']]],
   ['node',['Node',['../class_askowl_1_1_json.html#add58147e8f3c99fe638d332cd38f547b',1,'Askowl::Json']]],
+  ['nodeinstance',['NodeInstance',['../class_askowl_1_1_cache.html#afee393d0750ca7d9092522b537ad40ab',1,'Askowl::Cache']]],
   ['note',['Note',['../class_notation.html#afc5bfbf9d0d2f7b35891914fb3ce9a0e',1,'Notation']]]
 ];

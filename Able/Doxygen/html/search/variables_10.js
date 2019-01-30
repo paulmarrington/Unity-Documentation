@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['waiting',['Waiting',['../class_askowl_1_1_emitter.html#acd7fce1a9fef81e8ddbbaefe316e797e',1,'Askowl::Emitter']]]
+  ['with',['With',['../struct_askowl_1_1_template_1_1_substitution.html#ae9487e253205fd596b029819b42c129f',1,'Askowl::Template::Substitution']]]
 ];

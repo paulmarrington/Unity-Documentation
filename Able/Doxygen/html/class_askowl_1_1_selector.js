@@ -1,5 +1,6 @@
 var class_askowl_1_1_selector =
 [
+    [ "Next", "class_askowl_1_1_selector.html#ae5a3ee9c4170ae2a19883160dcbd737a", null ],
     [ "Pick", "class_askowl_1_1_selector.html#adb9c76ed974a715aff196e85a1089ce6", null ],
     [ "Reset", "class_askowl_1_1_selector.html#ac01ec248d58dd380b24489613cd88d6c", null ],
     [ "CycleIndex", "class_askowl_1_1_selector.html#a9b2a87aa33c06035a3626d9457d0ac0c", null ],

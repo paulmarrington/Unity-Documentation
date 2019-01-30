@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['emitter',['Emitter',['../interface_askowl_1_1_i_has_emitter.html#a6ed22ed1092adf6cc0b2813fe9e92b22',1,'Askowl::IHasEmitter']]]
+  ['failed',['Failed',['../class_askowl_1_1_trees.html#a51d524d7f2b4513c9cd9a228a03e4386',1,'Askowl::Trees']]]
 ];

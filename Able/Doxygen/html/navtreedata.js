@@ -35,7 +35,8 @@ var NAVTREE =
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ],
-        [ "Properties", "functions_prop.html", null ]
+        [ "Properties", "functions_prop.html", null ],
+        [ "Events", "functions_evnt.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -46,7 +47,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_cache_8cs_source.html"
+"_cache_8cs_source.html",
+"struct_askowl_1_1_template_1_1_substitution.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

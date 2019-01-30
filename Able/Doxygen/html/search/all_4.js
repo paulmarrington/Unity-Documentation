@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['emitter',['Emitter',['../class_askowl_1_1_emitter.html',1,'Askowl.Emitter'],['../class_askowl_1_1_emitter.html',1,'Askowl.Emitter&lt; T &gt;'],['../interface_askowl_1_1_i_has_emitter.html#a6ed22ed1092adf6cc0b2813fe9e92b22',1,'Askowl.IHasEmitter.Emitter()']]],
-  ['emitter_3c_20t_20_3e',['Emitter&lt; T &gt;',['../class_askowl_1_1_emitter.html',1,'Askowl']]],
   ['empty',['Empty',['../class_askowl_1_1_fifo.html#aa63597c11918ab224c992812d6ab4a4e',1,'Askowl.Fifo.Empty()'],['../class_askowl_1_1_linked_list.html#a05e8b492195978fdaacbdcdceceab037',1,'Askowl.LinkedList.Empty()']]],
   ['entries',['Entries',['../class_askowl_1_1_cache.html#a0b9c949b694ce049f4f91aa497d726be',1,'Askowl::Cache']]],
   ['equals',['Equals',['../struct_askowl_1_1_geodetic_1_1_coordinates.html#ac4d2ab01ec08301501a66cb5140332be',1,'Askowl.Geodetic.Coordinates.Equals(Coordinates other)'],['../struct_askowl_1_1_geodetic_1_1_coordinates.html#a0a6eca53cc191ade494413c06cd1a093',1,'Askowl.Geodetic.Coordinates.Equals(object obj)']]],

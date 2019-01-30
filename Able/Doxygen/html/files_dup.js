@@ -4,12 +4,12 @@ var files_dup =
     [ "Clock.cs", "_clock_8cs_source.html", null ],
     [ "Commentary.cs", "_commentary_8cs_source.html", null ],
     [ "Compare.cs", "_compare_8cs_source.html", null ],
+    [ "ComponentDecoupler.cs", "_component_decoupler_8cs_source.html", null ],
     [ "Components.cs", "_components_8cs_source.html", null ],
     [ "ConditionalHideAttribute.cs", "_conditional_hide_attribute_8cs_source.html", null ],
     [ "CounterStack.cs", "_counter_stack_8cs_source.html", null ],
     [ "Csv.cs", "_csv_8cs_source.html", null ],
     [ "Disposable.cs", "_disposable_8cs_source.html", null ],
-    [ "Emitter.cs", "_emitter_8cs_source.html", null ],
     [ "ExponentialMovingAverage.cs", "_exponential_moving_average_8cs_source.html", null ],
     [ "Fifo.cs", "_fifo_8cs_source.html", null ],
     [ "Geodetic.cs", "_geodetic_8cs_source.html", null ],
@@ -29,6 +29,9 @@ var files_dup =
     [ "RichText.cs", "_rich_text_8cs_source.html", null ],
     [ "Selector.cs", "_selector_8cs_source.html", null ],
     [ "Set.cs", "_set_8cs_source.html", null ],
+    [ "Template.cs", "_template_8cs_source.html", null ],
+    [ "TextMeshProComponent.cs", "_text_mesh_pro_component_8cs_source.html", null ],
+    [ "Textual.cs", "_textual_8cs_source.html", null ],
     [ "Trees.cs", "_trees_8cs_source.html", null ],
     [ "Trig.cs", "_trig_8cs_source.html", null ]
 ];

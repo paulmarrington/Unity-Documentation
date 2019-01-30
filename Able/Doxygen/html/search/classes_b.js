@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['range',['Range',['../class_askowl_1_1_range.html',1,'Askowl']]],
-  ['rangeboundsattribute',['RangeBoundsAttribute',['../class_askowl_1_1_range_bounds_attribute.html',1,'Askowl']]]
+  ['selector',['Selector',['../class_askowl_1_1_selector.html',1,'Askowl']]],
+  ['set',['Set',['../class_askowl_1_1_set.html',1,'Askowl']]],
+  ['substitution',['Substitution',['../struct_askowl_1_1_template_1_1_substitution.html',1,'Askowl::Template']]]
 ];
