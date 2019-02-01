@@ -5,6 +5,7 @@ var namespace_askowl =
       [ "Boxed", "class_askowl_1_1_cache_1_1_boxed.html", "class_askowl_1_1_cache_1_1_boxed" ],
       [ "Boxed", "interface_askowl_1_1_cache_1_1_boxed.html", null ]
     ] ],
+    [ "Cached", "class_askowl_1_1_cached.html", "class_askowl_1_1_cached" ],
     [ "ConditionalHideAttribute", "class_askowl_1_1_conditional_hide_attribute.html", "class_askowl_1_1_conditional_hide_attribute" ],
     [ "CounterFifo", "class_askowl_1_1_counter_fifo.html", "class_askowl_1_1_counter_fifo" ],
     [ "Disposable", "struct_askowl_1_1_disposable.html", null ],

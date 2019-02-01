@@ -25,6 +25,7 @@ var hierarchy =
       [ "Askowl.CounterFifo", "class_askowl_1_1_counter_fifo.html", null ]
     ] ],
     [ "IDisposable", null, [
+      [ "Askowl.Cached< T >", "class_askowl_1_1_cached.html", null ],
       [ "Askowl.Disposable< T >", "struct_askowl_1_1_disposable.html", null ],
       [ "Askowl.Disposable< T >", "struct_askowl_1_1_disposable.html", null ],
       [ "Askowl.Fifo< T >", "class_askowl_1_1_fifo.html", null ],

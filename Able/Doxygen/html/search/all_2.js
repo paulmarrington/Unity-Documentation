@@ -1,6 +1,7 @@
 var searchData=
 [
   ['cache',['Cache',['../class_askowl_1_1_cache.html',1,'Askowl.Cache'],['../class_askowl_1_1_cache.html',1,'Askowl.Cache&lt; T &gt;']]],
+  ['cached',['Cached',['../class_askowl_1_1_cached.html',1,'Askowl']]],
   ['change',['Change',['../class_askowl_1_1_labels_attribute.html#abcd2e4dce9f5fb924b8e8641d9fe1368',1,'Askowl::LabelsAttribute']]],
   ['checkpattern',['CheckPattern',['../class_askowl_1_1_play_mode_tests.html#aafa9675f302ddc73cf869853840589c3',1,'Askowl::PlayModeTests']]],
   ['children',['Children',['../class_askowl_1_1_trees.html#a5a52c442bb7d34ad5c5f435197df03a5',1,'Askowl::Trees']]],

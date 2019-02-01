@@ -293,6 +293,8 @@ If we run fiber in a class scope, we can keep context in the class. When it runs
   }
 ```
 
+If a new context replaces the old, the former is disposed of first.
+
 
 ### Creating a Worker
 The only situation I can think of that you may need to resort to writing a new low-level Worker instance would be if you wanted to implement efficient polling, The example below is for `SkipFrames`, but `WaitFor(seconds)` uses a similar approach. The requesting fiber is in a new queue unique to this worker type, inserted in sorted order. Each update needs only to check and process items that are ready to run again.
@@ -397,6 +399,24 @@ If we respond to an emitter from a class scope, we can keep context in the class
 
 ### Emitter.Firings
 An emitter keeps a count of the number of times it has been fired. It is particularly useful to check if an emitter has fired before a listener has been attacked.
+
+### Emitter.Remove
+If you still have a reference to the listener you used you can remove it again. alternatively you can remove from inside the listener with `emitter.StopListening()`;
+
+``` c#
+Emitter.Action removeMyself = emitter => {
+  counter++;
+  emitter.StopListening();
+}
+using (emitter = Emitter.Instance.Listen(incrementCounter).Listen(removeMyself)) {
+  emitter.Remove(incrementCounter);
+  emitter.Fire();
+  Assert.AreEqual(expected: 1, actual: counter);
+  emitter.Fire();
+  Assert.AreEqual(expected: 1, actual: counter);
+}
+```
+
 
 ### Emitter.RemoveAllListeners
 Does as it says.

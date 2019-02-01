@@ -1,6 +1,7 @@
 var searchData=
 [
   ['cache',['Cache',['../class_askowl_1_1_cache.html',1,'Askowl.Cache'],['../class_askowl_1_1_cache.html',1,'Askowl.Cache&lt; T &gt;']]],
+  ['cached',['Cached',['../class_askowl_1_1_cached.html',1,'Askowl']]],
   ['color',['Color',['../class_askowl_1_1_rich_text_1_1_color.html',1,'Askowl::RichText']]],
   ['colour',['Colour',['../class_askowl_1_1_rich_text_1_1_colour.html',1,'Askowl::RichText']]],
   ['commentary',['Commentary',['../class_commentary.html',1,'']]],

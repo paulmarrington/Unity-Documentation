@@ -1,7 +1,7 @@
 var class_askowl_1_1_fiber =
 [
-    [ "Worker", "class_askowl_1_1_fiber_1_1_worker.html", null ],
     [ "Worker", "class_askowl_1_1_fiber_1_1_worker.html", "class_askowl_1_1_fiber_1_1_worker" ],
+    [ "Worker", "class_askowl_1_1_fiber_1_1_worker.html", null ],
     [ "Action", "class_askowl_1_1_fiber.html#a82c710cd5ab82d320228b0c01beb90c5", null ],
     [ "AsCoroutine", "class_askowl_1_1_fiber.html#a43279b1181076ea64b2bcda5150c6478", null ],
     [ "Break", "class_askowl_1_1_fiber.html#a674b839ebfddf7b04346d514f24c8be4", null ],
