@@ -401,7 +401,8 @@ If we respond to an emitter from a class scope, we can keep context in the class
 An emitter keeps a count of the number of times it has been fired. It is particularly useful to check if an emitter has fired before a listener has been attacked.
 
 ### Emitter.Remove
-If you still have a reference to the listener you used you can remove it again. alternatively you can remove from inside the listener with `emitter.StopListening()`;
+If you still have a reference to the listener you used you can remove it again. alternatively you can remove from inside the listener with `emitter.
+StopListening()`;
 
 ``` c#
 Emitter.Action removeMyself = emitter => {
@@ -423,6 +424,9 @@ Does as it says.
 
 ### SingleFireInstance
 I find that in most cases I get an emitter from the cache, wait for one firing then dispose of it. Because this is an asynchronous process, it is messy. It is better for the emitter to dispose of itself.
+
+### Emitter.StopListening
+This method is meant to be called inside a listener. The current or most recently accessed listener will be removed from the firing line.
 
 ### Emitter.Waiting
 Returns true if an emitter has one or more listeners registered.
