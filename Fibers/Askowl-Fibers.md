@@ -430,3 +430,24 @@ This method is meant to be called inside a listener. The current or most recentl
 
 ### Emitter.Waiting
 Returns true if an emitter has one or more listeners registered.
+
+## DelayedCache
+I have come across circumstances involving fibers where the ordinary Able cache is too limited. Consider an external service where the results are held in a cached data object. If the service call releases it then can be reused before client code runs on the next frame. A `DelayedCache` object does not return a DTO to the cache until after an interval has passed. The default is 10 frames, but it can be adjusted as needed.
+
+``` c#
+  public class Example {
+    private class DTO : DelayedCache<DTO> {
+      public int Number;
+      // ...
+    }
+
+    [UnityTest] public IEnumerator DelayedCacheTest() {
+      var data = DelayedCachedData.Instance;
+      data.Frames = 10;
+      data.Number = 11;
+      // ...
+      data.Dispose();
+      // client has 10 frames to process or take a copy of the data.
+    }
+  }
+```
