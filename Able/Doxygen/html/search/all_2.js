@@ -6,7 +6,7 @@ var searchData=
   ['checkpattern',['CheckPattern',['../class_askowl_1_1_play_mode_tests.html#aafa9675f302ddc73cf869853840589c3',1,'Askowl::PlayModeTests']]],
   ['children',['Children',['../class_askowl_1_1_trees.html#a5a52c442bb7d34ad5c5f435197df03a5',1,'Askowl::Trees']]],
   ['choices',['Choices',['../class_askowl_1_1_selector.html#af466d4de2467afa11551761575c690e0',1,'Askowl::Selector']]],
-  ['clear',['Clear',['../class_askowl_1_1_fifo.html#a8f0108a2e14cc265496560174eb50f18',1,'Askowl::Fifo']]],
+  ['clear',['Clear',['../class_askowl_1_1_fifo.html#a8f0108a2e14cc265496560174eb50f18',1,'Askowl.Fifo.Clear()'],['../class_askowl_1_1_map.html#a9bd1dd1d83cdde6ff5787d21d635251b',1,'Askowl.Map.Clear()']]],
   ['clone',['Clone',['../class_askowl_1_1_cache_1_1_boxed.html#a9c491f021239fe64ce92581e483dc4cc',1,'Askowl::Cache::Boxed']]],
   ['color',['Color',['../class_askowl_1_1_rich_text_1_1_color.html',1,'Askowl::RichText']]],
   ['colour',['Colour',['../class_askowl_1_1_rich_text_1_1_colour.html',1,'Askowl::RichText']]],

@@ -137,11 +137,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a657d260f2dc40d8ff61262becb7bb6c9"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2Rb9oEq">Start a fiber if it is not already running</a>  <a href="#a657d260f2dc40d8ff61262becb7bb6c9">More...</a><br /></td></tr>
 <tr class="separator:a657d260f2dc40d8ff61262becb7bb6c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a65d160f035f03236da358e978871f4"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a2a65d160f035f03236da358e978871f4">Context&lt; T &gt;</a> ()</td></tr>
-<tr class="memdesc:a2a65d160f035f03236da358e978871f4"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2B9M1kO">Retrieve context object or null for none or wrong type</a>  <a href="#a2a65d160f035f03236da358e978871f4">More...</a><br /></td></tr>
+<tr class="memdesc:a2a65d160f035f03236da358e978871f4"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2RUcL2S">Retrieve the context as a class type - null for none or wrong type</a>  <a href="#a2a65d160f035f03236da358e978871f4">More...</a><br /></td></tr>
 <tr class="separator:a2a65d160f035f03236da358e978871f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad811d17cb6c8fa9476c5d8f6a62c73dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#ad811d17cb6c8fa9476c5d8f6a62c73dd">Context&lt; T &gt;</a> (T value)</td></tr>
-<tr class="memdesc:ad811d17cb6c8fa9476c5d8f6a62c73dd"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2B9M1kO">Set context object (disposing of old if necessary/possible)</a>  <a href="#ad811d17cb6c8fa9476c5d8f6a62c73dd">More...</a><br /></td></tr>
+<tr class="memdesc:ad811d17cb6c8fa9476c5d8f6a62c73dd"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2RUcL2S">Set the context to an instance of a type</a>  <a href="#ad811d17cb6c8fa9476c5d8f6a62c73dd">More...</a><br /></td></tr>
 <tr class="separator:ad811d17cb6c8fa9476c5d8f6a62c73dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef98408c02ecf3ab5d28824a36fefe72"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#aef98408c02ecf3ab5d28824a36fefe72">Context&lt; T &gt;</a> (string name)</td></tr>
+<tr class="memdesc:aef98408c02ecf3ab5d28824a36fefe72"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2RUcL2S">Retrieve the context as a class type - null for none or wrong type</a>  <a href="#aef98408c02ecf3ab5d28824a36fefe72">More...</a><br /></td></tr>
+<tr class="separator:aef98408c02ecf3ab5d28824a36fefe72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f11be052757cf9886efd771466955b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a4f11be052757cf9886efd771466955b0">Context&lt; T &gt;</a> (string name, T value)</td></tr>
+<tr class="memdesc:a4f11be052757cf9886efd771466955b0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2RUcL2S">Set the context to an instance of a type</a>  <a href="#a4f11be052757cf9886efd771466955b0">More...</a><br /></td></tr>
+<tr class="separator:a4f11be052757cf9886efd771466955b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6de7a8dabd6e8990a428d785c6bdf7c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a6de7a8dabd6e8990a428d785c6bdf7c0">Exit</a> ()</td></tr>
 <tr class="memdesc:a6de7a8dabd6e8990a428d785c6bdf7c0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2DBVWCe">Abort fiber processing immediately, cleaning up as we go</a>  <a href="#a6de7a8dabd6e8990a428d785c6bdf7c0">More...</a><br /></td></tr>
 <tr class="separator:a6de7a8dabd6e8990a428d785c6bdf7c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -329,7 +335,7 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2DB3wgx">Return an IEnumerator to use with a yield in a Coroutine</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00197">197</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00208">208</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -350,7 +356,7 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2DDvlFd">Break a Begin/End/Repeat/Again block</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00161">161</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00172">172</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -397,7 +403,7 @@ Properties</h2></td></tr>
 </div>
 </div>
 <a id="a2a65d160f035f03236da358e978871f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a65d160f035f03236da358e978871f4">&#9670;&nbsp;</a></span>Context&lt; T &gt;() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a65d160f035f03236da358e978871f4">&#9670;&nbsp;</a></span>Context&lt; T &gt;() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -411,12 +417,15 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><a href="http://bit.ly/2B9M1kO">Retrieve context object or null for none or wrong type</a> </p>
+<p><a href="http://bit.ly/2RUcL2S">Retrieve the context as a class type - null for none or wrong type</a> </p>
 <div class="typeconstraint">
 <dl><dt><b>Type Constraints</b></dt><dd>
 <table border="0" cellspacing="2" cellpadding="0">
 <tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>class</em></td><td>&#160;</td></tr>
 <tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>context</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>typeof</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>T</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>Value</em></td><td>&#160;</td></tr>
 <tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>as</em></td><td>&#160;</td></tr>
 <tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>T</em></td><td>&#160;</td></tr>
 </table>
@@ -427,7 +436,7 @@ Properties</h2></td></tr>
 </div>
 </div>
 <a id="ad811d17cb6c8fa9476c5d8f6a62c73dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad811d17cb6c8fa9476c5d8f6a62c73dd">&#9670;&nbsp;</a></span>Context&lt; T &gt;() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ad811d17cb6c8fa9476c5d8f6a62c73dd">&#9670;&nbsp;</a></span>Context&lt; T &gt;() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -442,7 +451,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><a href="http://bit.ly/2B9M1kO">Set context object (disposing of old if necessary/possible)</a> </p>
+<p><a href="http://bit.ly/2RUcL2S">Set the context to an instance of a type</a> </p>
 <div class="typeconstraint">
 <dl><dt><b>Type Constraints</b></dt><dd>
 <table border="0" cellspacing="2" cellpadding="0">
@@ -453,6 +462,79 @@ Properties</h2></td></tr>
 </div>
 
 <p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00081">81</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+
+</div>
+</div>
+<a id="aef98408c02ecf3ab5d28824a36fefe72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef98408c02ecf3ab5d28824a36fefe72">&#9670;&nbsp;</a></span>Context&lt; T &gt;() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">T Askowl.Fiber.Context&lt; T &gt; </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href="http://bit.ly/2RUcL2S">Retrieve the context as a class type - null for none or wrong type</a> </p>
+<div class="typeconstraint">
+<dl><dt><b>Type Constraints</b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>class</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>context</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>name</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>Value</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>as</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>T</em></td><td>&#160;</td></tr>
+</table>
+</dd>
+</dl>
+</div>
+
+</div>
+</div>
+<a id="a4f11be052757cf9886efd771466955b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f11be052757cf9886efd771466955b0">&#9670;&nbsp;</a></span>Context&lt; T &gt;() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.Context&lt; T &gt; </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href="http://bit.ly/2RUcL2S">Set the context to an instance of a type</a> </p>
+<div class="typeconstraint">
+<dl><dt><b>Type Constraints</b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>class</em></td><td>&#160;</td></tr>
+</table>
+</dd>
+</dl>
+</div>
+
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00090">90</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -524,7 +606,7 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2DBVWCe">Abort fiber processing immediately, cleaning up as we go</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00098">98</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00107">107</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -546,7 +628,7 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2DBVWCe">Force another fiber to exit immediately</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00104">104</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00114">114</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -567,7 +649,7 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2Rf0dD4">Complete a Fiber.Start statement where needed (no action)</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00115">115</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00126">126</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -672,7 +754,7 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2DDvp7V">Begin/Repeat loop for a specific number of times</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00135">135</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00146">146</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -734,7 +816,7 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2RWQrpp">Exit later fiber operations if the time supplied is exceeded</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00212">212</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00222">222</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -807,28 +889,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a9b9d5134a6521a580fe3c65bdb1e0255"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b9d5134a6521a580fe3c65bdb1e0255">&#9670;&nbsp;</a></span>WaitFor() <span class="overload">[2/11]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.WaitFor </td>
-          <td>(</td>
-          <td class="paramtype">Task&#160;</td>
-          <td class="paramname"><em>task</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p><a href="http://bit.ly/2RcQM7a">Convert Task activities to Coroutines to behave well with the rest of Unity</a> </p>
-
-</div>
-</div>
 <a id="ae0aea65a91c9004ab8e8d7e942e46879"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0aea65a91c9004ab8e8d7e942e46879">&#9670;&nbsp;</a></span>WaitFor() <span class="overload">[3/11]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0aea65a91c9004ab8e8d7e942e46879">&#9670;&nbsp;</a></span>WaitFor() <span class="overload">[2/11]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -844,6 +906,26 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a href="http://bit.ly/2RdEKtZ">Wait the specified time in game-seconds</a> </p>
+
+</div>
+</div>
+<a id="a9b9d5134a6521a580fe3c65bdb1e0255"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b9d5134a6521a580fe3c65bdb1e0255">&#9670;&nbsp;</a></span>WaitFor() <span class="overload">[3/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a> Askowl.Fiber.WaitFor </td>
+          <td>(</td>
+          <td class="paramtype">Task&#160;</td>
+          <td class="paramname"><em>task</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href="http://bit.ly/2RcQM7a">Convert Task activities to Coroutines to behave well with the rest of Unity</a> </p>
 
 </div>
 </div>
@@ -1005,6 +1087,8 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2CV0RNn">Wait for another fiber to complete, starting it if needed</a> </p>
 
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00214">214</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+
 </div>
 </div>
 <a id="a4b8f2d77abda32de674c07e51ca7ba8d"></a>
@@ -1082,7 +1166,7 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2DDvnNl">Begin/Again repeating operations. Use Break() or Exit() to leave</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00132">132</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00143">143</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -1108,7 +1192,7 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2DDvmZN">Displays Do() and action events on Unity console</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00226">226</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00236">236</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -1126,7 +1210,7 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2CU6Vp6">Standard If // Else // Then branch</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00186">186</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00197">197</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -1144,7 +1228,7 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2PtbezT">Begin/End block - use Break() to create an <code>if</code></a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00129">129</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00140">140</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -1162,7 +1246,7 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2Pqv2Ub">Move Fiber processing to FixedUpdate queue</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00093">93</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00102">102</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -1180,7 +1264,7 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2Pqv2Ub">Move Fiber processing to LateUpdate queue</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00095">95</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00104">104</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -1198,7 +1282,7 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2Pqv2Ub">Return Fiber processing to frame Update queue</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00091">91</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00100">100</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -1216,7 +1300,7 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2CU6Vp6">Standard If // Else // Then branch</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00189">189</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00200">200</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -1261,7 +1345,7 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2DDvnNl">Loops and Blocks - Begin/End, Begin/Again, Begin-Repeat</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00120">120</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00131">131</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
