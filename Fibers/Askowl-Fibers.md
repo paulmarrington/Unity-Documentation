@@ -23,6 +23,7 @@ On another subject, some unity packages, specifically FireBase, use C# 4+ Tasks,
 * [Basic Fibers Commands](https://youtu.be/4FxZEKfrV_g) (v1.0)
 * [Fibers in Pooling - A Real-World Example](https://youtu.be/WIEL9aJlwbc) (v1.0)
 * [Precompiled Fibers for High Performance Applications](https://youtu.be/8poMA8zg8ec) (v2.0)
+* [Interrupting Running Fibers](https://youtu.be/yAm7ajpiTRI)
 * [Keeping Context in Fibers](https://youtu.be/gRcM59FcFnU)
 * [Using Emitters with Fibers](https://youtu.be/qObY_7jFe88)
 
