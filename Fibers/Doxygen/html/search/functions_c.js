@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['timeout',['Timeout',['../class_askowl_1_1_fiber.html#ac12f3057cbbe52a8206a1feeee0beaf9',1,'Askowl::Fiber']]],
-  ['tostring',['ToString',['../class_askowl_1_1_fiber.html#aaac8abf4c5cf981a7dd212e9a80b1e8e',1,'Askowl.Fiber.ToString()'],['../class_askowl_1_1_fiber_1_1_worker.html#a51f58fe412453c4303b5bfe009513af3',1,'Askowl.Fiber.Worker.ToString()']]]
+  ['skipframes',['SkipFrames',['../class_askowl_1_1_fiber.html#a57f0fc50cee76a4de43ba4671b53a7c2',1,'Askowl.Fiber.SkipFrames(int framesToSkip)'],['../class_askowl_1_1_fiber.html#a4059e7a2ee6d5e978070fee7ce7bd9e2',1,'Askowl.Fiber.SkipFrames(Func&lt; Fiber, int &gt; getter)']]],
+  ['step',['Step',['../class_askowl_1_1_fiber_1_1_worker.html#aa5240ccb5a891ec05b23f577fde44a53',1,'Askowl::Fiber::Worker']]],
+  ['stoplistening',['StopListening',['../class_askowl_1_1_emitter.html#a148751e59195e9d980690fbeef7a136a',1,'Askowl::Emitter']]]
 ];

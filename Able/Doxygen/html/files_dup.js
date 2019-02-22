@@ -19,6 +19,7 @@ var files_dup =
     [ "Lists.cs", "_lists_8cs_source.html", null ],
     [ "Log.cs", "_log_8cs_source.html", null ],
     [ "Map.cs", "_map_8cs_source.html", null ],
+    [ "MethodCache.cs", "_method_cache_8cs_source.html", null ],
     [ "Notation.cs", "_notation_8cs_source.html", null ],
     [ "Objects.cs", "_objects_8cs_source.html", null ],
     [ "Pick.cs", "_pick_8cs_source.html", null ],

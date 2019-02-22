@@ -1,5 +1,11 @@
 var hierarchy =
 [
+    [ "DelayedCache< Closure< TS, TTuple >>", null, [
+      [ "Askowl.Fiber.Closure< TS, TTuple >", "class_askowl_1_1_fiber_1_1_closure.html", null ]
+    ] ],
+    [ "Askowl.Fiber.IClosure", "interface_askowl_1_1_fiber_1_1_i_closure.html", [
+      [ "Askowl.Fiber.Closure< TS, TTuple >", "class_askowl_1_1_fiber_1_1_closure.html", null ]
+    ] ],
     [ "IDisposable", null, [
       [ "Askowl.Emitter", "class_askowl_1_1_emitter.html", null ],
       [ "Askowl.Fiber", "class_askowl_1_1_fiber.html", null ],

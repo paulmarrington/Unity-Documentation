@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['delayedcache',['DelayedCache',['../class_delayed_cache.html',1,'']]]
+  ['closure',['Closure',['../class_askowl_1_1_fiber_1_1_closure.html',1,'Askowl::Fiber']]]
 ];

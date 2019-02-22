@@ -10,7 +10,7 @@ Download from the [Unity Store](https://assetstore.unity.com/packages/slug/13309
 
 Coroutines are the core mechanism in Unity3d MonoBehaviour classes to provide independent processing as a form of co-operative multi-tasking. Activities that must occur in order use `yield return myCoroutine();` to wait on completion before continuing. Yield instructions must reside in methods that ha z ve an IEnumerator return type. C# turns them into a state machine. These state machines are not resettable, so they must be discarded once complete. Since every call generates a new state machine, this puts a heavy load on the garbage collector. Using coroutines in abundance can cause glitches in the running of VR and mobile applications.
 
-***Fibers*** provides an alternative co-operative multi-tasking approach to Coroutines with less overhead. It is not a drop-in replacement but is intended for heavy usage situations.
+***Fibers*** provides an alternative co-operative multi-tasking approach to Coroutines with less overhead. It is not a drop-in replacement but is intended for heavy usage situations. The **only** way to take the load from the garbage collector is to [precompile](#instance) fibers and reuse them.
 
 On another subject, some unity packages, specifically FireBase, use C# 4+ Tasks, a preemptive multitasking interface. Anything using Task callbacks must be treated as independent threads with semaphores and the like to protect against data corruption. The Askowl Tasks class mergest tasks into Fibers so that they fit better and more safely into the Unity system.
 
@@ -48,6 +48,89 @@ Fiber.Start
 Note that each step in a fiber is passed a reference. This is mostly so that you can call `fiber.Break()` if needed.
 
 Once a Fiber terminates it is placed in a recycle bin for later reuse. The section below includes functions that allow loops, repeats and conditional exits.
+
+## Logging
+
+As I keep saying, fibers are asynchronous. When developing with fibers we often need to write to the Unity Log before or after some action or command. While we can use a `Do(_ => Debug.Log("..."))`, it is clunky and messy. Better to have a built-in. `Log` has a second optional boolean parameter `warning`.
+
+``` c#
+Fiber.Start.Log("Ordinary Log Message");
+
+Fiber.Start.Log("Warning Log Message", warning: true);
+```
+
+## Precompiling Fibers for the Greater Good
+Most fiber commands take a function. On reference each function creates an anonymous class. It is the same for methods, lambdas or inner functions. By precompiling a fiber and reusing it we avoid the associated garbage collection. When a function reference is created, all data except enclosing class fields are frozen. Also, fibers run over time. Be careful not to run the same fiber while a previous one is still going. The absolute best pattern uses an inner class.
+
+``` c#
+class MyFiber : Fiber.Closure<MyFiber, (Tuple)> { // A
+  protected override void Activities(Fiber fiber) => // B
+    fiber.Do(_ => WhatYouDoSoWell());
+}
+// ... and to get a free instance and run it ...
+var myFiber = MyFiber.Go((Tuple)); // C
+
+Fiber.Start.WaitFor(myFiber); // is the same as
+Fiber.Start.WaitFor(myFiber.OnComplete); // is the same as
+Fiber.Start.WaitFor(MyFiber.Go((Tuple)));
+
+var scope = myFiber.Scope; // D
+```
+
+* **A**: The tuple holds the scope or context passed in on `Go`. It holds request and response data. Since it is a tuple it is passed by value so does not use heap space or the garbage collector.
+* **B**: There is one abstract method to override. Use it to add all the steps you need. It is called in the constructor, so only once per instance. There may be more than one instance if you need to run more than once copy concurrently.
+* **C**: `Go` is a static method that will get an instance of the precompiled fiber, load up the scope and start it running.
+* **D**: When a fiber is finished it will be placed back in recycling for reuse after 10 frames. Take a copy of the scope if it includes response data that is not an instance of an object (i.e. a string, integer, float, struct or tuple.
+
+And here is an example as used in CustomAsset.Service.
+
+``` c#
+public Emitter CallService(Service service) => CallServiceFiber.Go((this, Instance<TS>(), service));
+
+private class CallServiceFiber : Fiber.Closure<CallServiceFiber,(Services<TS, TC> manager, TS server, Service service)> {
+  protected override void Activities(Fiber fiber) =>
+    fiber.Begin
+         .WaitFor(_ => MethodCache.Call(scope.server, "Call", new object[] {scope.service.Reset()}) as Emitter)
+         .Until(_ => !scope.service.Error || ((scope.server = scope.manager.Next<TS>()) == null));
+}
+```
+
+## Exception Management
+In a sequential program a thrown exception bubbles up the call stack until it can be handled. This is a problem for fibers since the calling code had moved on. It is no longer available to catch an exception. The answer is to leave some code around to respond to exceptions if and when they happen.
+
+### GlobalOnError
+If a fiber has not been given a local `OnError`, then this global one is triggered if an exception is thrown. By default it writes an error message to the Unity console. It is primarily used by test frameworks.
+
+``` c#
+fiber.GlobalOnError(msg => DoSomethingWith(msg)).Do(more);
+```
+
+### OnError
+`OnError` sets an error trap for the current fiber and any fibers invoked in the list with `WaitFor`.
+
+``` c#
+fiber.OnError(msg => DoSomethingWith(msg)).Do(more).WaitFor(anotherFiber);
+```
+
+### Error
+`OnError` is normally triggered by throwing an exception. Sometime a simpler construct is useful, particularly when the errors have meaning to be processed later.
+
+``` c#
+fiber.Error("mandatory field missed");
+```
+
+
+### ExitOnError
+Catching errors will continue with the following fiber steps unless `ExitOnError` is specified. `Aborted` is set if a fiber exits on an exception thrown.
+
+``` c#
+fiber.ExitOnError.Do(something).WaitFor(somethingElse);
+if (fiber.Aborted) DoSomethingOnError();
+
+yield return fiber.ExitOnError.Do(something).WaitFor(somethingElse).AsCoroutine;
+```
+
+`AsCoroutine` is executed even if many of the preceding steps are skipped.
 
 ## Built-in Fiber Commands
 ### Aborted
@@ -121,10 +204,12 @@ Fiber.Start.WaitFor(seconds: 2).Exit(otherFiber)
 
 ### Fire
 
-Fire an emitter in a way that fits into a fiber stream.
+Fire an emitter in a way that fits into a fiber stream. Use lambda version if the emitter is likely to be changed by other code before it is to be used.
 
 ``` c#
 Fiber.Start.Begin.WaitFor(seconds: 5.0f).Fire(FiveSecondWarningEmitter).Again;
+// Lambda version for variable emitter reference
+Fiber.Start.Begin.WaitFor(seconds: 5.0f).Fire(_ => FiveSecondWarningEmitter).Again;
 ```
 
 

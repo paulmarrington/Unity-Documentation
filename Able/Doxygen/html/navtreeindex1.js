@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"namespace_decoupled.html":[1,0,1],
+"namespace_decoupled.html":[0,0,1],
 "namespaces.html":[0,0],
 "pages.html":[],
 "struct_askowl_1_1_disposable.html":[1,0,0,5],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['instance',['Instance',['../class_askowl_1_1_fiber.html#af336d831c07ae95d8ae83d353ebf73fa',1,'Askowl::Fiber']]]
+  ['exitonerror',['ExitOnError',['../class_askowl_1_1_fiber.html#a7b78c11c2227d6d000163223a3ba9ef5',1,'Askowl::Fiber']]]
 ];
