@@ -1,6 +1,6 @@
 ---
 title: Askowl Fibers for Unity3D
-description: Like Coroutines but reduced overhead
+description: Like Coroutines, Only Better
 ---
 * Table of Contents
 {:toc}
