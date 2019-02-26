@@ -59,7 +59,7 @@ Fiber.Start.Log("Ordinary Log Message");
 Fiber.Start.Log("Warning Log Message", warning: true);
 ```
 
-## Precompiling Fibers for the Greater Good
+## Precompiling Fibers for the Good
 Most fiber commands take a function. On reference, each function creates an anonymous class. It is the same for methods, lambdas or inner functions. By precompiling a fiber and reusing it, we avoid the associated garbage collection. When creating a function reference, all data except enclosing class fields are frozen. Also, fibers run over time. Be careful not to run the same fiber while a previous one is still going. The absolute best pattern uses an inner class.
 
 ``` c#
