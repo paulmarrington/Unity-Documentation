@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"namespace_askowl_1_1_rich_text.html":[1,0,0,0],
 "namespace_decoupled.html":[1,0,1],
 "namespace_decoupled.html":[0,0,1],
 "namespaces.html":[0,0],

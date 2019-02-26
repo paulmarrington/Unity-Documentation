@@ -112,10 +112,10 @@ Inheritance diagram for Askowl.Fiber:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber_1_1_closure.html">Closure</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="class_askowl_1_1_fiber_1_1_closure.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2NjSGNX">Closure super-class that does all the smarts</a>  <a href="class_askowl_1_1_fiber_1_1_closure.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_askowl_1_1_fiber_1_1_i_closure.html">IClosure</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="interface_askowl_1_1_fiber_1_1_i_closure.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2NjSGNX">Interface used by WaitFor(IClosure)</a>  <a href="interface_askowl_1_1_fiber_1_1_i_closure.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><b>Queue</b></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2DF6QHw">Container for different update queues</a>  <br /></td></tr>
@@ -142,7 +142,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a657d260f2dc40d8ff61262becb7bb6c9"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2Rb9oEq">Start a fiber if it is not already running</a>  <a href="#a657d260f2dc40d8ff61262becb7bb6c9">More...</a><br /></td></tr>
 <tr class="separator:a657d260f2dc40d8ff61262becb7bb6c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5fe0440a57dbcca7610abc043c51a9dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a5fe0440a57dbcca7610abc043c51a9dc">WaitFor</a> (<a class="el" href="interface_askowl_1_1_fiber_1_1_i_closure.html">IClosure</a> closure)</td></tr>
-<tr class="memdesc:a5fe0440a57dbcca7610abc043c51a9dc"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a5fe0440a57dbcca7610abc043c51a9dc">More...</a><br /></td></tr>
+<tr class="memdesc:a5fe0440a57dbcca7610abc043c51a9dc"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2NjSGNX">Helper that is the same as fiber.WaitFor(closure.OnComplete)</a>  <a href="#a5fe0440a57dbcca7610abc043c51a9dc">More...</a><br /></td></tr>
 <tr class="separator:a5fe0440a57dbcca7610abc043c51a9dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a65d160f035f03236da358e978871f4"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a2a65d160f035f03236da358e978871f4">Context&lt; T &gt;</a> ()</td></tr>
 <tr class="memdesc:a2a65d160f035f03236da358e978871f4"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2RUcL2S">Retrieve the context as a class type - null for none or wrong type</a>  <a href="#a2a65d160f035f03236da358e978871f4">More...</a><br /></td></tr>
@@ -202,22 +202,22 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Skip</b> (int after)<
 <tr class="memdesc:a4b8f2d77abda32de674c07e51ca7ba8d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2CV0RNn">Wait for another fiber to complete, starting it if needed - value set by return value of a function</a>  <a href="#a4b8f2d77abda32de674c07e51ca7ba8d">More...</a><br /></td></tr>
 <tr class="separator:a4b8f2d77abda32de674c07e51ca7ba8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8be94f2c3be0622921d7d47649a27d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#ac8be94f2c3be0622921d7d47649a27d6">GlobalOnError</a> (<a class="el" href="class_askowl_1_1_fiber.html#a82c710cd5ab82d320228b0c01beb90c5">Action</a>&lt; string &gt; actor)</td></tr>
-<tr class="memdesc:ac8be94f2c3be0622921d7d47649a27d6"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#ac8be94f2c3be0622921d7d47649a27d6">More...</a><br /></td></tr>
+<tr class="memdesc:ac8be94f2c3be0622921d7d47649a27d6"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2NsjMml">Set a global (app-wide) error catch lambda. All fibers without a local override will come here. The default is to write to the Unity console.</a>  <a href="#ac8be94f2c3be0622921d7d47649a27d6">More...</a><br /></td></tr>
 <tr class="separator:ac8be94f2c3be0622921d7d47649a27d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a154874ba351271bd084660a46c6527c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a154874ba351271bd084660a46c6527c1">OnError</a> (<a class="el" href="class_askowl_1_1_fiber.html#a82c710cd5ab82d320228b0c01beb90c5">Action</a>&lt; string &gt; actor)</td></tr>
-<tr class="memdesc:a154874ba351271bd084660a46c6527c1"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a154874ba351271bd084660a46c6527c1">More...</a><br /></td></tr>
+<tr class="memdesc:a154874ba351271bd084660a46c6527c1"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2NlxMy3">The catch lambda will be called for any exceptions from this fiber or any fibers called with WaitFor</a>  <a href="#a154874ba351271bd084660a46c6527c1">More...</a><br /></td></tr>
 <tr class="separator:a154874ba351271bd084660a46c6527c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14331ffb60be09bfd2843eef77f1323c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a14331ffb60be09bfd2843eef77f1323c">Error</a> (string message)</td></tr>
-<tr class="memdesc:a14331ffb60be09bfd2843eef77f1323c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a14331ffb60be09bfd2843eef77f1323c">More...</a><br /></td></tr>
+<tr class="memdesc:a14331ffb60be09bfd2843eef77f1323c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2NjXMJZ"></a> //#TBD#//  <a href="#a14331ffb60be09bfd2843eef77f1323c">More...</a><br /></td></tr>
 <tr class="separator:a14331ffb60be09bfd2843eef77f1323c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2bce31b584c95aa07085fdf8776d0ea5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a2bce31b584c95aa07085fdf8776d0ea5">Error</a> (Func&lt; <a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>, string &gt; messageLambda)</td></tr>
-<tr class="memdesc:a2bce31b584c95aa07085fdf8776d0ea5"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a2bce31b584c95aa07085fdf8776d0ea5">More...</a><br /></td></tr>
+<tr class="memdesc:a2bce31b584c95aa07085fdf8776d0ea5"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2NjXMJZ"></a> //#TBD#//  <a href="#a2bce31b584c95aa07085fdf8776d0ea5">More...</a><br /></td></tr>
 <tr class="separator:a2bce31b584c95aa07085fdf8776d0ea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaac8abf4c5cf981a7dd212e9a80b1e8e"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#aaac8abf4c5cf981a7dd212e9a80b1e8e">ToString</a> ()</td></tr>
 <tr class="memdesc:aaac8abf4c5cf981a7dd212e9a80b1e8e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2DDvmZN">Return Fiber contents and current state</a>  <a href="#aaac8abf4c5cf981a7dd212e9a80b1e8e">More...</a><br /></td></tr>
 <tr class="separator:aaac8abf4c5cf981a7dd212e9a80b1e8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d72a1c0172200ff3baa4ead4e566803"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a1d72a1c0172200ff3baa4ead4e566803">Log</a> (string message, bool warning=false)</td></tr>
-<tr class="memdesc:a1d72a1c0172200ff3baa4ead4e566803"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a1d72a1c0172200ff3baa4ead4e566803">More...</a><br /></td></tr>
+<tr class="memdesc:a1d72a1c0172200ff3baa4ead4e566803"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2NjzIHg">Write to the Unity console (optionally as a warning entry)</a>  <a href="#a1d72a1c0172200ff3baa4ead4e566803">More...</a><br /></td></tr>
 <tr class="separator:a1d72a1c0172200ff3baa4ead4e566803"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a363da922f49d33fa02c3690dab499e38"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a363da922f49d33fa02c3690dab499e38">WaitFor</a> (<a class="el" href="class_askowl_1_1_emitter.html">Emitter</a> emitter, string name=null)</td></tr>
 <tr class="memdesc:a363da922f49d33fa02c3690dab499e38"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2Rb9pbs">Wait for an emitter to fire</a>  <a href="#a363da922f49d33fa02c3690dab499e38">More...</a><br /></td></tr>
@@ -316,7 +316,7 @@ Properties</h2></td></tr>
 <tr class="memdesc:a216cbed5561eb7388c5e9dc1499c46d8"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2DDvnNl">Loops and Blocks - Begin/End, Begin/Again, Begin-Repeat</a>  <a href="#a216cbed5561eb7388c5e9dc1499c46d8">More...</a><br /></td></tr>
 <tr class="separator:a216cbed5561eb7388c5e9dc1499c46d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b78c11c2227d6d000163223a3ba9ef5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_askowl_1_1_fiber.html">Fiber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_askowl_1_1_fiber.html#a7b78c11c2227d6d000163223a3ba9ef5">ExitOnError</a><code> [get]</code></td></tr>
-<tr class="memdesc:a7b78c11c2227d6d000163223a3ba9ef5"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href=""></a> //#TBD#//  <a href="#a7b78c11c2227d6d000163223a3ba9ef5">More...</a><br /></td></tr>
+<tr class="memdesc:a7b78c11c2227d6d000163223a3ba9ef5"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2Nn2xCx">Exceptions in this fiber will cause the fiber to exit</a>  <a href="#a7b78c11c2227d6d000163223a3ba9ef5">More...</a><br /></td></tr>
 <tr class="separator:a7b78c11c2227d6d000163223a3ba9ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -631,7 +631,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><a href=""></a> //#TBD#// </p>
+<p><a href="http://bit.ly/2NjXMJZ"></a> //#TBD#// </p>
 
 <p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00301">301</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
@@ -653,9 +653,9 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><a href=""></a> //#TBD#// </p>
+<p><a href="http://bit.ly/2NjXMJZ"></a> //#TBD#// </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00307">307</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00306">306</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -783,7 +783,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><a href=""></a> //#TBD#// </p>
+<p><a href="http://bit.ly/2NsjMml">Set a global (app-wide) error catch lambda. All fibers without a local override will come here. The default is to write to the Unity console.</a> </p>
 
 <p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00283">283</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
@@ -876,9 +876,9 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><a href=""></a> //#TBD#// </p>
+<p><a href="http://bit.ly/2NjzIHg">Write to the Unity console (optionally as a warning entry)</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00434">434</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00433">433</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -898,7 +898,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><a href=""></a> //#TBD#// </p>
+<p><a href="http://bit.ly/2NlxMy3">The catch lambda will be called for any exceptions from this fiber or any fibers called with WaitFor</a> </p>
 
 <p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00289">289</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
@@ -1253,9 +1253,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><a href=""></a> //#TBD#// </p>
-
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00115">115</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p><a href="http://bit.ly/2NjSGNX">Helper that is the same as fiber.WaitFor(closure.OnComplete)</a> </p>
 
 </div>
 </div>
@@ -1374,7 +1372,7 @@ Properties</h2></td></tr>
 
 <p><a href="http://bit.ly/2DDvmZN">Displays Do() and action events on Unity console</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00413">413</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00412">412</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 
 </div>
 </div>
@@ -1551,7 +1549,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p><a href=""></a> //#TBD#// </p>
+<p><a href="http://bit.ly/2Nn2xCx">Exceptions in this fiber will cause the fiber to exit</a> </p>
 
 <p class="definition">Definition at line <a class="el" href="_fiber_8cs_source.html#l00294">294</a> of file <a class="el" href="_fiber_8cs_source.html">Fiber.cs</a>.</p>
 

@@ -60,11 +60,6 @@ Custom assets are Unity scriptable objects on steroids. They provide the glue th
   5. ***StringSet*** - provides a more powerful and flexible alternative to enums
   6. ***Trigger*** - an emitter where components can attach as needed without additional code
   7. ***Polling*** - to provide custom asset triggers for external data changes
-  8. ***IoT*** - Triggers for hardware
-    1. Compass
-    2. Gps
-    3. Gyroscope
-    4. WebCam
   9. ***AudioClips*** - allowing random selection from a set of audio clips with variations in volume, pitch and distance to provide a better audio experience for your players
   10. ***Quotes*** - Load and retrieve text from within the component or other text resource files either randomly or in sequence. Good for quotes, jokes, game hints or news feeds.
 3. Create your custom assets with any serialisable data and optional supporting scripts
@@ -327,16 +322,43 @@ Field.Set(largeAssetContents, ref largeAssetContents.F, 12);
       asset.Set(ref field, from, (a, b) => a == b);
 ```
 
+### Enumeration
+Rather than use the c# language element `enum`, consider using an `Enumeration` custom asset. Using the service environment as an example, we create it by sub-classing `Enumeration`.
+
+``` c#
+[CreateAssetMenu(menuName = "Custom Assets/Services/Environment")]
+public class Environment : Enumeration { }
+```
+
+Now, use the menu to create as many environment elements as you need.
+
+![Environments](Environments.png)
+
+Create a serialisable field CustomAsset or MonoBehaviour that intends to use the enumeration.
+
+``` c#
+[Serializable] public class Context : Base {
+  [SerializeField] private Environment environment = default;
+
+  protected virtual bool Equals(Context other) =>
+    base.Equals(other) && Equals(environment, other.environment);
+
+  public override int GetHashCode() {
+    unchecked { return (base.GetHashCode() * 397) ^ (environment != null ? environment.GetHashCode() : 0); }
+  }
+}
+```
+
+In this example, different services will sub-class context and add additional fields. A common one is `platform` so that different service implementations can be used for iOS, Android, Steam, etc.
+
+During initialisation the service manager will decide which service can be selected from given current context.
+
+``` c#
+var useful = services.Where(service => service.context.Equals(context) && service.IsExternalServiceAvailable());
+```
+
 ### Trigger
 A trigger is unusual in that it does not have any data apart from CustomAsset requirements. Triggers do not have persistence, so a subclass containing data cannot be saved.
-
-### IoT
-Unity runs on some interesting devices (such as VR, phones and tablets with various hardware interfaces. By making them custom assets we are creating an easy-to-use decoupled interface. Since many of these devices do not tell us of changes, polling is often enabled. The underlying service attends to the situations where the device is not available. The data returned will be either default or mock data. Currently there are drivers for:
-
-* CompassAsset
-* GpsAsset
-* GyroAsset; and
-* WebCamAsset
 
 ### Members
 A custom asset with any content data also can store and retrieve separate copies by name. For persistent custom assets, the member names and values saved to storage along with the main value.
@@ -674,18 +696,18 @@ Decoupling software components and systems have been a focus for many decades. I
 
 Microsoft had much fun in the 90's designing and implementing COM and DCOM. I still think of this as the high point in design for supporting decoupled interfaces.
 
-Now we have Web APIs, REST or SOAP interfaces and microservices. Design patterns such as the Factory Pattern are here to "force" decoupling at the enterprise software level. There have been dozens of standards over the years.
+Now we have Web APIs, REST or SOAP interfaces and micro-services. Design patterns such as the Factory Pattern are here to "force" decoupling at the enterprise software level. There have been dozens of standards over the years.
 
 Despite this, programmers have continued to create tightly coupled systems even while enforcing the requirements of the framework.
 
 Consider a simple example. I have an app that uses a Google Maps API to translate coordinates into a description "Five miles south-west of Gundagai". My app is running on an iPhone calling into a cloud of Google servers. The hardware is different and remote, and they both use completely different software systems. However, my app won't run, or at least perform correctly, without Google. Worse still if I am using a Google library, it won't even compile without a copy.
 
-A service custom asset provides a way to decouple your app from packages in the Unity3D ecosystem. It works at the C# class level, meaning that it does not provide the physical separation. That is provided by the Unity packages when needed. In approach, it acts very much like a C# Interface. So,w hat does it give us?
+A service custom asset provides a way to decouple your app from packages in the Unity3D ecosystem. It works at the C# class level, meaning that it does not provide the physical separation. That is provided by the Unity packages when needed. In approach, it acts very much like a C# Interface. So, what does it give us?
 
 1. You can build and test your app while waiting for supporting Unity packages to be complete.
 2. You can choose between unity packages without changing your app code. Changing from Google Analytics to Unity Analytics to Fabric is as simple as getting or writing the connector code.
 3. You can provide a standard interface to a related area. For social media, the interface could support FaceBook, Twitter, Youtube and others. You could then send a command to one, some or all of them. Think of this regarding posting to multiple platforms.
-4. You can have more than one service then cycle through them or select one at random. For advertising, you can move to a new platform if the current one cannot serve you an ad.
+4. You can have more than one service then cycle through them or select one at random. You can try another advertising provider if the current one cannot serve you an ad.
 5. Platforms such as iOS, Android, Mac, Steam, Windows, etc can used different underlying services without code changes.
 6. Mocking is not only possible, but flexible and easy to implement.
 
@@ -707,7 +729,7 @@ Now I could write some twisted documentation that I feel would be confusing. Ins
 ![Project View for Adze Services](AdzeProject.png)
 
 * Let's look at the source files first. They are all named starting with the name you gave your service.
-  * The `Context` file requires editing. It is used to compare every service against the current context. Every context asset has an environment. `Production`, `Staging`, `Test` and `Mock` are provided, but you can add more. You will need to add service specific context records to this file. Adze, as seen here, filters services on running platform and advertisement type. The context will also hold data to be sent to the underlying services.
+  * The `Context` file requires editing. It is used to compare every service against the current context. Every context asset has an environment. `Production`, `Staging`, `Test` and `Mock` are provided as custom asset Enumerations, but you can add more. Adze, as seen here, filters services on running platform and advertisement type. The context will also hold data to be sent to the underlying services.
 
 ```c#
   [CreateAssetMenu(menuName = "Custom Assets/Services/Adze/Context", fileName = "AdzeContext")]
@@ -840,6 +862,15 @@ Now I could write some twisted documentation that I feel would be confusing. Ins
 
 Mocking is all very well but real services will have libraries that talk to the outside world. And those libraries won't even load on all platforms. This is not a show-stopper because Able provides tools that make it easy to set C# compiler definitions that we can use to exclude code we can't use.
 
+Look at `DetectService()` at the end of the template service adapter class. `InitializeOnLoadMethod` ensures that it is only run in the editor. It's only job is to see if a service package is available, and if it is create a c# compile-time symbol.
+
+``` c#
+[InitializeOnLoadMethod] private static void DetectService() {
+  bool usable = DefineSymbols.HasFolder("Chartboost");
+  DefineSymbols.AddOrRemoveDefines(addDefines: usable, named: "AdzeServiceForChartboost");
+}
+```
+
 For focus and brevity reasons the service adapter excluded the masking code that comes as standard. Here is the full monty.
 
 ``` c#
@@ -850,31 +881,27 @@ using UnityEngine;
 // Add using statements for service library here
 #endif
 
-namespace CustomAsset.Services {
-  [CreateAssetMenu(menuName = "Custom Assets/Services/Template/Service", fileName = "TemplateServiceFor")]
-  public abstract class TemplateServiceFor : TemplateServiceAdapter {
-    #if TemplateServiceFor
-    protected override void Prepare() => base.Prepare();
+[CreateAssetMenu(menuName = "Custom Assets/Services/Template/Service", fileName = "TemplateServiceFor")]
+public abstract class TemplateServiceFor : TemplateServiceAdapter {
+  #if TemplateServiceFor
+  protected override void Prepare() => base.Prepare();
 
-    protected override void LogOnResponse(Emitter emitter) => base.LogOnResponse(emitter);
+  protected override void LogOnResponse(Emitter emitter) => base.LogOnResponse(emitter);
 
-    // Implement all interface methods that call concrete service adapters need to implement
-    protected override void TemplateServiceMethod(Emitter emitter, TemplateServiceMethodResult result) {
-      // Access the external service here. Save and call emitter.Fire when service call completes
-      // or set result.ErrorMessage if the service call fails to initialise
-    }
-    #endif
+  // Implement all interface methods that call concrete service adapters need to implement
+  protected override void TemplateServiceMethod(Emitter emitter, TemplateServiceMethodResult result) {
+    // Access the external service here. Save and call emitter.Fire when service call completes
+    // or set result.ErrorMessage if the service call fails to initialise
   }
+  #endif
 }
 ```
-
-Taking the last first, look at `DetectService()` at the end of the class. `InitializeOnLoadMethod` ensures that it is only run in the editor. It's only job is to see if a service package is available, and if it is create a c# compile-time symbol.
 
 Your Tasks are:
 
 1. Edit `ServiceAdapter`
    1. The first task is to replace `TemplateServiceFor` with a unique service specific symbol. For Adze it could be `AdzeServiceForChartBoost`.
-   2. Tell `DetectService()` whether to add or remove the compiler symbol. If the external service is using the Unity packaga manager, use `HasPackage`. Otherwise, hopefully, you can sense the presence base on the existence of a folder inside ***Assets***.
+   2. Tell `DetectService()` whether to add or remove the compiler symbol. If the external service is using the Unity package manager, use `HasPackage`. Otherwise, hopefully, you can sense the presence base on the existence of a folder inside ***Assets***.
    3. Fill in the `Result` class with any common result data.
    4. Fill in what you can in support and general fields and methods. More will come to mind later when writing the concrete services.
    5. For each service method copy the three entities in `TemplateServiceMethod` and rename it to describe the service.
@@ -902,11 +929,11 @@ Feature: Adze
       And they are ordered  as "Round Robin"
       
     Example: The first service responds
-      Given that the first service works
+      Given that all services work
       When I ask for an advertisement
       Then I get the first service
       When I ask for an advertisement again
-      Then I get the first service again
+      Then I get the second service
       
     #... Examples to cover all the other combinations
 ```
@@ -941,7 +968,7 @@ Let's see if we have all we need for the step definitions.
 * set `ServiceManager.selector.Choices[0].serviceError = default` to mark as passed OK.
 * `ServiceManager.selector.CycleIndex` should be 0 after each run.
 
-For more detail, go to ***Askowl BDD*** for information on writing anr running Gherkin executable specifications and ***Askowl Adze for the full feature specifications and definitions for Adze***
+For more detail, go to ***Askowl BDD*** for information on writing and running Gherkin executable specifications and ***Askowl Adze*** for the full feature specifications and definitions for Adze.
 
 ## Examples
 ### Health Bar

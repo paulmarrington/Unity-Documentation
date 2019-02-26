@@ -11,6 +11,7 @@ var class_askowl_1_1_trees =
     [ "Children", "class_askowl_1_1_trees.html#a5a52c442bb7d34ad5c5f435197df03a5", null ],
     [ "Double", "class_askowl_1_1_trees.html#a4180fa10e638ea987a537b0367377e0f", null ],
     [ "FirstChild", "class_askowl_1_1_trees.html#a903b263c6b37fc405f2b49f44d693387", null ],
+    [ "Found", "class_askowl_1_1_trees.html#a64cec25e1b62a36dc0235a10569fcb9c", null ],
     [ "IsNull", "class_askowl_1_1_trees.html#aad584a7d58e5dc3e85c618e947ee5b2d", null ],
     [ "IsRoot", "class_askowl_1_1_trees.html#ad404cd5d9d40dfde88f48a8b9d5e3a17", null ],
     [ "Long", "class_askowl_1_1_trees.html#ad9e98351605b4c6689ef92aa0a6971e6", null ],
