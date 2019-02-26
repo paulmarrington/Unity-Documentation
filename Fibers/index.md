@@ -21,11 +21,82 @@ On another subject, some unity packages, specifically FireBase, use C# 4+ Tasks,
 # Cheat-Sheet
 
 ## Initialisation
-***The Best and Safest Fiber Definition***
+* ***The Best and Safest Fiber Definition***
+``` c#
+class MyFiber : Fiber.Closure<MyFiber, (Tuple)> {
+  protected override void Activities(Fiber fiber) =>
+    fiber.Do(_ => AddingSteps());
+}
+var myFiberClosure = MyFiber.Go((Tuple));
+anotherFiber.WaitFor(myFiberClosure);
+```
+
+* ***Precompiled Fiber***: Fiber.Instance.*AddStepsHere*;
+* ***Run Immediately***: Fiber.Start.Begin.*AddStepsHere*.Again;
+
+## Fiber State
+* if (fiber.***Aborted***) ExitOrTimeoutCalled();
+* ***Context***
+  * var instance = fiber.***Context***<type>();
+  * fiber.***Context***(type instance);
+  * var instance = fiber.***Context***<type>(string name);
+  * fiber.***Context***<type>(string name);
+* fiber.***Dispose()*** // places in recycling for reuse later
+* anotherFiber.WaitFor(emitter: fiber.***OnComplete***).Do(Something);
+* if (fiber.***Running***) Debug.Log("Fiber not complete yet");
 
 ## Built-In Steps
-## DelayedCache
-## Emitter
+* ***Exit***
+  * fiber.Do(fiber => fiber.***Exit()*** );
+  * fiber.***Exit(anotherFiber)*** ;
+* yield return fiber.***AsCoroutine***()
+* fiber.***CancelOn(emitter)*** ;
+* fiber.***Do(_ => Anything())*** ;
+* Fiber.Start.Begin.Do(Something).Again.***Finish()***
+* fiber.***Fire(emitter)*** .***Fire(_ => emitter)*** ;
+* fiber.***Log***($"a {variable}").***Log***("a warning", warning: true);
+* fiber.***SkipFrames(10)*** .***SkipFrames(_ => framesToSkip)*** ;
+* fiber.***Timeout(seconds: 1.5f)***
+* fiber.***WaitFor(closure: myFiberClosure)***
+* fiber.***WaitFor(emitter: myEmitter)*** .***WaitFor(_ => myEmitter)*** ;
+* fiber.***WaitFor(enumerator: myIEnumerator)*** .***WaitFor(_ => myIEnumerator)*** ;
+* fiber.***WaitFor(fiber: myFiber)***
+* fiber.***WaitFor(seconds: 0.2f)*** .***WaitFor(_ => timeToLive)*** ;
+* fiber.***WaitFor(task: myTask)*** .***WaitFor(_ => myTask)***
+* fiber.***WaitRealtime(0.3f)*** .***WaitFor(_ => timeToLive)***
+
+## Blocks, Decisions and Loops
+* Fiber.Start.Begin.Do(Something).WaitFor(seconds: 2.5f).***Again***
+* fiber.***Begin***.Do(Something).End
+* fiber.Begin.Do(fiber => fiber.***Break()***).End.Do(After);
+* fiber.Begin.***Break(after: 2)***.Do(Something).End.Do(After);
+* fiber.Begin.***BreakIf(_ => isTrue)***.Do(Something).Again
+* fiber.Begin.Do(Something).***End***
+* fiber.***If(_ => isTrue)*** .Do(IfTrue).***Else*** .Do(IfFalse).***Then***.Do(After)
+* fiber.Begin.Do(Something).***Repeat(count: 5)***
+* fiber.***Skip(after: 1)*** .Do(DoesntDo).Do(doesDo);
+* fiber.Begin.Do(Something).***Until(_ => isTrue)***
+
+## Management of Exceptions
+* fiber.***ExitOnError***.Do(_ => throw new Exception()).Do(WontDo);
+* Fiber.***GlobalOnError(errmsg => DoSomethingOnError(errmsg))*** ;
+* fiber.***OnError(errmsg => OverrideErrorProcessing(errmsg))*** ;
+
+## Support
+* fiber.***Debugging*** = true; // logs fiber state changes
+* class MyDto : ***DelayedCache<MyDto>*** {}
+  * using (var myDto = MyDto.Instance) { ... }
+  * var myDto = MyDto.Instance; ...; myDto.***Dispose()*** ;
+* ***Emitter***
+  * using (var emitter = Emitter.Instance) { ... }
+  * var emitter = Emitter.Instance; ...; emitter.***Dispose()***
+  * emitter.***Fire()*** ;
+  * if (emitter.***Firings*** > 0) Debug.Log("fired already");
+  * emitter.***Listen***(emitter => DoWhenFired());
+  * emitter.Listen(DoWhenFired); ...; emitter.***Remove***(DoWhenFired);
+  * emitter.***RemoveAllListeners()*** ;
+  * emitter.Listen(emitter => { DoSomething(); emitter.***StopListening()*** ; });
+  * if (emitter.***Waiting***) Debug.Log("at least one listener");
 
 # Videos
 * [An Introduction to Fibers](https://youtu.be/0spg5a7cWBs) (v1.0)
