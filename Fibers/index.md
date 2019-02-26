@@ -18,14 +18,25 @@ On another subject, some unity packages, specifically FireBase, use C# 4+ Tasks,
 >
 > The Doxygen pages [here](https://paulmarrington.github.io/Unity-Documentation/Fibers/Doxygen/html/annotated.html)
 
+# Cheat-Sheet
+
+## Initialisation
+***The Best and Safest Fiber Definition***
+
+## Built-In Steps
+## DelayedCache
+## Emitter
+
 # Videos
 * [An Introduction to Fibers](https://youtu.be/0spg5a7cWBs) (v1.0)
+* [Fiber Closures - the way forward](https://youtu.be/FRPBmxCsRcg) (v2.1)
 * [Basic Fibers Commands](https://youtu.be/4FxZEKfrV_g) (v1.0)
 * [Fibers in Pooling - A Real-World Example](https://youtu.be/WIEL9aJlwbc) (v1.0)
+* [Using Emitters with Fibers](https://youtu.be/qObY_7jFe88) (v1.0)
 * [Precompiled Fibers for High Performance Applications](https://youtu.be/8poMA8zg8ec) (v2.0)
-* [Interrupting Running Fibers](https://youtu.be/yAm7ajpiTRI)
-* [Keeping Context in Fibers](https://youtu.be/gRcM59FcFnU)
-* [Using Emitters with Fibers](https://youtu.be/qObY_7jFe88)
+* [Why Use Lambdas](https://youtu.be/OVa4s1aX1-I) (v2.0)
+* [Interrupting Running Fibers](https://youtu.be/yAm7ajpiTRI) (v2.0)
+* [Keeping Context in Fibers](https://youtu.be/gRcM59FcFnU) (v2.0)
 
 # The Structure of a Fiber Operation
 
@@ -60,6 +71,8 @@ Fiber.Start.Log("Warning Log Message", warning: true);
 ```
 
 ## Precompiling Fibers for the Good
+[Why Use Lambdas Turorial](https://youtu.be/OVa4s1aX1-I)
+
 Most fiber commands take a function. On reference, each function creates an anonymous class. It is the same for methods, lambdas or inner functions. By precompiling a fiber and reusing it, we avoid the associated garbage collection. When creating a function reference, all data except enclosing class fields are frozen. Also, fibers run over time. Be careful not to run the same fiber while a previous one is still going. The absolute best pattern uses an inner class.
 
 ``` c#
