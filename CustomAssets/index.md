@@ -7,7 +7,7 @@
 
 
 ## Executive Summary
-Custom assets are project resources that contain data and code wrapped in a Unity ScriptableObject. Also, they provide emitters to signal change and persistence between sessions. Read the list of benefits [here](#benefits) and watch the video introduction [here](https://www.youtube.com/watch?v=).
+Custom assets are all about decoupling. They are project resources that contain data and code wrapped in a Unity ScriptableObject. They provide emitters to signal change and persistence between sessions. Read the list of benefits [here](#benefits) and watch the video introduction [here](https://www.youtube.com/watch?v=).
 
 I have chosen to use this executive summary to provide examples on how you can use custom assets.
 
