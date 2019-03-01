@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['left',['Left',['../class_custom_asset_1_1_mutable_1_1_rect_transform_custom_asset_connector.html#ada3591248eeaf8f825085669c1031e11',1,'CustomAsset::Mutable::RectTransformCustomAssetConnector']]],
-  ['load',['Load',['../class_custom_asset_1_1_mutable_1_1_of_type.html#ae599d330b1e3abc6e09f94d8ec33d05b',1,'CustomAsset::Mutable::OfType']]],
-  ['load_3c_20t_20_3e',['Load&lt; T &gt;',['../class_custom_asset_1_1_manager.html#a3726126525f456753efccfedb9eade2f',1,'CustomAsset::Manager']]],
-  ['location',['Location',['../class_custom_asset_1_1_mutable_1_1_gps_asset.html#a6b7c06044b7afd20298e9fd379b22763',1,'CustomAsset::Mutable::GpsAsset']]]
+  ['new',['New',['../class_custom_asset_1_1_mutable_1_1_float.html#a39e09c5402e6a3f73674e1f383e6694e',1,'CustomAsset.Mutable.Float.New(string name)'],['../class_custom_asset_1_1_mutable_1_1_float.html#abeb4b93a3f896f21861cc3c7f8258042',1,'CustomAsset.Mutable.Float.New()'],['../class_custom_asset_1_1_mutable_1_1_of_type.html#a6888ae9561410afbd30ee4e5dec5d829',1,'CustomAsset.Mutable.OfType.New()']]],
+  ['new_3c_20tc_20_3e',['New&lt; TC &gt;',['../class_custom_asset_1_1_mutable_1_1_of_type.html#a074b88acf001e0c37f9dc4fe32065153',1,'CustomAsset.Mutable.OfType.New&lt; TC &gt;()'],['../class_custom_asset_1_1_mutable_1_1_of_type.html#a491c5ae4362a6189af9718e2722ce3fe',1,'CustomAsset.Mutable.OfType.New&lt; TC &gt;(string name)']]]
 ];

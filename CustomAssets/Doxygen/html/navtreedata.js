@@ -24,6 +24,7 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "CustomAssets", "index.html", [
+    [ "[Custom Assets](http://www.askowl.net/unity-custom-assets)", "autotoc_md0.html", null ],
     [ "Packages", "namespaces.html", [
       [ "Packages", "namespaces.html", "namespaces_dup" ]
     ] ],

@@ -32,7 +32,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CustomAssets
    </div>
-   <div id="projectbrief">Scriptable Objects++</div>
+   <div id="projectbrief">Askowl Custom Assets</div>
   </td>
  </tr>
  </tbody>
@@ -115,7 +115,7 @@ Inheritance diagram for CustomAsset.Mutable.ListenerComponent:</div>
 <area href="class_custom_asset_1_1_mutable_1_1_named_string_driver.html" title="Used for Animator where actions also require a parameter  " alt="CustomAsset.Mutable.NamedStringDriver" shape="rect" coords="277,504,544,528"/>
 <area href="class_custom_asset_1_1_mutable_1_1_named_trigger_driver.html" title="Used for Animator where actions also require a parameter  " alt="CustomAsset.Mutable.NamedTriggerDriver" shape="rect" coords="277,560,544,584"/>
 <area href="class_custom_asset_1_1_mutable_1_1_string_driver.html" title="Drive component string values directly from a custom asset  " alt="CustomAsset.Mutable.StringDriver" shape="rect" coords="277,616,544,640"/>
-<area href="class_custom_asset_1_1_mutable_1_1_trigger_driver.html" title="Trigger a component function directly from a custom asset //#TBD#//  " alt="CustomAsset.Mutable.TriggerDriver" shape="rect" coords="277,672,544,696"/>
+<area href="class_custom_asset_1_1_mutable_1_1_trigger_driver.html" title="Trigger a component function directly from a custom asset  " alt="CustomAsset.Mutable.TriggerDriver" shape="rect" coords="277,672,544,696"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -133,14 +133,14 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a62b4a0a099603e0f555508dfaba195de"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_custom_asset_1_1_mutable_1_1_listener_component.html#a62b4a0a099603e0f555508dfaba195de">OnChange</a> ()</td></tr>
-<tr class="memdesc:a62b4a0a099603e0f555508dfaba195de"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2QNmw2q">After we have ensured the change is for the expected member, tell interested parties</a>  <a href="#a62b4a0a099603e0f555508dfaba195de">More...</a><br /></td></tr>
-<tr class="separator:a62b4a0a099603e0f555508dfaba195de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a452f69320cc33f69acc3baedc4b68aab"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_custom_asset_1_1_mutable_1_1_listener_component.html#a452f69320cc33f69acc3baedc4b68aab">OnChange</a> (Emitter emitter)</td></tr>
+<tr class="memdesc:a452f69320cc33f69acc3baedc4b68aab"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="http://bit.ly/2QNmw2q">After we have ensured the change is for the expected member, tell interested parties</a>  <a href="#a452f69320cc33f69acc3baedc4b68aab">More...</a><br /></td></tr>
+<tr class="separator:a452f69320cc33f69acc3baedc4b68aab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a href="http://bit.ly/2QNmw2q">Common code for all event listener MonoBehaviours. It registers and deregisters the listener with the channel</a>  </p>
 
-<p class="definition">Definition at line <a class="el" href="_driver_component_8cs_source.html#l00013">13</a> of file <a class="el" href="_driver_component_8cs_source.html">DriverComponent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_driver_component_8cs_source.html#l00014">14</a> of file <a class="el" href="_driver_component_8cs_source.html">DriverComponent.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="afdd87ae0cbc499039d99821ced896934"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afdd87ae0cbc499039d99821ced896934">&#9670;&nbsp;</a></span>Deregister()</h2>
@@ -161,8 +161,8 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a62b4a0a099603e0f555508dfaba195de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a62b4a0a099603e0f555508dfaba195de">&#9670;&nbsp;</a></span>OnChange()</h2>
+<a id="a452f69320cc33f69acc3baedc4b68aab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a452f69320cc33f69acc3baedc4b68aab">&#9670;&nbsp;</a></span>OnChange()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -173,7 +173,8 @@ Protected Member Functions</h2></td></tr>
         <tr>
           <td class="memname">abstract void CustomAsset.Mutable.ListenerComponent.OnChange </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">Emitter&#160;</td>
+          <td class="paramname"><em>emitter</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -186,7 +187,7 @@ Protected Member Functions</h2></td></tr>
 
 <p><a href="http://bit.ly/2QNmw2q">After we have ensured the change is for the expected member, tell interested parties</a> </p>
 
-<p>Implemented in <a class="el" href="class_custom_asset_1_1_mutable_1_1_named_boolean_driver.html#a87a20650fe265c4d7e089de7acb1e579">CustomAsset.Mutable.NamedBooleanDriver</a>, <a class="el" href="class_custom_asset_1_1_mutable_1_1_named_float_driver.html#af537ebd0ed9fa7c1f479ffa4112178ed">CustomAsset.Mutable.NamedFloatDriver</a>, <a class="el" href="class_custom_asset_1_1_mutable_1_1_named_integer_driver.html#a3938c153f98e85171a8d5fe4a1d3eada">CustomAsset.Mutable.NamedIntegerDriver</a>, <a class="el" href="class_custom_asset_1_1_mutable_1_1_named_string_driver.html#a6294532dd0a06bb961f0b6e7efe3dae5">CustomAsset.Mutable.NamedStringDriver</a>, <a class="el" href="class_custom_asset_1_1_mutable_1_1_boolean_driver.html#a88c1fc2ab644d9a2604a4d9f7d5efc9b">CustomAsset.Mutable.BooleanDriver</a>, <a class="el" href="class_custom_asset_1_1_mutable_1_1_float_driver.html#a3547b21b1d5b43f7c36c31987249f31a">CustomAsset.Mutable.FloatDriver</a>, <a class="el" href="class_custom_asset_1_1_mutable_1_1_integer_driver.html#a98adb3cf5ebe64b2951bbb6da7fe5648">CustomAsset.Mutable.IntegerDriver</a>, <a class="el" href="class_custom_asset_1_1_mutable_1_1_string_driver.html#a69594524ff572108b425dc8725bd7760">CustomAsset.Mutable.StringDriver</a>, <a class="el" href="class_custom_asset_1_1_mutable_1_1_named_trigger_driver.html#a1c20c979814234f72594c58cd16945b6">CustomAsset.Mutable.NamedTriggerDriver</a>, and <a class="el" href="class_custom_asset_1_1_mutable_1_1_trigger_driver.html#a009eca4e99530ac37b55136c06906bb1">CustomAsset.Mutable.TriggerDriver</a>.</p>
+<p>Implemented in <a class="el" href="class_custom_asset_1_1_mutable_1_1_named_boolean_driver.html#a9e77eb2934619b472a9abcf38f78fe01">CustomAsset.Mutable.NamedBooleanDriver</a>, <a class="el" href="class_custom_asset_1_1_mutable_1_1_named_float_driver.html#aae7993b869a44ed3e7b1e48c18fbb663">CustomAsset.Mutable.NamedFloatDriver</a>, <a class="el" href="class_custom_asset_1_1_mutable_1_1_named_integer_driver.html#a72b7655968f35de7d2060c8b2b04857d">CustomAsset.Mutable.NamedIntegerDriver</a>, <a class="el" href="class_custom_asset_1_1_mutable_1_1_named_string_driver.html#a9c6eef26aca84c54c3b90c87b5b827fc">CustomAsset.Mutable.NamedStringDriver</a>, <a class="el" href="class_custom_asset_1_1_mutable_1_1_boolean_driver.html#a3212f13d2f11dbbb98bebab66c725183">CustomAsset.Mutable.BooleanDriver</a>, <a class="el" href="class_custom_asset_1_1_mutable_1_1_float_driver.html#a13583b406599db6725823cfc92d1c86f">CustomAsset.Mutable.FloatDriver</a>, <a class="el" href="class_custom_asset_1_1_mutable_1_1_integer_driver.html#ae74c9183ffb4a3c5a933b213450f0971">CustomAsset.Mutable.IntegerDriver</a>, <a class="el" href="class_custom_asset_1_1_mutable_1_1_string_driver.html#ac32d76d72a430012ee65d5dfa731e126">CustomAsset.Mutable.StringDriver</a>, <a class="el" href="class_custom_asset_1_1_mutable_1_1_named_trigger_driver.html#ad157ada7da9813c5d9a2d605c880ade6">CustomAsset.Mutable.NamedTriggerDriver</a>, and <a class="el" href="class_custom_asset_1_1_mutable_1_1_trigger_driver.html#a1c17acba561c4a98fa49f8d832d1fb0a">CustomAsset.Mutable.TriggerDriver</a>.</p>
 
 </div>
 </div>
@@ -205,7 +206,7 @@ Protected Member Functions</h2></td></tr>
 
 <p><a href="http://bit.ly/2QNmw2q">Retrieve a reference to the listener attached to this component</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_driver_component_8cs_source.html#l00017">17</a> of file <a class="el" href="_driver_component_8cs_source.html">DriverComponent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_driver_component_8cs_source.html#l00018">18</a> of file <a class="el" href="_driver_component_8cs_source.html">DriverComponent.cs</a>.</p>
 
 </div>
 </div>

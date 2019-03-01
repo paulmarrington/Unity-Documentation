@@ -9,7 +9,7 @@
 ## Executive Summary
 Custom assets are all about decoupling. They are project resources that contain data and code wrapped in a Unity ScriptableObject. They provide emitters to signal change and persistence between sessions. Read the list of benefits [here](#benefits) and watch the video introduction [here](https://www.youtube.com/watch?v=).
 
-I have chosen to use this executive summary to provide examples on how you can use custom assets.
+I have chosen to use this executive summary to provide examples of how you can use custom assets.
 
 ### Decoupling Components
 After you create a custom asset in the project, any reference in components is to the same object. Our example is the ubiquitous player health - a value between zero and one that needs to be accessed by components to:
@@ -31,13 +31,66 @@ Refactoring existing code into custom asset managers can be done in very little 
 ### Persistent Storage
 Every mutable custom asset includes a checkbox in the inspector for persistent storage. Data saves when changed and restored on program restart.
 
-### Decoupling Services
-A game that connects directly to external services is brittle. Custom Asset Services decouples your game from external services. It makes changing service providers easier. Multiple providers, fallback on failure amd mocking are all supported. Using different providers for different platforms is as easy as creating a new context asset. A database service, for example can have different contexts for production, staging, test and development.
-
 > Read the code in the Examples Folder and run the Example scene
 
+## Videos
+* A Health System Example
+  1. [The Health Bar](https://youtu.be/7P6fc-AQfnk)
+  2. [The Health Manager](https://youtu.be/pgzjMbyY7tc)
+* [Converting a Game Manager to Custom Assets](https://youtu.be/juJ-R53hlaE)
+
+## Cheat Sheet
+
+* ***Manager***: Basic custom asset. Loaded in Managers game object or with Manager.Load for testing
+
+### Mutable Custom Assets
+Entries can be changed and listeners can register to react to the change.
+* ***AudioClips*** - AudioClipSet where list of clips can be modified
+* ***Boolean***
+* ***ChangeOverTime*** - Given a Float custom asset, change it's slowly
+* ***Field*** - Static helper class for setting fields in a compound custom assets
+* ***Float***
+* ***GameObject*** - Use with connector to access a game object from a custom asset
+* ***Integer***
+* ***OfType*** - Base mutable providing emitter and persistence activities
+* ***String***
+* ***StringSet*** - List of strings with picker
+* ***Trigger*** - Fired on command instead of on change
+
+###  Constant Custom Assets
+* ***AudioClips*** - Pick from AudioClipSet
+* ***AudioClipSet*** - Picker for clip, volume, pitch and distance
+* ***Base*** - Base class for all custom assets
+* ***Boolean***
+* ***Enumeration*** - Subclass to define set
+* ***Float***
+* ***Integer***
+* ***OfType*** - Base class for all constant custom assets
+* ***Quotes*** - Pick a quote from a QuoteSet
+* ***QuoteSet*** - Quotes container loaded from text assets
+* ***String***
+* ***StringSet*** - Set of strings when Enumeration is too heavy duty
+
+### Connectors
+* ***Animator*** - Given the parameter name, trigger or set bool, int or float animation control.
+* ***GameObject*** - give access to a game object from a custom asset
+* ***RectTransform*** - access/update position and anchors
+* ***Transform*** - access/update size and scale
+
+### Drivers
+* ***Boolean*** - for boolean unity events
+* ***Driver*** - Register and deregister the listener with the channel
+* ***Integer*** - for integer unity events
+* ***NamedBoolean*** - driver for named events used in the animator
+* ***NamedFloat*** - driver for named events used in the animator
+* ***NamedInteger*** - driver for named events used in the animator
+* ***NamedString*** - driver for named events used in the animator
+* ***NamedTrigger*** - driver for named events used in the animator
+* ***String*** - for string unity events
+* ***Trigger*** - for action trigger unity events
+
 ## Introduction
-Unity provides a base class called [ScriptableObject](https://docs.unity3d.com/ScriptReference/ScriptableObject.html). Derive from it to create objects or assets that don't need to be attached to game objects.
+Unity provides a base class called [ScriptableObject](https://docs.unity3d.com/ScriptReference/ScriptableObject.html). Derive from them to create objects or assets that don't need to be attached to game objects.
 
 In short, a `ScriptableObject` is a class that contains serialisable data and functionality. Each instance of a class that derives from `ScriptableObject` has representation on disk as an asset. Each asset is a source for data and actions not coupled to a scene. The decoupling makes for functionality that is easy to test. It also provides modules to be shared across and between projects.
 
@@ -103,7 +156,7 @@ By contrast, a custom asset approach would be more like:
 health = maxHealth;
 ```
 
-Manager custom assets are the most useful if they are totally decoupled. They deal with data custom assets by making changes and responding to events. This manager can be tested in isolation without loading the complete game. It could also be tested in concert with the HealthManager and/or the HitManager for more complex scenarios.
+Manager custom assets are the most useful when decoupled. They deal with data custom assets by making changes and responding to events. This manager can be tested in isolation without loading the complete game. Test in concert with the HealthManager and the HitManager for more complex scenarios.
 
 ``` c#
   [CreateAssetMenu(menuName = "Managers/Armor"), Serializable]
@@ -126,11 +179,11 @@ Manager custom assets are the most useful if they are totally decoupled. They de
 ```
 #### Manager Loading
 
-Player managers should be logic. Data have their own custom assets. Since managers only react to events they need to be explicitly loaded. In the Unity editor select the menu ***GameObject // Create Managers***. Drag the managers into the list in the newly created MonoBehaviour.
+Player managers should be logic. Data have their custom assets. Since managers only react to events, they need to be explicitly loaded. In the Unity editor select the menu ***GameObject // Create Managers***. Drag the managers into the list in the newly created MonoBehaviour.
 
 ![Manager Custom Asset Container](Managers.png)
 
-For testing we don't need a scene. Another benefit of decoupling. `Manager` provides a `Load` method for independent testing. The asset can be found by name with or without a path. Only as much of the path as needed for uniqueness needs be given.
+For testing, we don't need a scene — another benefit of decoupling. `Manager` provides a `Load` method for independent testing. The asset can be found by name with or without a path. Only as much of the path as needed for uniqueness needs be given.
 
 ``` c#
   public class HealthManagerTest : PlayModeTests {
@@ -150,7 +203,6 @@ For testing we don't need a scene. Another benefit of decoupling. `Manager` prov
           if (health >= 0.01f) yield break;
         }
       } finally {
-        //- reset the time scale so other tests aren't effected.
         Time.timeScale = 1;
       }
     }
@@ -290,7 +342,7 @@ All CustomAsset instances have a description field. Since you can use generic as
 Each if these custom assets can be in a project with or without supporting code. It is possible, for example, to have a `Float` value set in the ***On Value Changed*** field of a Slider or Scrollbar, then displayed using a driver like `CustomAsset.FloatDriver` to set the fill amount on a health bar Image component.
 
 #### Float
-The mutable `Float` custom asset also includes a range that can be set in the inspector. Attempts to change the value outside the limits will cause the value to be set to the closest bound. It allows managers to increase or decrease a value without being concerned with going outside acceptable limits.
+The mutable `Float` custom asset also includes a range set in the inspector. Attempts to change the value outside the limits leave the value at the closest bound. It allows managers to increase or decrease a value without being concerned with going outside acceptable limits.
 
 ``` c#
 health += 0.2f;
@@ -298,12 +350,12 @@ health += 0.2f;
 if (health < 0.8) health += 0.2f;
 ```
 
-Bounds can be set with sliders or text entry. The latter is necessary if you need a value outside the range the sliders are set for.
+Set bounds with sliders or text entry. The latter is necessary if you need a value outside the range the sliders are set.
 
-The range may need to be changed due to conditions. A tired warrior may not be able to have health over 80%. Use `Float.Minimum` and `Float.Maximum` to make the adjustments.
+Conditions may require a range change. A tired warrior may not be able to have health over 80%. Use `Float.Minimum` and `Float.Maximum` to make the adjustments.
 
 ### Object (non-primitive) Custom Assets
-There will be times where using primitive custom assets is too granular and a more complex custom asset could be better represented as a class. There are a few boundaries. The class must be serialisable and any members you want to change in the inspector labelled as serialised fields.
+A class will better represent a more complex custom asset. There are a few boundaries. The class must be serialisable and any members you want to change in the inspector labelled as serialised fields.
 
 ``` c#
   [Serializable] public class LargerAssetContents {
@@ -313,7 +365,7 @@ There will be times where using primitive custom assets is too granular and a mo
   }
 ```
 
-If the object custom asset is to be mutable, care must be taken while setting fields. The static `CustomAsset.Mutable.Field` class provides helpers for float, double, int, long, bool, string, Vector2, Vector3, Vector4 and Quaternion types. There is also a generic form for adding new structs. You will need to provide a comparator.
+Take care while setting fields. The static `CustomAsset.Mutable.Field` class provides helpers for float, double, int, long, bool, string, Vector2, Vector3, Vector4 and Quaternion types. There is also a generic form for adding new structs. You need to provide a comparator.
 
 ``` c#
 Field.Set(largeAssetContents, ref largeAssetContents.F, 12);
@@ -323,10 +375,10 @@ Field.Set(largeAssetContents, ref largeAssetContents.F, 12);
 ```
 
 ### Enumeration
-Rather than use the c# language element `enum`, consider using an `Enumeration` custom asset. Using the service environment as an example, we create it by sub-classing `Enumeration`.
+Rather than use the c# language element `enum`, consider using an `Enumeration` custom asset. Using the Decoupler service environment as an example, we create it by sub-classing `Enumeration`.
 
 ``` c#
-[CreateAssetMenu(menuName = "Custom Assets/Services/Environment")]
+[CreateAssetMenu(menuName = "Decoupler/Environment")]
 public class Environment : Enumeration { }
 ```
 
@@ -349,9 +401,9 @@ Create a serialisable field CustomAsset or MonoBehaviour that intends to use the
 }
 ```
 
-In this example, different services will sub-class context and add additional fields. A common one is `platform` so that different service implementations can be used for iOS, Android, Steam, etc.
+In this example, different services sub-class context and add additional fields. A common one is `platform`, allowing different service implementations for iOS, Android, Steam, and others.
 
-During initialisation the service manager will decide which service can be selected from given current context.
+During initialisation, the service manager decides which service are from the given current context.
 
 ``` c#
 var useful = services.Where(service => service.context.Equals(context) && service.IsExternalServiceAvailable());
@@ -436,7 +488,7 @@ Using `AudioClips` wherever you have sound effects makes your game sound a lot m
 
 ### ChangeOverTime
 
-It is always fun to factor out common manager custom assets into common code. Health, mana, stamina and similar look better if changes are not instantaneous. And some, like poison, have to happen over a period. Create managers without code using the `ChangeOverTime` custom asset.
+It is always fun to factor out common manager custom assets into common code. Health, mana, stamina and similar look better if changes are not instantaneous. Moreover, some, like poison, have to happen over a period. Create managers without code using the `ChangeOverTime` custom asset.
 
 ![Change custom asset over time](Health-SmallPotion.png)
 ![Change custom asset over time](Health-PoisonArrow.png)
@@ -494,7 +546,7 @@ Primitive custom assets (trigger, boolean, integer, float and string) are extrem
 Drivers and Connectors (described below) also need a reference. They register for changing events. The event fires when and only when the custom asset changes.
 
 ### Polling
-No matter how hard we try there is data that changes and we cannot get be informed in a timely manner. The technique of last resort is called polling - where we check periodically for change. The inspector for any mutable custom asset will includes some polling fields. Just enable polling in the inspector and set the intervals.
+No matter how hard we try there is data that changes, and we cannot be informed promptly. The technique of last resort is called polling - where we check periodically for change. The inspector for any mutable custom asset includes some polling fields. Just enable polling in the inspector and set the intervals.
 
 ![Polling for changes](Polling.png)
 
@@ -649,7 +701,7 @@ An animator component relies on an outside source to set a named trigger, intege
 This connector allows for changes to the scale, rotation and position for any gameObject.transform. There is a video linked at the start of this document that uses changes of scale to show/hide a health-bar.
 
 #### GameObjectConnector
-The `GameObjectConnector` is a bit different. Add it to an existing GameObject with the menu ***Component/Custom Assets/GameObject Connector**** then drop in a custom asset that inherits from CustomAssets.Mutable.GameObject. Now code anywhere can access the game object until it is destroyed.
+The `GameObjectConnector` is a bit different. Add it to an existing GameObject with the menu ***Component/Custom Assets/GameObject Connector**** then drop in a custom asset that inherits from CustomAssets.Mutable.GameObject. Now code anywhere can access the game object.
 
 ## Custom Asset Persistence
 If a custom asset is marked persistent in the Inspector, then it writes itself out to the PlayerPref database using a key combining the name and class.
@@ -689,286 +741,6 @@ Debug.Log(Quotes.RTF("Life wasn't meant to be easy (George Bernard Shaw)"));
 ```
 produces
 ***"***Life wasn't meant to be easy***"***     *George Bernard Shaw*
-
-## Services
-
-Decoupling software components and systems have been a focus for many decades. In the 80s we talked about software black boxes. You didn't care what was inside, just on the inputs and outputs.
-
-Microsoft had much fun in the 90's designing and implementing COM and DCOM. I still think of this as the high point in design for supporting decoupled interfaces.
-
-Now we have Web APIs, REST or SOAP interfaces and micro-services. Design patterns such as the Factory Pattern are here to "force" decoupling at the enterprise software level. There have been dozens of standards over the years.
-
-Despite this, programmers have continued to create tightly coupled systems even while enforcing the requirements of the framework.
-
-Consider a simple example. I have an app that uses a Google Maps API to translate coordinates into a description "Five miles south-west of Gundagai". My app is running on an iPhone calling into a cloud of Google servers. The hardware is different and remote, and they both use completely different software systems. However, my app won't run, or at least perform correctly, without Google. Worse still if I am using a Google library, it won't even compile without a copy.
-
-A service custom asset provides a way to decouple your app from packages in the Unity3D ecosystem. It works at the C# class level, meaning that it does not provide the physical separation. That is provided by the Unity packages when needed. In approach, it acts very much like a C# Interface. So, what does it give us?
-
-1. You can build and test your app while waiting for supporting Unity packages to be complete.
-2. You can choose between unity packages without changing your app code. Changing from Google Analytics to Unity Analytics to Fabric is as simple as getting or writing the connector code.
-3. You can provide a standard interface to a related area. For social media, the interface could support FaceBook, Twitter, Youtube and others. You could then send a command to one, some or all of them. Think of this regarding posting to multiple platforms.
-4. You can have more than one service then cycle through them or select one at random. You can try another advertising provider if the current one cannot serve you an ad.
-5. Platforms such as iOS, Android, Mac, Steam, Windows, etc can used different underlying services without code changes.
-6. Mocking is not only possible, but flexible and easy to implement.
-
-Now I could write some twisted documentation that I feel would be confusing. Instead I present a real-world example for an advertising service manager.
-
-### Adze: A Sample Service
-* Creating a new service is easy. Just select the Assets or Project context menu ***Create // Custom Assets // Services // Create Service***
-* You will be asked to give a name to your service. Make the name descriptive. Your service will be created in a directory of the same name. Rename or move it as you wish.
-* Your scene is updated with a ***Service Managers*** game object with a Managers component adding your service manager.
-
-![Service Managers GameObject](ServiceManagerInHierarchy.png)
-
-![Service Managers GameObject with Managers component filled](ServiceManagerInInspector.png)
-
-* If the service directory isn't under a scripts directory you will need to add an assembly definition (Assets or Project context menu ***Create // Assembly Definition***)
-* Here I have renamed the ***Adze*** directory to ***Scripts*** and created an assembly definition file
-* There are four C# source files generated and three services.
-
-![Project View for Adze Services](AdzeProject.png)
-
-* Let's look at the source files first. They are all named starting with the name you gave your service.
-  * The `Context` file requires editing. It is used to compare every service against the current context. Every context asset has an environment. `Production`, `Staging`, `Test` and `Mock` are provided as custom asset Enumerations, but you can add more. Adze, as seen here, filters services on running platform and advertisement type. The context will also hold data to be sent to the underlying services.
-
-```c#
-  [CreateAssetMenu(menuName = "Custom Assets/Services/Adze/Context", fileName = "AdzeContext")]
-  public class AdzeContext : Services<AdzeService, AdzeContext>.Context {
-
-    #region Context Equality
-    public enum Mode { Banner, Interstitial, Reward }
-    [SerializeField] public RuntimePlatform platform = default;
-    [SerializeField] public Mode mode = Mode.Reward;
-    #endregion
-
-    #region Connection Data
-    [SerializeField] public string key = default;
-    [SerializeField] public string signature = default;
-    [SerializeField] public string location = default;
-    #endregion
-
-    protected bool Equals(AdzeContext other) =>
-      base.Equals(other) && Equals(platform, other.platform) && Equals(mode, other.mode);
-  }
-```
-
-  * The next file requiring attention is the `ServiceAdapter`. It provides some helpers.
-    * `Prepare()` in case we have to boot the external service provider.
-    * `GetAnEmitter()` that all the asynchronous services will return so that the calling code can wait on a result.
-    * `Error(message)` when something unfortunate happens.
-    * `Log(action, message)` to record interesting information for analytics.
-    * `LogOnResponse()` is called when the emitter is fired.
-
-   Many service adapters are just a list of interface methods to implement in concrete services. Sometimes, like here, an interface can be massaged for concrete service differences.
-
-``` c#
-  [CreateAssetMenu(menuName = "Custom Assets/Services/Adze/Service", fileName = "AdzeServiceAdapter")]
-  public class AdzeServiceAdapter : Services<AdzeServiceAdapter, AdzeContext>.ServiceAdapter {
-    [Serializable] public class Result {
-      public bool AdActionTaken;
-      public bool Dismissed;
-      public string ServiceError;
-
-      internal static Result Instance(Emitter emitter) =>
-        Result<Result>(emitter);
-
-      internal Result Clear() {
-        AdActionTaken = Dismissed = default;
-        ServiceError  = default;
-        return this;
-      }
-    }
-
-    protected override void Prepare() { }
-
-    // Registered with Emitter to provide common logging
-    protected override void LogOnResponse(Emitter emitter) {
-      var result = Result.Instance(emitter);
-      if (result.ServiceError != default) {
-        if (!string.IsNullOrEmpty(result.ServiceError)) Error($"Service Error: {result.ServiceError}");
-      } else if (result.Dismissed) {
-        Log("Dismissed", "By Player");
-      } else {
-        Log("Action", result.AdActionTaken ? "Taken" : "Not Taken");
-      }
-    }
-
-    public Emitter Show() {
-      Log(action: "Show", message: "Now");
-      var emitter = GetAnEmitter<Result>();
-      var result  = Result.Instance(emitter).Clear();
-      Display(emitter);
-      return result.ServiceError == default ? emitter : null;
-    }
-
-    protected virtual string Display(Emitter emitter) => 
-      throw new NotImplementedException();
-  }
-```
-
-  * `AdzeServiceFor` is a bare framework class to be duplicated for each `real` service. I suggest copying the concrete service interface functions into it so it is ready for processing each time it is duplicated.
-
-``` c#
-  [CreateAssetMenu(menuName = "Custom Assets/Services/Adze/ServiceFor", fileName = "AdzeServiceFor")]
-  public abstract class AdzeServiceFor : AdzeServiceAdapter {
-    protected override void Prepare() => base.Prepare();
-    
-    protected override void LogOnResponse(Emitter emitter) => 
-      base.LogOnResponse(emitter);
-
-    protected override string Display(Emitter emitter) =>
-      throw new NotImplementedException();
-  }
-```
-
-  * The first concrete service implementation is `ServiceForMock`. Create the simplest possible version that will work at this stage. We would want to check on what happens on conditions such as a service error. We will leave hefty mocking to the next section.
-
-``` c#
-  [CreateAssetMenu(menuName = "Custom Assets/Services/Template/Service", fileName = "TemplateSelector")]
-  public class AdzeServiceAdapterForMock : AdzeServiceAdapter {
-    protected override string Display(Emitter emitter, Result result) {
-      Log("Mocking", "Display Advertisement");
-      result.ServiceError = default;
-      result.Dismissed = false;
-      result.AdActionTaken = true;
-      emitter.Fire();
-    }
-  }
-```
-
-  * The final file created is `ServicesManager` does not require editing. It selects services from the list that match a global context. More on that later.
-
-* The helper also creates three asset files.
-  * `MockContext` is the context you will want to use when you don't want to annoy a real service. It is used for development, particularly of edge cases, and to reproduce problems (bugs) when they arise. It is also used to test other components that need the service in a reliable and usable way.  By default it will only work in the mock environment, under the Unity editor and in reward mode. There is more on mocking in the next section.
-
-![Adze Custom Asset Service Context Inspector View](AdzeContext.png)
-
-  * Using `ServiceForMock` is covered in detail below.
-
-![Adze Custom Asset Service Inspector View](AdzeServiceForMock.png)
-
-  * All concrete services, however, do have some information to review.
-    * ***Priority*** provides simple ordering. Once the list of services has been filtered, it is sorted by priority. This only affects top-down and round-robin service selection. If a service fails, the next on the list is attempted.
-    * ***Usage Balance*** defines how many repeat calls on a service are made before a new selection is used. It does not benefit top-down selection. In Adze, for example, we can use it to ensure that twice as many advertisements come from ChartBoost as from AdMob.
-  * `ServiceManager` is where we reference all the services and provide a context to decide which to use. At this level the context is mostly about the target build - as in mock, development, test, staging or production. Thanks to service masking you can drop every service you create into the list, whether it is for a specific platform or type of service. ***Order*** is interesting. Services are filtered to match the context provided then presented as a list based on their priority (as set in each service asset). If they are all the same priority the element order here counts. Values for order are:
-    * ***Top Down*** where the first service is always used. If it fails the next one is used, and so on until a service succeeds. Next call starts with the first again. Most services with more than one entry will work this way.
-    * ***Round Robin*** starts with the first service. It is run once, then again ***Usage Balance*** number of times. Then the next viable service is called. When all have had a turn the first is called again. Useful for advertising where we want to spread our ads over multiple providers.
-    * ***Random*** does as it says. Once ***Usage Balance*** is depleted it will select another entry at random.
-    * ***Random Exhaustive*** does the same, except no service is selected more than once until all the other services have had a go.
-
-![Adze Custom Asset Service Inspector View](AdzeServicesManager.png)
-
-### Service Masking
-
-Mocking is all very well but real services will have libraries that talk to the outside world. And those libraries won't even load on all platforms. This is not a show-stopper because Able provides tools that make it easy to set C# compiler definitions that we can use to exclude code we can't use.
-
-Look at `DetectService()` at the end of the template service adapter class. `InitializeOnLoadMethod` ensures that it is only run in the editor. It's only job is to see if a service package is available, and if it is create a c# compile-time symbol.
-
-``` c#
-[InitializeOnLoadMethod] private static void DetectService() {
-  bool usable = DefineSymbols.HasFolder("Chartboost");
-  DefineSymbols.AddOrRemoveDefines(addDefines: usable, named: "AdzeServiceForChartboost");
-}
-```
-
-For focus and brevity reasons the service adapter excluded the masking code that comes as standard. Here is the full monty.
-
-``` c#
-using Askowl;
-using UnityEditor;
-using UnityEngine;
-#if TemplateServiceFor
-// Add using statements for service library here
-#endif
-
-[CreateAssetMenu(menuName = "Custom Assets/Services/Template/Service", fileName = "TemplateServiceFor")]
-public abstract class TemplateServiceFor : TemplateServiceAdapter {
-  #if TemplateServiceFor
-  protected override void Prepare() => base.Prepare();
-
-  protected override void LogOnResponse(Emitter emitter) => base.LogOnResponse(emitter);
-
-  // Implement all interface methods that call concrete service adapters need to implement
-  protected override void TemplateServiceMethod(Emitter emitter, TemplateServiceMethodResult result) {
-    // Access the external service here. Save and call emitter.Fire when service call completes
-    // or set result.ErrorMessage if the service call fails to initialise
-  }
-  #endif
-}
-```
-
-Your Tasks are:
-
-1. Edit `ServiceAdapter`
-   1. The first task is to replace `TemplateServiceFor` with a unique service specific symbol. For Adze it could be `AdzeServiceForChartBoost`.
-   2. Tell `DetectService()` whether to add or remove the compiler symbol. If the external service is using the Unity package manager, use `HasPackage`. Otherwise, hopefully, you can sense the presence base on the existence of a folder inside ***Assets***.
-   3. Fill in the `Result` class with any common result data.
-   4. Fill in what you can in support and general fields and methods. More will come to mind later when writing the concrete services.
-   5. For each service method copy the three entities in `TemplateServiceMethod` and rename it to describe the service.
-2. For each concrete service, duplicate the `ServiceFor` file and;
-   2. Add a reference to the external service library in the fenced off area at the top of the file.
-   3. Implement all the interface methods. Note that they are protected by a precompiler `#if` statement so they can make calls to to the external library safely.
-   4. Use the information in `context`. Specifically don't access production issues unless `context.environment` is set to Production.
-
-### Service Mocking
-The service builder has generated a mock service for you. We filled it with very basic positive response above. It also generated one mocking service custom asset. This is often enough for most services. Not so for Adze. Advertising services are not critical and are more likely to fail. Duplicate this asset three time since they will all use the same code reference.
-
-![Mock Adze Services Project View](AdzeMockProjectView.png)
-
-Let's move on to the source. Fortunately we encapsulated all the communications information in the `Result` and pass a reference to our concrete method. Further more, the data indicates behaviour driven testing. See the Adze documentation for the full Gherkin executable documentation. We will only do a subset here.
-
-``` gherkin
-@CustomAsset
-Feature: Adze
-  Adze provides a decoupled layer to external advertising services.
-
-  Rule: First passing service will respond to a display request repeatedly
-  
-    Background:
-      Given 4 services available
-      And they are ordered  as "Round Robin"
-      
-    Example: The first service responds
-      Given that all services work
-      When I ask for an advertisement
-      Then I get the first service
-      When I ask for an advertisement again
-      Then I get the second service
-      
-    #... Examples to cover all the other combinations
-```
-
-Before we can write the step definitions we are going to need to make necessary data available.
-
-* Add `[SerializedField] public Result results` to the mock concrete service; plus
-* Fill the result object passed to the service method with that set in the Inspector; and we get
-
-``` c#
-  [CreateAssetMenu(menuName = "Custom Assets/Services/Adze/ServiceForMock", fileName = "AdzeServiceForMock")]
-  public class AdzeServiceForMock : AdzeServiceAdapter {
-    [SerializeField] public Result mockResult;
-    [SerializeField] private float secondsDelay = 0.1f;
-
-    protected override string Display(Emitter emitter, Result result) {
-      Log("Mocking", "Display Advertisement");
-      result.dismissed     = mockResult.dismissed;
-      result.adActionTaken = mockResult.adActionTaken;
-      result.serviceError  = mockResult.serviceError;
-      Fiber.Start.WaitFor(secondsDelay).Fire(emitter);
-      return default;
-    }
-    public override bool IsExternalServiceAvailable() => true;
-  }
-```
-![Complete Mock asset in Inspector](MockCompleteInInspector.png)
-
-Let's see if we have all we need for the step definitions.
-
-* Providing there are more than we need we can truncate `ServiceManager.selector.Choices`.
-* set `ServiceManager.selector.Choices[0].serviceError = default` to mark as passed OK.
-* `ServiceManager.selector.CycleIndex` should be 0 after each run.
-
-For more detail, go to ***Askowl BDD*** for information on writing and running Gherkin executable specifications and ***Askowl Adze*** for the full feature specifications and definitions for Adze.
 
 ## Examples
 ### Health Bar
@@ -1274,5 +1046,3 @@ public sealed class GameManager : MonoBehaviour {
     private void OnSceneChange() => UnityEngine.SceneManagement.SceneManager.LoadScene(sceneBuildIndex: scene);
   }
 ```
-
-#### Benefits of Refactoring

@@ -32,7 +32,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CustomAssets
    </div>
-   <div id="projectbrief">Scriptable Objects++</div>
+   <div id="projectbrief">Askowl Custom Assets</div>
   </td>
  </tr>
  </tbody>
@@ -108,13 +108,14 @@ Inheritance diagram for CustomAsset.Base:</div>
  <div class="center">
   <img src="class_custom_asset_1_1_base.png" usemap="#CustomAsset.Base_map" alt=""/>
   <map id="CustomAsset.Base_map" name="CustomAsset.Base_map">
-<area href="class_custom_asset_1_1_constant_1_1_of_type.html" title="Base class for a custom asset. Provides getters and setters for the contained value and templates for..." alt="CustomAsset.Constant.OfType&lt; T &gt;" shape="rect" coords="0,112,236,136"/>
-<area href="class_custom_asset_1_1_manager.html" title="Logic-only manager custom asset superclass //#TBD#// " alt="CustomAsset.Manager" shape="rect" coords="246,112,482,136"/>
-<area href="class_custom_asset_1_1_mutable_1_1_with_emitter.html" title="Typeless base class that has an emitter " alt="CustomAsset.Mutable.WithEmitter" shape="rect" coords="492,112,728,136"/>
-<area href="class_custom_asset_1_1_mutable_1_1_of_type.html" title="Base class for a custom asset. Provides getters and setters for the contained value and templates for..." alt="CustomAsset.Mutable.OfType&lt; T &gt;" shape="rect" coords="369,168,605,192"/>
-<area href="class_custom_asset_1_1_mutable_1_1_trigger.html" title="Dynamic custom asset without any values. Use it to trigger and listen to events  " alt="CustomAsset.Mutable.Trigger" shape="rect" coords="615,168,851,192"/>
-<area href="class_custom_asset_1_1_mutable_1_1_boolean.html" title="Boolean custom asset. Triggers event when changing from true to false or false to true ..." alt="CustomAsset.Mutable.Boolean" shape="rect" coords="369,224,605,248"/>
-<area href="class_custom_asset_1_1_mutable_1_1_change_over_time.html" title="Change a float value in linear fashion over time  " alt="CustomAsset.Mutable.ChangeOverTime" shape="rect" coords="615,224,851,248"/>
+<area href="class_custom_asset_1_1_constant_1_1_enumeration.html" title="Boolean custom asset. Triggers event when changing from true to false or false to true  ..." alt="CustomAsset.Constant.Enumeration" shape="rect" coords="0,112,236,136"/>
+<area href="class_custom_asset_1_1_constant_1_1_of_type.html" title="Base class for a custom asset. Provides getters and setters for the contained value and templates for..." alt="CustomAsset.Constant.OfType&lt; T &gt;" shape="rect" coords="246,112,482,136"/>
+<area href="class_custom_asset_1_1_manager.html" title=" //#TBD#// " alt="CustomAsset.Manager" shape="rect" coords="492,112,728,136"/>
+<area href="class_custom_asset_1_1_mutable_1_1_with_emitter.html" title="Typeless base class that has an emitter " alt="CustomAsset.Mutable.WithEmitter" shape="rect" coords="738,112,974,136"/>
+<area href="class_custom_asset_1_1_mutable_1_1_of_type.html" title="Base class for a custom asset. Provides getters and setters for the contained value and templates for..." alt="CustomAsset.Mutable.OfType&lt; T &gt;" shape="rect" coords="615,168,851,192"/>
+<area href="class_custom_asset_1_1_mutable_1_1_trigger.html" title="Dynamic custom asset without any values. Use it to trigger and listen to events  " alt="CustomAsset.Mutable.Trigger" shape="rect" coords="861,168,1097,192"/>
+<area href="class_custom_asset_1_1_mutable_1_1_boolean.html" title="Boolean custom asset. Triggers event when changing from true to false or false to true ..." alt="CustomAsset.Mutable.Boolean" shape="rect" coords="615,224,851,248"/>
+<area href="class_custom_asset_1_1_mutable_1_1_change_over_time.html" title="Change a float value in linear fashion over time  " alt="CustomAsset.Mutable.ChangeOverTime" shape="rect" coords="861,224,1097,248"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -156,8 +157,8 @@ Protected Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-attribs"></a>
 Static Protected Attributes</h2></td></tr>
-<tr class="memitem:a81455763f8f02fc99b5baf3fb06094d8"><td class="memItemLeft" align="right" valign="top">static readonly Emitter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_custom_asset_1_1_base.html#a81455763f8f02fc99b5baf3fb06094d8">InitialiseAssetEmitter</a> = Emitter.Instance</td></tr>
-<tr class="memdesc:a81455763f8f02fc99b5baf3fb06094d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">triggered by scene load in <a class="el" href="class_custom_asset_1_1_manager.html" title="Logic-only manager custom asset superclass //#TBD#// ">Manager</a>  <a href="#a81455763f8f02fc99b5baf3fb06094d8">More...</a><br /></td></tr>
+<tr class="memitem:a81455763f8f02fc99b5baf3fb06094d8"><td class="memItemLeft" align="right" valign="top">static readonly Emitter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_custom_asset_1_1_base.html#a81455763f8f02fc99b5baf3fb06094d8">InitialiseAssetEmitter</a> = Emitter.SingleFireInstance</td></tr>
+<tr class="memdesc:a81455763f8f02fc99b5baf3fb06094d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">triggered by scene load in <a class="el" href="class_custom_asset_1_1_manager.html" title=" //#TBD#// ">Manager</a>  <a href="#a81455763f8f02fc99b5baf3fb06094d8">More...</a><br /></td></tr>
 <tr class="separator:a81455763f8f02fc99b5baf3fb06094d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a248f0cc134ae1ecb128e28d2651ed1f3"><td class="memItemLeft" align="right" valign="top">static readonly Fifo&lt; <a class="el" href="class_custom_asset_1_1_base.html">Base</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_custom_asset_1_1_base.html#a248f0cc134ae1ecb128e28d2651ed1f3">AssetsWaitingInitialisation</a> = Fifo&lt;<a class="el" href="class_custom_asset_1_1_base.html">Base</a>&gt;.Instance</td></tr>
 <tr class="memdesc:a248f0cc134ae1ecb128e28d2651ed1f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialisation for all assets loaded before the related/first scene  <a href="#a248f0cc134ae1ecb128e28d2651ed1f3">More...</a><br /></td></tr>
@@ -166,7 +167,7 @@ Static Protected Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a href="http://bit.ly/2CwSS8S">Base class for all custom assets - implementing initialisation</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_base_8cs_source.html#l00007">7</a> of file <a class="el" href="_base_8cs_source.html">Base.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_base_8cs_source.html#l00008">8</a> of file <a class="el" href="_base_8cs_source.html">Base.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a7da58c118852568eb073b74f06040715"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7da58c118852568eb073b74f06040715">&#9670;&nbsp;</a></span>Initialise()</h2>
@@ -195,7 +196,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_custom_asset_1_1_mutable_1_1_change_over_time.html#a657ca2954b1fa3542527217266c070d9">CustomAsset.Mutable.ChangeOverTime</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_base_8cs_source.html#l00026">26</a> of file <a class="el" href="_base_8cs_source.html">Base.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_base_8cs_source.html#l00027">27</a> of file <a class="el" href="_base_8cs_source.html">Base.cs</a>.</p>
 
 </div>
 </div>
@@ -216,7 +217,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p><a href="http://bit.ly/2CzuMKF">Called by Managers MonoBehaviour</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_base_8cs_source.html#l00020">20</a> of file <a class="el" href="_base_8cs_source.html">Base.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_base_8cs_source.html#l00021">21</a> of file <a class="el" href="_base_8cs_source.html">Base.cs</a>.</p>
 
 </div>
 </div>
@@ -314,7 +315,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_custom_asset_1_1_mutable_1_1_of_type.html#a49525bf9820fdc2db273b7c1fa49b6dc">CustomAsset.Mutable.OfType&lt; T &gt;</a>, and <a class="el" href="class_custom_asset_1_1_mutable_1_1_with_emitter.html#addf7d770ccbbbef14cc6384bfeab951a">CustomAsset.Mutable.WithEmitter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_base_8cs_source.html#l00029">29</a> of file <a class="el" href="_base_8cs_source.html">Base.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_base_8cs_source.html#l00030">30</a> of file <a class="el" href="_base_8cs_source.html">Base.cs</a>.</p>
 
 </div>
 </div>
@@ -341,7 +342,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p>initialisation for all assets loaded before the related/first scene </p>
 
-<p class="definition">Definition at line <a class="el" href="_base_8cs_source.html#l00037">37</a> of file <a class="el" href="_base_8cs_source.html">Base.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_base_8cs_source.html#l00038">38</a> of file <a class="el" href="_base_8cs_source.html">Base.cs</a>.</p>
 
 </div>
 </div>
@@ -359,7 +360,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p><a href="http://bit.ly/2CwSVS6">Editor only description of what the asset is all about</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_base_8cs_source.html#l00014">14</a> of file <a class="el" href="_base_8cs_source.html">Base.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_base_8cs_source.html#l00015">15</a> of file <a class="el" href="_base_8cs_source.html">Base.cs</a>.</p>
 
 </div>
 </div>
@@ -373,7 +374,7 @@ Static Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">readonly Emitter CustomAsset.Base.InitialiseAssetEmitter = Emitter.Instance</td>
+          <td class="memname">readonly Emitter CustomAsset.Base.InitialiseAssetEmitter = Emitter.SingleFireInstance</td>
         </tr>
       </table>
   </td>
@@ -383,9 +384,9 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>triggered by scene load in <a class="el" href="class_custom_asset_1_1_manager.html" title="Logic-only manager custom asset superclass //#TBD#// ">Manager</a> </p>
+<p>triggered by scene load in <a class="el" href="class_custom_asset_1_1_manager.html" title=" //#TBD#// ">Manager</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_base_8cs_source.html#l00034">34</a> of file <a class="el" href="_base_8cs_source.html">Base.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_base_8cs_source.html#l00035">35</a> of file <a class="el" href="_base_8cs_source.html">Base.cs</a>.</p>
 
 </div>
 </div>
@@ -411,7 +412,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p><a href="http://bit.ly/2CzuMKF"></a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_base_8cs_source.html#l00017">17</a> of file <a class="el" href="_base_8cs_source.html">Base.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_base_8cs_source.html#l00018">18</a> of file <a class="el" href="_base_8cs_source.html">Base.cs</a>.</p>
 
 </div>
 </div>
