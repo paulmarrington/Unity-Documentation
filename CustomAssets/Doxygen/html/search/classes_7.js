@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['integer',['Integer',['../class_custom_asset_1_1_constant_1_1_integer.html',1,'CustomAsset.Constant.Integer'],['../class_custom_asset_1_1_mutable_1_1_integer.html',1,'CustomAsset.Mutable.Integer']]],
-  ['integerdriver',['IntegerDriver',['../class_custom_asset_1_1_mutable_1_1_integer_driver.html',1,'CustomAsset::Mutable']]]
+  ['healthbartranscript',['HealthBarTranscript',['../class_askowl_1_1_transcripts_1_1_health_bar_transcript.html',1,'Askowl::Transcripts']]],
+  ['healthmanagertesttranscript',['HealthManagerTestTranscript',['../class_askowl_1_1_custom_assets_1_1_transcripts_1_1_health_manager_test_transcript.html',1,'Askowl::CustomAssets::Transcripts']]],
+  ['healthmanagertranscript',['HealthManagerTranscript',['../class_askowl_1_1_custom_assets_1_1_transcripts_1_1_health_manager_transcript.html',1,'Askowl::CustomAssets::Transcripts']]]
 ];

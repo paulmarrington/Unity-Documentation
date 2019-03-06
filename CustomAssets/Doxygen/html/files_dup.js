@@ -1,6 +1,7 @@
 var files_dup =
 [
     [ "AnimatorCustomAssetConnector.cs", "_animator_custom_asset_connector_8cs_source.html", null ],
+    [ "AssetWizard.cs", "_asset_wizard_8cs_source.html", null ],
     [ "Constant/AudioClips.cs", "_constant_2_audio_clips_8cs_source.html", null ],
     [ "Mutable/AudioClips.cs", "_mutable_2_audio_clips_8cs_source.html", null ],
     [ "AudioClipsEditor.cs", "_audio_clips_editor_8cs_source.html", null ],
@@ -22,8 +23,8 @@ var files_dup =
     [ "FloatDriver.cs", "_float_driver_8cs_source.html", null ],
     [ "GameObject.cs", "_game_object_8cs_source.html", null ],
     [ "GameObjectConnector.cs", "_game_object_connector_8cs_source.html", null ],
-    [ "HealthBarTest.cs", "_health_bar_test_8cs_source.html", null ],
-    [ "HealthManagerTest.cs", "_health_manager_test_8cs_source.html", null ],
+    [ "HealthBarTranscript.cs", "_health_bar_transcript_8cs_source.html", null ],
+    [ "HealthManagerTestTranscript.cs", "_health_manager_test_transcript_8cs_source.html", null ],
     [ "HealthManagerTranscript.cs", "_health_manager_transcript_8cs_source.html", null ],
     [ "Constant/Integer.cs", "_constant_2_integer_8cs_source.html", null ],
     [ "Mutable/Integer.cs", "_mutable_2_integer_8cs_source.html", null ],

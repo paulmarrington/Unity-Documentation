@@ -45,7 +45,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_marquee_8cs_source.html"
+"_create_new_marquee_8cs_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

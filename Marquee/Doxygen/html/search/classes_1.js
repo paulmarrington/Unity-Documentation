@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tickertape',['Tickertape',['../class_askowl_1_1_tickertape.html',1,'Askowl']]]
+  ['marquee',['Marquee',['../class_askowl_1_1_marquee.html',1,'Askowl']]]
 ];

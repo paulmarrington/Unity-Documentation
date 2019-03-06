@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['constant',['Constant',['../namespace_custom_asset_1_1_constant.html',1,'CustomAsset']]],
-  ['customasset',['CustomAsset',['../namespace_custom_asset.html',1,'']]],
-  ['mutable',['Mutable',['../namespace_custom_asset_1_1_mutable.html',1,'CustomAsset']]]
+  ['askowl',['Askowl',['../namespace_askowl.html',1,'']]],
+  ['customassets',['CustomAssets',['../namespace_askowl_1_1_custom_assets.html',1,'Askowl']]],
+  ['examples',['Examples',['../namespace_askowl_1_1_custom_assets_1_1_examples.html',1,'Askowl::CustomAssets']]],
+  ['transcripts',['Transcripts',['../namespace_askowl_1_1_custom_assets_1_1_transcripts.html',1,'Askowl.CustomAssets.Transcripts'],['../namespace_askowl_1_1_transcripts.html',1,'Askowl.Transcripts']]]
 ];

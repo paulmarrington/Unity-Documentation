@@ -13,5 +13,6 @@ var namespaces_dup =
     [ "Using Custom Assets", "autotoc_md0.html#autotoc_md11", null ],
     [ "Custom Asset Persistence", "autotoc_md0.html#autotoc_md12", null ],
     [ "Examples", "autotoc_md0.html#autotoc_md13", null ],
+    [ "Askowl", "namespace_askowl.html", "namespace_askowl" ],
     [ "CustomAsset", "namespace_custom_asset.html", "namespace_custom_asset" ]
 ];
