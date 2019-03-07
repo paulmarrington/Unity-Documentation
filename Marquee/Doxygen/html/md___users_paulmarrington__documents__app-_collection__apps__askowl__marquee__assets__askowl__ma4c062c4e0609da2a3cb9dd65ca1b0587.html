@@ -112,6 +112,11 @@ Introduction</h1>
 <img src="Screen Shot.png" width="100%" alt="Marquee in action"/>
 </div>
 <h1><a class="anchor" id="autotoc_md3"></a>
+Videos</h1>
+<ul>
+<li><a href="https://youtu.be/TVsNg6COdeI">How to Build a Marquee</a></li>
+</ul>
+<h1><a class="anchor" id="autotoc_md4"></a>
 Installation</h1>
 <p><a class="el" href="namespace_askowl.html">Askowl</a> Marquee comes with a wizard. It is in the <em><b>Asset // Create</b></em> menu, adding it to the current scene. The only additional work you will need to do is to add static messages and code to inject dynamic ones.</p>
 <p>The wizard adds <em><b>Marquee Canvas</b></em> to the current scene. Change location, size and text look. Switch to TextMesh Pro by replacing the text component. Leave the <code>Textual</code> element as it acts as a universal communicator.</p>
@@ -120,13 +125,13 @@ Installation</h1>
 <img src="Custom Asset - Tickertape.png" alt="Tickertape Manager Custom Asset"/>
 </div>
 <p><em><b>Able</b></em> provides a property drawer that allows the viewing and editing of custom asset references. Contents (Quotes), Now Showing and Display Complete are three such custom assets. The latter two provided a decoupled interface with the Marquee MonoBehaviour.</p>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 Auto Start</h2>
 <p>If your information is context specific, then it would be usual to disable auto-start. To start a display, have a reference to the Tickertape custom asset and call <em><b>Show</b></em>, <em><b>ShowNext</b></em> or <em><b>ShowImmediate</b></em> as documented below.</p>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md6"></a>
 Seconds Between Feeds</h2>
 <p>In the current implementation, each item is on the screen alone, with the following one displaying once the predecessor has disappeared.</p>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 Quotes</h2>
 <p><em><b>Quotes</b></em> Is a custom asset with quotes ready to display either embedded in it or one or more text files. See the CustomAsset documentation for more details. You can replace or supplement this list during play with <em><b>Clear</b></em> and <em><b>Add</b></em>.</p>
 <p>Each line becomes one displayed item if the line ends in an attribution within brackets it is formatted differently.</p>
@@ -137,20 +142,20 @@ Quotes</h2>
 <div class="image">
 <img src="Quote.png" alt="Tickertape Manager Custom Asset"/>
 </div>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md8"></a>
 Now Showing</h2>
 <p><em><b>Now Showing</b></em> Is a string custom asset containing the text currently displayed. A change causes a restart with the words appearing on the right.</p>
-<div class="fragment"><div class="line">// Set in the inspector to the Marquee &quot;Now Showing&quot; String CustomAsset.</div><div class="line">[SerializeField] private String showing = default;</div><div class="line">//...</div><div class="line">void News(string text) =&gt; showing.Value = text;</div></div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
+<div class="fragment"><div class="line">// Set in the inspector to the Marquee &quot;Now Showing&quot; String CustomAsset.</div><div class="line">[SerializeField] private String showing = default;</div><div class="line">//...</div><div class="line">void News(string text) =&gt; showing.Value = text;</div></div><!-- fragment --><h2><a class="anchor" id="autotoc_md9"></a>
 Showing Complete</h2>
 <p>A trigger custom asset that fires when the current text has left the screen. Use with <em><b>Now Showing</b></em> to drive the Marquee directly for more control of what is displayed when.</p>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Additional Tuning Parameters</h2>
 <p>There are additional custom assets that you can edit from the <em><b>Assets/Askowl/Marquee</b></em> directory.</p>
 <h3>Characters per second</h3>
 <p>This numeric value will control how fast the text scrolls across the screen. An amount of 16 will provide a slow read, while 100 is only readable to the quick of comprehension. You could change the speed to give a sense of urgency.</p>
 <h3>Repeats per message</h3>
 <p>I am not sure why I added this one. Set to zero, so we see a message once.</p>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Actions from Tickertape Manager Custom Asset</h2>
 <h3>Show</h3>
 <p>Start displaying items.</p>

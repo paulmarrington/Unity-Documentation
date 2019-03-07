@@ -22,6 +22,10 @@ In this incarnation, a `Marquee` is a scrolling text asset for a UI component. I
 
 <img src="Screen Shot.png" width="100%" alt="Marquee in action">
 
+# Videos
+
+* [How to Build a Marquee](https://youtu.be/TVsNg6COdeI)
+
 # Installation
 
 Askowl Marquee comes with a wizard. It is in the ***Asset // Create*** menu, adding it to the current scene. The only additional work you will need to do is to add static messages and code to inject dynamic ones.
