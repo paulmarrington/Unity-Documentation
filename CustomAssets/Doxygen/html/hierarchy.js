@@ -1,6 +1,14 @@
 var hierarchy =
 [
-    [ "Askowl.AssetWizard", "class_askowl_1_1_asset_wizard.html", null ],
+    [ "Editor", null, [
+      [ "Askowl.AssetWizard.AssetWizardEditor", "class_askowl_1_1_asset_wizard_1_1_asset_wizard_editor.html", null ]
+    ] ],
+    [ "Askowl.ICreate", "interface_askowl_1_1_i_create.html", [
+      [ "Askowl.AssetWizard", "class_askowl_1_1_asset_wizard.html", null ]
+    ] ],
+    [ "IDisposable", null, [
+      [ "Askowl.AssetEditor", "class_askowl_1_1_asset_editor.html", null ]
+    ] ],
     [ "Askowl.CustomAssets.Examples.CustomAssetsExample.LargerAssetContents", "class_askowl_1_1_custom_assets_1_1_examples_1_1_custom_assets_example_1_1_larger_asset_contents.html", null ],
     [ "CustomAsset.Mutable.Listener", "class_custom_asset_1_1_mutable_1_1_listener.html", null ],
     [ "MonoBehaviour", null, [
@@ -33,23 +41,23 @@ var hierarchy =
       [ "Askowl.CustomAssets.Examples.SetPickerSample", "class_askowl_1_1_custom_assets_1_1_examples_1_1_set_picker_sample.html", null ],
       [ "CustomAsset.Constant.AudioClips", "class_custom_asset_1_1_constant_1_1_audio_clips.html", null ]
     ] ],
+    [ "CustomAsset.Mutable.OfType< bool >", "class_custom_asset_1_1_mutable_1_1_of_type.html", null ],
     [ "CustomAsset.Constant.OfType< bool >", "class_custom_asset_1_1_constant_1_1_of_type.html", [
       [ "CustomAsset.Constant.Boolean", "class_custom_asset_1_1_constant_1_1_boolean.html", null ]
     ] ],
-    [ "CustomAsset.Mutable.OfType< bool >", "class_custom_asset_1_1_mutable_1_1_of_type.html", null ],
     [ "CustomAsset.Mutable.OfType< CustomAssetsExample.LargerAssetContents >", "class_custom_asset_1_1_mutable_1_1_of_type.html", [
       [ "Askowl.CustomAssets.Examples.LargerAssetSample", "class_askowl_1_1_custom_assets_1_1_examples_1_1_larger_asset_sample.html", null ]
-    ] ],
-    [ "CustomAsset.Mutable.OfType< float >", "class_custom_asset_1_1_mutable_1_1_of_type.html", [
-      [ "CustomAsset.Mutable.Float", "class_custom_asset_1_1_mutable_1_1_float.html", null ]
     ] ],
     [ "CustomAsset.Constant.OfType< float >", "class_custom_asset_1_1_constant_1_1_of_type.html", [
       [ "CustomAsset.Constant.Float", "class_custom_asset_1_1_constant_1_1_float.html", null ]
     ] ],
+    [ "CustomAsset.Mutable.OfType< float >", "class_custom_asset_1_1_mutable_1_1_of_type.html", [
+      [ "CustomAsset.Mutable.Float", "class_custom_asset_1_1_mutable_1_1_float.html", null ]
+    ] ],
+    [ "CustomAsset.Constant.OfType< int >", "class_custom_asset_1_1_constant_1_1_of_type.html", null ],
     [ "CustomAsset.Mutable.OfType< int >", "class_custom_asset_1_1_mutable_1_1_of_type.html", [
       [ "CustomAsset.Mutable.Integer", "class_custom_asset_1_1_mutable_1_1_integer.html", null ]
     ] ],
-    [ "CustomAsset.Constant.OfType< int >", "class_custom_asset_1_1_constant_1_1_of_type.html", null ],
     [ "CustomAsset.Constant.OfType< QuoteSet >", "class_custom_asset_1_1_constant_1_1_of_type.html", [
       [ "CustomAsset.Constant.Quotes", "class_custom_asset_1_1_constant_1_1_quotes.html", null ]
     ] ],
@@ -57,10 +65,10 @@ var hierarchy =
       [ "CustomAsset.Constant.StringSet", "class_custom_asset_1_1_constant_1_1_string_set.html", null ],
       [ "CustomAsset.Mutable.StringSet", "class_custom_asset_1_1_mutable_1_1_string_set.html", null ]
     ] ],
+    [ "CustomAsset.Mutable.OfType< string >", "class_custom_asset_1_1_mutable_1_1_of_type.html", null ],
     [ "CustomAsset.Constant.OfType< string >", "class_custom_asset_1_1_constant_1_1_of_type.html", [
       [ "CustomAsset.Constant.String", "class_custom_asset_1_1_constant_1_1_string.html", null ]
     ] ],
-    [ "CustomAsset.Mutable.OfType< string >", "class_custom_asset_1_1_mutable_1_1_of_type.html", null ],
     [ "CustomAsset.Mutable.OfType< UnityEngine.GameObject >", "class_custom_asset_1_1_mutable_1_1_of_type.html", [
       [ "CustomAsset.GameObject", "class_custom_asset_1_1_game_object.html", null ]
     ] ],
@@ -83,6 +91,7 @@ var hierarchy =
           [ "CustomAsset.Constant.Integer", "class_custom_asset_1_1_constant_1_1_integer.html", null ]
         ] ],
         [ "CustomAsset.Manager", "class_custom_asset_1_1_manager.html", [
+          [ "Askowl.AssetWizard", "class_askowl_1_1_asset_wizard.html", null ],
           [ "Askowl.CustomAssets.Transcripts.HealthManagerTranscript", "class_askowl_1_1_custom_assets_1_1_transcripts_1_1_health_manager_transcript.html", null ],
           [ "Askowl.Transcripts.PlayerDeathManager", "class_askowl_1_1_transcripts_1_1_player_death_manager.html", null ],
           [ "Askowl.Transcripts.SceneManager", "class_askowl_1_1_transcripts_1_1_scene_manager.html", null ]

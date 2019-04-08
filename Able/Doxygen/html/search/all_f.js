@@ -12,6 +12,7 @@ var searchData=
   ['regex',['Regex',['../struct_askowl_1_1_template_1_1_substitution.html#a3d2fe0a7084df7c7b2f9e7eba2277a6a',1,'Askowl::Template::Substitution']]],
   ['remove',['Remove',['../class_askowl_1_1_map.html#a408447bcd9c716d01650238c61e539ef',1,'Askowl::Map']]],
   ['reset',['Reset',['../class_askowl_1_1_selector.html#ac01ec248d58dd380b24489613cd88d6c',1,'Askowl.Selector.Reset()'],['../class_askowl_1_1_set.html#aae96fe56c080ba8efdf378b1c92c938c',1,'Askowl.Set.Reset()']]],
+  ['result',['result',['../class_askowl_1_1_template.html#aec469d907bc5acc62a4a5f669ff6da17',1,'Askowl.Template.result()'],['../class_askowl_1_1_template.html#a108af514eb60b035ee9238ad1943423c',1,'Askowl.Template.Result()']]],
   ['reverselookup',['ReverseLookup',['../class_askowl_1_1_linked_list.html#a5b1fb3d518c42629d0e2944d834ff18f',1,'Askowl::LinkedList']]],
   ['root',['Root',['../class_askowl_1_1_trees.html#ada12f5b08701676195de5afe184dc624',1,'Askowl::Trees']]]
 ];

@@ -1,6 +1,7 @@
 var files_dup =
 [
     [ "AnimatorCustomAssetConnector.cs", "_animator_custom_asset_connector_8cs_source.html", null ],
+    [ "AssetEditor.cs", "_asset_editor_8cs_source.html", null ],
     [ "AssetWizard.cs", "_asset_wizard_8cs_source.html", null ],
     [ "Constant/AudioClips.cs", "_constant_2_audio_clips_8cs_source.html", null ],
     [ "Mutable/AudioClips.cs", "_mutable_2_audio_clips_8cs_source.html", null ],

@@ -47,8 +47,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_cache_8cs_source.html",
-"namespace_askowl_1_1_rich_text.html"
+"_asset_db_8cs_source.html",
+"functions_t.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

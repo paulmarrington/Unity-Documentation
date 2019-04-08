@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['exponentialmovingaverage',['ExponentialMovingAverage',['../class_askowl_1_1_exponential_moving_average.html',1,'Askowl']]]
+  ['direction',['Direction',['../class_askowl_1_1_trig_1_1_direction.html',1,'Askowl::Trig']]],
+  ['disposable',['Disposable',['../struct_askowl_1_1_disposable.html',1,'Askowl.Disposable&lt; T &gt;'],['../struct_askowl_1_1_disposable.html',1,'Askowl.Disposable']]]
 ];

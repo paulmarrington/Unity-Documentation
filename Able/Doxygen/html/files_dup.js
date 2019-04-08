@@ -1,5 +1,6 @@
 var files_dup =
 [
+    [ "AssetDb.cs", "_asset_db_8cs_source.html", null ],
     [ "Cache.cs", "_cache_8cs_source.html", null ],
     [ "Clock.cs", "_clock_8cs_source.html", null ],
     [ "Commentary.cs", "_commentary_8cs_source.html", null ],
@@ -13,6 +14,7 @@ var files_dup =
     [ "ExponentialMovingAverage.cs", "_exponential_moving_average_8cs_source.html", null ],
     [ "Fifo.cs", "_fifo_8cs_source.html", null ],
     [ "Geodetic.cs", "_geodetic_8cs_source.html", null ],
+    [ "Jit.cs", "_jit_8cs_source.html", null ],
     [ "Json.cs", "_json_8cs_source.html", null ],
     [ "LabelAttribute.cs", "_label_attribute_8cs_source.html", null ],
     [ "LinkedList.cs", "_linked_list_8cs_source.html", null ],

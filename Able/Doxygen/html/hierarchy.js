@@ -25,6 +25,7 @@ var hierarchy =
       [ "Askowl.CounterFifo", "class_askowl_1_1_counter_fifo.html", null ]
     ] ],
     [ "IDisposable", null, [
+      [ "Askowl.AssetDb", "class_askowl_1_1_asset_db.html", null ],
       [ "Askowl.Cached< T >", "class_askowl_1_1_cached.html", null ],
       [ "Askowl.Disposable< T >", "struct_askowl_1_1_disposable.html", null ],
       [ "Askowl.Disposable< T >", "struct_askowl_1_1_disposable.html", null ],
@@ -36,6 +37,7 @@ var hierarchy =
       [ "Askowl.Template", "class_askowl_1_1_template.html", null ],
       [ "Askowl.Trees", "class_askowl_1_1_trees.html", null ]
     ] ],
+    [ "Askowl.Jit< T >", "struct_askowl_1_1_jit.html", null ],
     [ "Askowl.LinkedList< Node >", "class_askowl_1_1_linked_list.html", null ],
     [ "LinkedListNode", null, [
       [ "Askowl.Cache.Boxed< T >", "class_askowl_1_1_cache_1_1_boxed.html", null ]
